@@ -27,11 +27,11 @@ $(function () {
 				
 		$("article").each(function(i) {
 			var newTop = (windowHeight*(i+1))-distance;
-			console.log(newTop);
-			if ( newTop > 0 ) {
+			var topMargin = i*3 + "%";
+			if ( newTop > windowHeight*(0.03*i)) {
 				$(this).css({top:newTop});
 			} else {
-				$(this).css({top:0, position:"fixed"});
+				$(this).css({top:topMargin, position:"fixed"});
 			}
 		});
 		
@@ -45,5 +45,18 @@ $(function () {
 		$(window).scrollTo(target,1000);
 	});
 	
+	$("nav li a").hover(function() {
+		var target = $("article").eq($(this).parent().index());
+		var targetColor = target.css("background-color");
+		
+		$(this).css({"background-color":targetColor});
+		
+		
+	}, function() {
+		$(this).css({"background-color":""});
+	});
+	
+	
+	$(window).resize(resize);
 	resize();
 });
