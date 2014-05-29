@@ -119,12 +119,16 @@ body {
 	top: 0;
 }
 
+.animate {
+	transition: all 0.3s;
+}
+
 article {
 	width: 96%;
 	height: 100%;
 	position:fixed;
 	padding: 20px 2%;
-	animate: all 5s;
+	border-top-right-radius: 25px;
 }
 
 article:before {
