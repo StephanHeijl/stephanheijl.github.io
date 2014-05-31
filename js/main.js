@@ -4,7 +4,7 @@ $(function () {
 	var scroll_ok = true;
 	setInterval(function () {
 		scroll_ok = true;
-	}, 42);
+	}, 16);
 	
 	function resize() {
 		// Reset the body height
@@ -40,7 +40,7 @@ $(function () {
 		$("article").each(function(i) {
 			var newTop = (windowHeight*(i+1))-distance;
 			console.log($(this).index(), newTop);
-			var topMargin = (i+1)*3 + "%";
+			var topMargin = (i+1) + "em";
 			if ( newTop > windowHeight*(0.03*i)) {
 				$(this).css({top:newTop});
 				$(this).addClass("at-top");
