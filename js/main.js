@@ -10,6 +10,7 @@ $(function () {
 		// Reset the body height
 		var body = $("body");
 		body.css("height", "auto");
+		var distance = $(window).scrollTop();
 		
 		// Resize all articles to match the body height.
 		var articles = $("article");
@@ -18,7 +19,7 @@ $(function () {
 		articles.css({ height: windowHeight});
 		
 		articles.each(function(i) {
-			$(this).css({top: windowHeight*(i+1)})
+			$(this).css({ top: windowHeight*(i+1) - distance })
 		});
 		
 		// Resize the body to match the total articles height.
@@ -40,7 +41,7 @@ $(function () {
 		$("article").each(function(i) {
 			var newTop = (windowHeight*(i+1))-distance;
 			console.log($(this).index(), newTop);
-			var topMargin = (i+1) + "em";
+			var topMargin = (i+1)*2 + "em";
 			if ( newTop > windowHeight*(0.03*i)) {
 				$(this).css({top:newTop});
 				$(this).addClass("at-top");
@@ -107,4 +108,9 @@ $(function () {
 	
 	$(window).resize(resize);
 	resize();
+	
+	$("h1").fitText(1,{ minFontSize: '32pt', maxFontSize: '144pt' });
+	$("h2").fitText(1,{ minFontSize: '32pt', maxFontSize: '72pt' });
+	$("nav a").fitText();
+	
 });

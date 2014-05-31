@@ -9,8 +9,8 @@ textarea {
 }
 
 html {
-    font-size: 1em;
-    line-height: 1.4;
+    font-size: 24pt;
+    line-height: 1.4em;
 }
 
 ::-moz-selection {
@@ -79,7 +79,7 @@ body {
 }
 
 .main article h1 {
-    font-size: 2em;
+    font-size: 32pt;
 }
 
 .footer-container footer {
@@ -124,10 +124,10 @@ body {
 }
 
 article {
-	width: 96%;
+	width: 94%;
 	height: 100%;
 	position:fixed;
-	padding: 20px 2%;
+	padding: 20px 3%;
 	border-top-right-radius: 1em;
 	border-top-left-radius: 1em;
 }
@@ -136,7 +136,14 @@ article {
 	width: 100%;
 	text-align: center;
 	font-size: 32pt;
-	line-height: 48pt;
+	line-height: 1.2em;
+	margin: 0;
+}
+	
+h2 {
+	width: 50%;
+	text-align: center;
+	margin: 3% 25%;
 }
 
 nav {
@@ -174,6 +181,12 @@ nav a:hover {
 @media only screen and (max-width: 640px) {
 	nav a {
 		width: 46%;
+	}
+}
+@media screen and (min-aspect-ratio: 16/8) {
+	nav a {
+		width: 14.5%;
+		padding: 3% 0 !important;
 	}
 }
 
