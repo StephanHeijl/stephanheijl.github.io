@@ -26,7 +26,7 @@ $(function () {
 				
 		$("article").each(function(i) {
 			var newTop = (windowHeight*(i+1))-distance;
-			var topMargin = i*3 + "%";
+			var topMargin = (i+1)*3 + "%";
 			if ( newTop > windowHeight*(0.03*i)) {
 				$(this).css({top:newTop});
 				$(this).addClass("at-top");
@@ -58,6 +58,10 @@ $(function () {
 	});
 	
 	
+	$(".wrapper").not("nav *").click(function() {
+		$(window).scrollTo(0,300);
+	});
+	
 	
 	$("article").click(function() {
 		console.log(
@@ -65,11 +69,12 @@ $(function () {
 			parseInt($(window).scrollTop())
 		);
 		var articleTop = 1;
+		var article = $(this);
 		
 		if($(this).hasClass("at-top")) {
-			$(window).scrollTo($(this),300);
+			$(window).scrollTo(article,300);
 		} else {
-			$("article").removeClass("animate")
+			$(window).scrollTo( article.index() * article.height(), 400 );
 		}
 	});
 	
