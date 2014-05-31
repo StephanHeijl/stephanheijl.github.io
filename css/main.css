@@ -14,7 +14,7 @@ textarea {
 html {
     font-size: 24pt;
     line-height: 1.4em;
-    
+
 }
 
 ::-moz-selection {
@@ -230,18 +230,26 @@ table {
     width: 29%;
 }
 
+.experience-table {
+    width: 100%;
+}
+
+.experience-table progress{
+    display:inline-block;
+    text-align: right;
+}
+
 @media only screen and (max-width: 1280px) {
     .experience-container {
         width: 44%;
     }
+
 }
 
 @media only screen and (max-width: 800px) {
     .experience-container {
         width: 85%;
-    }
-    .experience-table {
-        width: 100%;
+        padding-left: 3%;
     }
 }
 
@@ -287,25 +295,25 @@ body > article:nth-child(2) {
 /* PROGRESS BAR */
 
 progress {
-	width: 200px;
-	height: 1.2em;
+    width: 200px;
+    height: 1.2em;
     margin-top: 
-	display: block;
-	/* Important Thing */
-	-webkit-appearance: none;
-	border: none;
+        display: block;
+    /* Important Thing */
+    -webkit-appearance: none;
+    border: none;
 }
 
 /* All good till now. Now we'll style the background */
 progress::-webkit-progress-bar {
-	background: rgba(0,0,0,0.5);
-	border-radius: 5px;
-	padding: 2px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 5px;
+    padding: 2px;
 }
 
 /* Now the value part */
 progress::-webkit-progress-value {
-	border-radius: 3px;
+    border-radius: 3px;
     background: white;
 }
 

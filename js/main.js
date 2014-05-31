@@ -44,10 +44,11 @@ $(function () {
 			var topMargin = (i+1) * (windowHeight*0.03);
 			if ( newTop > windowHeight*(0.03*i)) {
 				$(this).css({top:newTop});
-				$(this).addClass("at-top");
+				$(this).removeClass("at-top");
 			} else {
 				$(this).css({top:topMargin});
-				$(this).removeClass("at-top");
+				$(this).addClass("at-top");
+				
 			}
 		});
 		
@@ -88,7 +89,7 @@ $(function () {
 		var articleTop = 1;
 		var article = $(this);
 		
-		if($(this).hasClass("at-top")) {
+		if(!$(this).hasClass("at-top")) {
 			scrollCalls = 0;
 			$(window).scrollTo(article,300,{
 			onAfter:function() {
