@@ -69,6 +69,13 @@ body {
     font: 16px/26px Helvetica, Helvetica Neue, Arial;
 }
 
+a {
+    color: white;
+}
+a:visited {
+    color: #999;
+}
+
 .wrapper {
     width: 90%;
     margin: 0 5%;
@@ -163,12 +170,14 @@ article p {
     font-size: 32pt;
     line-height: 1.2em;
     margin: 0;
+    margin-top:0.2em;
 }
 
 h2 {
     width: 60%;
     text-align: center;
-    margin: 3% 20%;
+    margin: 1% 20% 3%;
+    line-height: 1.1em;
 }
 
 nav {
@@ -217,7 +226,7 @@ table {
 .experience-container {
     display: inline-block;
     vertical-align: top;
-    margin: 1% 2%;
+    margin: 0 2%;
     width: 29%;
 }
 
@@ -229,7 +238,7 @@ table {
 
 @media only screen and (max-width: 800px) {
     .experience-container {
-        width: 94%;
+        width: 85%;
     }
     .experience-table {
         width: 100%;
