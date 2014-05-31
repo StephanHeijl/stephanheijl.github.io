@@ -1,5 +1,10 @@
 $(function () {
 	var windowHeight = 0;
+	var scrollCalls = 0;
+	var scroll_ok = true;
+	setInterval(function () {
+		scroll_ok = true;
+	}, 42);
 	
 	function resize() {
 		// Reset the body height
@@ -20,48 +25,59 @@ $(function () {
 		body.height(windowHeight * (articles.length + 1 ) + paddingHeight * 2);
 	}
 	
-	$(window).scroll(function() {
+	$(window).scroll(function () {
+		if (scroll_ok === true) {
+			scroll_ok = false;
+			scrollHandler();
+    	}
+	});
+	
+	var scrollHandler = function() {
 		var distance = $(window).scrollTop();
 		var articles = $("article");
+		scrollCalls ++;
 				
 		$("article").each(function(i) {
 			var newTop = (windowHeight*(i+1))-distance;
+			console.log($(this).index(), newTop);
 			var topMargin = (i+1)*3 + "%";
 			if ( newTop > windowHeight*(0.03*i)) {
 				$(this).css({top:newTop});
 				$(this).addClass("at-top");
 			} else {
-				$(this).css({top:topMargin, position:"fixed"});
+				$(this).css({top:topMargin});
 				$(this).removeClass("at-top");
 			}
 		});
 		
-	});
+	}
 	
 	$("nav a").click(function(e) {
 		e.preventDefault();
 		var href = $(this).attr("href").substr(1);
 		var target = $("a[name=" + href + "]").eq(0);
 		console.log(target);
-		$(window).scrollTo(target,1000);
+		scrollCalls = 0;
+		$(window).scrollTo(target,1000, {
+			onAfter:function() {
+				console.log("Scroll calls : ", scrollCalls);		
+			}
+		});
+		
 	});
 	
 	$("nav li a").hover(function() {
 		var target = $("article").eq($(this).parent().index());
 		var targetColor = target.css("background-color");
 		
-		$(this).css({"background-color":targetColor});
-		
-		
+		$(this).css({"background-color":targetColor});		
 	}, function() {
 		$(this).css({"background-color":""});
-	});
-	
+	});	
 	
 	$(".wrapper").not("nav *").click(function() {
 		$(window).scrollTo(0,300);
-	});
-	
+	});	
 	
 	$("article").click(function() {
 		console.log(
@@ -72,9 +88,19 @@ $(function () {
 		var article = $(this);
 		
 		if($(this).hasClass("at-top")) {
-			$(window).scrollTo(article,300);
+			scrollCalls = 0;
+			$(window).scrollTo(article,300,{
+			onAfter:function() {
+				console.log("Scroll calls : ", scrollCalls);		
+			}
+		});
 		} else {
-			$(window).scrollTo( article.index() * article.height(), 400 );
+			scrollCalls = 0;
+			$(window).scrollTo( article.index() * article.height(), 400, {
+			onAfter:function() {
+				console.log("Scroll calls : ", scrollCalls);		
+			}
+		});
 		}
 	});
 	
