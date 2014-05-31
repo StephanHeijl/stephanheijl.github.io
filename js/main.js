@@ -106,7 +106,7 @@ $(function () {
 	});
 	
 	
-	$(window).resize(resize);
+	//$(window).resize(resize);
 	resize();
 	
 	$("h1").fitText(1,{ minFontSize: '32pt', maxFontSize: '144pt' });

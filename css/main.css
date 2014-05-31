@@ -8,9 +8,13 @@ textarea {
     color: #222;
 }
 
+::selection { color: #333; background: white; }
+::-moz-selection {color:red;background:yellow;}
+
 html {
     font-size: 24pt;
     line-height: 1.4em;
+    
 }
 
 ::-moz-selection {
@@ -131,12 +135,26 @@ article {
     border-top-right-radius: 1em;
     border-top-left-radius: 1em;
     font-size: 16pt;
+    overflow:hidden;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
 }
 
-@media only screen and (min-width: 1280px) {
-    article p{
-        -webkit-column-count: 3;
-    }
+article:hover:before {
+    position: absolute;
+    top: 0px;
+    left: -2px;
+    width: 100%;
+    content: '';
+    height: 100px;
+    opacity: 0.3;
+    cursor: pointer;
+    border: 2px solid white;
+    border-bottom: 0px;
+    border-radius: inherit;
+}
+
+article p {
+    text-align: center;
 }
 
 .title {
@@ -182,18 +200,44 @@ nav a {
 }
 
 nav a:hover {
+    box-shadow: 0px 2px 0 rgba(255,255,255,0.5) inset;
     -webkit-transform: scale(1.05);
 }
 .article-inner{
-   height: 75%;
+    height: 65%;
     overflow: hidden;
     position:relative;
 }
 table {
     table-layout: fixed;
     margin: 0 auto;
-    
     vertical-align: top;
+}
+
+.experience-container {
+    display: inline-block;
+    vertical-align: top;
+    margin: 1% 2%;
+    width: 29%;
+}
+
+@media only screen and (max-width: 1280px) {
+    .experience-container {
+        width: 44%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .experience-container {
+        width: 94%;
+    }
+    .experience-table {
+        width: 100%;
+    }
+}
+
+thead td {
+    text-align: center;
 }
 
 table td {
@@ -219,7 +263,7 @@ body > article:nth-child(6) {
     background-color: #C8385A;
 }
 body > article:nth-child(5) {
-    background-color: #FFCF48;
+    background-color: #EBB942;
 }
 body > article:nth-child(4) {
     background-color: #55C44A;
@@ -230,6 +274,32 @@ body > article:nth-child(3) {
 body > article:nth-child(2) {
     background-color: #1CA9C9;
 }
+
+/* PROGRESS BAR */
+
+progress {
+	width: 200px;
+	height: 1.2em;
+    margin-top: 
+	display: block;
+	/* Important Thing */
+	-webkit-appearance: none;
+	border: none;
+}
+
+/* All good till now. Now we'll style the background */
+progress::-webkit-progress-bar {
+	background: rgba(0,0,0,0.5);
+	border-radius: 5px;
+	padding: 2px;
+}
+
+/* Now the value part */
+progress::-webkit-progress-value {
+	border-radius: 3px;
+    background: white;
+}
+
 
 /* ==========================================================================
 Media Queries
