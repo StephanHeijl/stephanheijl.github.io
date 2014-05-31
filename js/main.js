@@ -41,7 +41,7 @@ $(function () {
 		$("article").each(function(i) {
 			var newTop = (windowHeight*(i+1))-distance;
 			console.log($(this).index(), newTop);
-			var topMargin = (i+1)*2 + "em";
+			var topMargin = (i+1) * (windowHeight*0.03);
 			if ( newTop > windowHeight*(0.03*i)) {
 				$(this).css({top:newTop});
 				$(this).addClass("at-top");
@@ -112,5 +112,6 @@ $(function () {
 	$("h1").fitText(1,{ minFontSize: '32pt', maxFontSize: '144pt' });
 	$("h2").fitText(1,{ minFontSize: '32pt', maxFontSize: '72pt' });
 	$("nav a").fitText();
+	$("table").css("font-size", $("h2").css("font-size")*0.5)
 	
 });

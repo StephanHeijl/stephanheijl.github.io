@@ -130,6 +130,13 @@ article {
 	padding: 20px 3%;
 	border-top-right-radius: 1em;
 	border-top-left-radius: 1em;
+	font-size: 16pt;
+}
+	
+@media only screen and (min-width: 1280px) {
+	article p{
+		-webkit-column-count: 3;
+	}
 }
 	
 .title {
@@ -141,9 +148,9 @@ article {
 }
 	
 h2 {
-	width: 50%;
+	width: 60%;
 	text-align: center;
-	margin: 3% 25%;
+	margin: 3% 20%;
 }
 
 nav {
@@ -177,6 +184,16 @@ nav a {
 nav a:hover {
 	-webkit-transform: scale(1.05);
 }
+	
+table {
+	table-layout: fixed;
+	margin: 0 auto;
+	
+}
+	
+table td {
+	padding: 0.35em;
+}
 
 @media only screen and (max-width: 640px) {
 	nav a {
@@ -200,7 +217,7 @@ body > article:nth-child(5) {
 	background-color: #FFCF48;
 }
 body > article:nth-child(4) {
-	background-color: #66EC59;
+	background-color: #55C44A;
 }
 body > article:nth-child(3) {
 	background-color: #1FCECB;
