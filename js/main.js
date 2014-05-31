@@ -112,6 +112,7 @@ $(function () {
 	$("h1").fitText(1,{ minFontSize: '32pt', maxFontSize: '144pt' });
 	$("h2").fitText(1,{ minFontSize: '32pt', maxFontSize: '72pt' });
 	$("nav a").fitText();
-	$("table").css("font-size", $("h2").css("font-size")*0.5)
+	$("table").css("font-size", $("h2").css("font-size")*0.5);
+	$(".article-inner").perfectScrollbar();
 	
 });

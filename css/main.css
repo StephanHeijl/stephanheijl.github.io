@@ -186,7 +186,8 @@ nav a:hover {
 }
 .article-inner{
    height: 75%;
-    overflow: auto;
+    overflow: hidden;
+    position:relative;
 }
 table {
     table-layout: fixed;
