@@ -1,10 +1,6 @@
 $(function () {
 	var windowHeight = 0;
 	var scrollCalls = 0;
-	var scroll_ok = true;
-	setInterval(function () {
-		scroll_ok = true;
-	}, 16);
 	
 	function resize() {
 		// Reset the body height
@@ -25,32 +21,33 @@ $(function () {
 		body.height(windowHeight * (articles.length + 1 ) + paddingHeight * 2);
 	}
 	
-	$(window).scroll(function () {
-		if (scroll_ok === true) {
-			scroll_ok = false;
-			scrollHandler();
-    	}
-	});
+	
 	
 	var scrollHandler = function() {
 		var distance = $(window).scrollTop();
 		var articles = $("article");
 		scrollCalls ++;
 				
-		$("article").each(function(i) {
-			var newTop = (windowHeight*(i+1))-distance;
-			console.log($(this).index(), newTop);
-			var topMargin = (i+1) + "em";
-			if ( newTop > windowHeight*(0.03*i)) {
-				$(this).css({top:newTop});
-				$(this).addClass("at-top");
-			} else {
-				$(this).css({top:topMargin});
-				$(this).removeClass("at-top");
+		for(var i = 0; i < articles.length; i++) {
+			article = articles.eq(i);
+			var newTop = (windowHeight*(i+1));
+			var topMargin = (i+1) * 36;
+			
+			
+			if( distance + topMargin >= newTop) {
+				var translate = "translateY("+ ( distance-newTop + topMargin ) + "px)";
+				console.log(translate);
+				article.css({"-webkit-transform" : translate});
 			}
-		});
+			
+			article.find("p").text(distance + ", " + newTop + ", " + topMargin + ", "+article.css("-webkit-transform")) ;
+			
+		}
+		return false;
 		
 	}
+	
+	$(window).scroll(scrollHandler);
 	
 	$("nav a").click(function(e) {
 		e.preventDefault();
@@ -58,11 +55,7 @@ $(function () {
 		var target = $("a[name=" + href + "]").eq(0);
 		console.log(target);
 		scrollCalls = 0;
-		$(window).scrollTo(target,1000, {
-			onAfter:function() {
-				console.log("Scroll calls : ", scrollCalls);		
-			}
-		});
+		$(window).scrollTo(target,1000);
 		
 	});
 	
@@ -76,7 +69,7 @@ $(function () {
 	});	
 	
 	$(".wrapper").not("nav *").click(function() {
-		$(window).scrollTo(0,300);
+		$(window).scrollTo(0,1000);
 	});	
 	
 	$("article").click(function() {
@@ -89,18 +82,10 @@ $(function () {
 		
 		if($(this).hasClass("at-top")) {
 			scrollCalls = 0;
-			$(window).scrollTo(article,300,{
-			onAfter:function() {
-				console.log("Scroll calls : ", scrollCalls);		
-			}
-		});
+			$(window).scrollTo(article, 1000);
 		} else {
 			scrollCalls = 0;
-			$(window).scrollTo( article.index() * article.height(), 400, {
-			onAfter:function() {
-				console.log("Scroll calls : ", scrollCalls);		
-			}
-		});
+			$(window).scrollTo( article.index() * article.height(), 1000);
 		}
 	});
 	
