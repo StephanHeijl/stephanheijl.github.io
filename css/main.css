@@ -58,8 +58,8 @@ textarea {
 
 
 /* ===== Initializr Styles ==================================================
-   Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
-   ========================================================================== */
+Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
+========================================================================== */
 
 body {
     font: 16px/26px Helvetica, Helvetica Neue, Arial;
@@ -71,8 +71,8 @@ body {
 }
 
 /* ==============
-    MOBILE: Main
-   ============== */
+MOBILE: Main
+============== */
 
 .main {
     padding: 30px 0;
@@ -88,157 +88,161 @@ body {
 }
 
 /* ===============
-    ALL: IE Fixes
-   =============== */
+ALL: IE Fixes
+=============== */
 
 .ie7 .title {
     padding-top: 20px;
 }
 
 /* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
+Author's custom styles
+========================================================================== */
 
 h1, h2, h3 {
-	font-family: 'Roboto Slab';
-	font-weight:normal;
+    font-family: 'Roboto Slab';
+    font-weight:normal;
 }
 
 
 body {
-	font-family: 'Roboto';
-	-webkit-font-smoothing: antialiased;
-	position:relative;
-	color: white;
-	background-color: #232323;
+    font-family: 'Roboto';
+    -webkit-font-smoothing: antialiased;
+    position:relative;
+    color: white;
+    background-color: #232323;
 }
 
 .header-container {
-	position: fixed; 
-	width: 100%;
-	top: 0;
+    position: fixed; 
+    width: 100%;
+    top: 0;
 }
 
 .animate {
-	-transition: all 0.3s;
+    *transition: all 0.3s;
 }
 
 article {
-	width: 94%;
-	height: 100%;
-	position:fixed;
-	padding: 20px 3%;
-	border-top-right-radius: 1em;
-	border-top-left-radius: 1em;
-	font-size: 16pt;
+    width: 94%;
+    height: 100%;
+    position:fixed;
+    padding: 20px 3%;
+    border-top-right-radius: 1em;
+    border-top-left-radius: 1em;
+    font-size: 16pt;
 }
-	
+
 @media only screen and (min-width: 1280px) {
-	article p{
-		-webkit-column-count: 3;
-	}
+    article p{
+        -webkit-column-count: 3;
+    }
 }
-	
+
 .title {
-	width: 100%;
-	text-align: center;
-	font-size: 32pt;
-	line-height: 1.2em;
-	margin: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 32pt;
+    line-height: 1.2em;
+    margin: 0;
 }
-	
+
 h2 {
-	width: 60%;
-	text-align: center;
-	margin: 3% 20%;
+    width: 60%;
+    text-align: center;
+    margin: 3% 20%;
 }
 
 nav {
-	width: 90%;
-	padding: 5%;
+    width: 90%;
+    padding: 5%;
 }
 
 nav ul {
-	margin:0;
-	padding: 0;
+    margin:0;
+    padding: 0;
 }
 
 nav li {
-	position: relative;
+    position: relative;
 }
 
 nav a {
-	color: inherit;
-	width: 29%;
-	font-size: 14pt;
-	padding: 4% 1% !important;
-	margin: 1%;
-	text-align: center;
-	text-decoration: none;
-	float: left;
-	background: #555;
-	transition: all 0.3s;
-	border-radius: 3px;
+    color: inherit;
+    width: 29%;
+    font-size: 14pt;
+    padding: 4% 1% !important;
+    margin: 1%;
+    text-align: center;
+    text-decoration: none;
+    float: left;
+    background: #555;
+    transition: all 0.3s;
+    border-radius: 3px;
 }
 
 nav a:hover {
-	-webkit-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
 }
-	
+.article-inner{
+   height: 75%;
+    overflow: auto;
+}
 table {
-	table-layout: fixed;
-	margin: 0 auto;
-	
-}
-	
-table td {
-	padding: 0.35em;
+    table-layout: fixed;
+    margin: 0 auto;
+    
+    vertical-align: top;
 }
 
+table td {
+    padding: 0.35em;
+
+}
 @media only screen and (max-width: 640px) {
-	nav a {
-		width: 46%;
-	}
+    nav a {
+        width: 46%;
+    }
 }
 @media screen and (min-aspect-ratio: 16/8) {
-	nav a {
-		width: 14.5%;
-		padding: 3% 0 !important;
-	}
+    nav a {
+        width: 14.5%;
+        padding: 3% 0 !important;
+    }
 }
 
 body > article:nth-child(7) {
-	background-color: #232323;
+    background-color: #232323;
 }
 body > article:nth-child(6) {
-	background-color: #C8385A;
+    background-color: #C8385A;
 }
 body > article:nth-child(5) {
-	background-color: #FFCF48;
+    background-color: #FFCF48;
 }
 body > article:nth-child(4) {
-	background-color: #55C44A;
+    background-color: #55C44A;
 }
 body > article:nth-child(3) {
-	background-color: #1FCECB;
+    background-color: #1FCECB;
 }
 body > article:nth-child(2) {
-	background-color: #1CA9C9;
+    background-color: #1CA9C9;
 }
 
 /* ==========================================================================
-   Media Queries
-   ========================================================================== */
+Media Queries
+========================================================================== */
 
 @media only screen and (min-width: 480px) {
 
-/* ====================
+    /* ====================
     INTERMEDIATE: Menu
-   ==================== */
+    ==================== */
 
-/* ========================
+    /* ========================
     INTERMEDIATE: IE Fixes
-   ======================== */
+    ======================== */
 
     nav ul li {
         display: inline;
@@ -251,17 +255,17 @@ body > article:nth-child(2) {
 
 @media only screen and (min-width: 768px) {
 
-/* ============
+    /* ============
     WIDE: Menu
-   ============ */
+    ============ */
 
     .title {
         float: left;
     }
 
-/* ============
+    /* ============
     WIDE: Main
-   ============ */
+    ============ */
 
     .main article {
         float: left;
@@ -274,15 +278,15 @@ body > article:nth-child(2) {
     }
 }
 /* ==========================================================================
-   Helper classes
-   ========================================================================== */
+Helper classes
+========================================================================== */
 https://www.google.nl/maps/search/Wiezenmoeder/@51.983541,5.894282,18z
-.ir {
-    background-color: transparent;
-    border: 0;
-    overflow: hidden;
-    *text-indent: -9999px;
-}
+    .ir {
+        background-color: transparent;
+        border: 0;
+        overflow: hidden;
+        *text-indent: -9999px;
+    }
 
 .ir:before {
     content: "";
@@ -336,8 +340,8 @@ https://www.google.nl/maps/search/Wiezenmoeder/@51.983541,5.894282,18z
 }
 
 /* ==========================================================================
-   Print styles
-   ========================================================================== */
+Print styles
+========================================================================== */
 
 @media print {
     * {
