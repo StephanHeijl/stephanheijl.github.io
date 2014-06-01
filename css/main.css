@@ -378,6 +378,8 @@ article.personalia {
     left: 4px;
     height: 20px;
     width: 196px;
+    color: transparent;
+    text-shadow: none;
 }
 
 
@@ -495,11 +497,58 @@ Print styles
 ========================================================================== */
 
 @media print {
+   
     * {
         background: transparent !important;
         color: #000 !important;
         box-shadow: none !important;
         text-shadow: none !important;
+        display: block !important;
+        opacity: 1 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    script {
+        display:none !important;
+    }
+    
+    html,body {
+        width: 210mm !important;
+        float:none !important;
+    }
+    .header-container {
+        position:relative !important;
+    }
+    
+    nav {
+        display: none !important;
+    }
+    .experience-container{
+        display: inline-block !important;
+        width: 28% !important;
+    }
+    .experience-meter {
+        background: black !important;
+    }
+    .meter-value {
+        background: white !important;
+    }
+    
+    article {
+        display: block;
+        position: relative;
+        height: auto !important;
+        top: auto !important;
+        float:none !important;
+        page-break-inside: avoid;
+        page-break-after: always;
+    }
+    
+    @media (-webkit-min-device-pixel-ratio:0) { 
+    .meter-value {
+        color: transparent !important;
+    }
     }
 
     a,
@@ -509,6 +558,10 @@ Print styles
 
     a[href]:after {
         content: " (" attr(href) ")";
+    }
+    
+    table {
+        width: 100% !important;
     }
 
     abbr[title]:after {

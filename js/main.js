@@ -55,6 +55,8 @@ $(function () {
 							td.fadeIn();
 							td.find(".experience-meter").each(function() {
 								var em = $(this);
+								em.find(".meter-value").css({"width":0});
+
 								setTimeout(function() {
 									em.find(".meter-value").animate({"width": em.data("value") * 2 - 2}, 800);
 								}, 100*i);
@@ -101,23 +103,17 @@ $(function () {
 			$(window).scrollTo( article.index() * article.height(), 400);
 		}
 	});
-	
-	$("article").each(function() {
-			
-	})
 
-	//
 	var table = $("td").hide(0);
 
-	// Voeg meter values toe
 	$(".experience-meter").each(function() {
-		var value = "<div class='meter-value' style='width:0px'></div>";
-		$(this).html(value);
+		var em = $(this);
+		em.find(".meter-value").text( em.data("value") + "/100")
 	});
-
 
 	//$(window).resize(resize);
 	resize();
+
 
 	$("h1").fitText(1,{ minFontSize: '32pt', maxFontSize: '144pt' });
 	$("h2").fitText(1,{ minFontSize: '32pt', maxFontSize: '72pt' });
@@ -125,7 +121,5 @@ $(function () {
 	$("table").css("font-size", $("h2").css("font-size")*0.5);
 	$(".article-inner").perfectScrollbar();
 	$(".help").perfectScrollbar();
-
-	$(".ie ")
 
 });
