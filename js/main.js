@@ -101,6 +101,10 @@ $(function () {
 			$(window).scrollTo( article.index() * article.height(), 400);
 		}
 	});
+	
+	$("article").each(function() {
+			
+	})
 
 	//
 	var table = $("td").hide(0);
