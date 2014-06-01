@@ -137,6 +137,7 @@ header {
 .help-notifier {
     border-bottom: 1px dotted white;
     opacity: 0.6;
+    cursor: help;
 }
 
 
@@ -174,7 +175,7 @@ header {
 .help:before {
     content: '';
     position: absolute;
-    top: -20px;
+    top: -19px;
     left: 50%;
     margin-left: -5px;
     border-top: 10px solid transparent;
@@ -280,8 +281,16 @@ nav a:hover {
     overflow: hidden;
     position:relative;
 }
+.touch . article-inner {
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.touch .ps-scrollbar-x-rail, .touch .ps-scrollbar-y-rail {
+    display: none !important;
+}
+
 table {
-    table-layout: fixed;
     margin: 0 auto;
     vertical-align: top;
 }
@@ -311,13 +320,8 @@ table {
 
 @media only screen and (max-width: 800px) {
     .experience-container {
-        width: 85%;
-    }
-}
-
-media only screen and (max-width: 640px) {
-    .experience-container {
-        width: 70%;
+        width: 96%;
+        margin: 0;
     }
 }
 
