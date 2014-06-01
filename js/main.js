@@ -71,7 +71,7 @@ $(function () {
 		});
 	}
 
-	$(".article-inner").bind( "scroll DOMMouseScroll mousewheel", function(e) {
+	$(".no-touch .article-inner").bind( "scroll DOMMouseScroll mousewheel", function(e) {
 		console.log($(this).scrollTop(), $(this).height(), $(this).outerHeight());
 		var article = $(this).parents("article");
 		
