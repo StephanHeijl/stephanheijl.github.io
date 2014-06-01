@@ -61,9 +61,6 @@ $(function () {
 							});
 						}, 100*i);
 					});
-
-
-
 				}
 				table.data("faded", "true");
 
