@@ -301,7 +301,6 @@ table {
 @media only screen and (max-width: 800px) {
     .experience-container {
         width: 85%;
-        padding-left: 3%;
     }
 }
 
