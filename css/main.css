@@ -139,6 +139,16 @@ header {
     opacity: 0.6;
 }
 
+
+.touch .help-touch{
+    display: block;
+}
+
+
+.no-touch .help-desk{
+    display: block;
+}
+
 .help {
     background: #eee;
     margin: 2% 1%;
@@ -150,6 +160,7 @@ header {
     opacity: 0;
     top: 90%;
     transition: all 1s;
+    display: none;
     text-shadow: 1px 1px 0px rgba(0,0,0,0.3);
 }
 
