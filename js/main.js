@@ -69,14 +69,37 @@ $(function () {
 
 			}
 		});
-
 	}
+
+	$(".article-inner").bind( "scroll DOMMouseScroll mousewheel", function(e) {
+		console.log($(this).scrollTop(), $(this).height(), $(this).outerHeight());
+		var article = $(this).parents("article");
+		
+		if ($(this).innerHeight()==$(this)[0].scrollHeight) {
+			return true; // No scrolling is possible here.
+		}
+		
+		if( $(this).scrollTop() == 0) {
+			console.log("Scrolling up");
+			$(window).scrollTo({top:'-=40px', left:'+=0'}, 0);
+		} else if( $(this).scrollTop() + $(this).innerHeight()>=$(this)[0].scrollHeight ) {
+			console.log("Scrolling down");
+			$(window).scrollTo({top:'+=40px', left:'+=0'}, 0);
+		} else {
+			console.log("focussing");
+			$(window).scrollTo( article.index() * article.height() -20, 200);			
+		}
+		
+		
+	});
 
 	$("nav a").click(function(e) {
 		e.preventDefault();
 		var href = $(this).attr("href").substr(1);
 		var target = $("a[name=" + href + "]").eq(0);
 		$(window).scrollTo(target,1000);
+		
+	
 
 	});
 

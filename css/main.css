@@ -214,11 +214,12 @@ article p {
 }
 
 .title {
-    width: 100%;
+    width: 80%;
     text-align: center;
     font-size: 32pt;
     line-height: 1.2em;
     margin: 0;
+    margin-left: 10%;
     margin-top:0.2em;
     text-shadow: 2px 2px black;
 }
