@@ -315,6 +315,12 @@ table {
     }
 }
 
+media only screen and (max-width: 640px) {
+    .experience-container {
+        width: 70%;
+    }
+}
+
 thead td {
     text-align: center;
 }
