@@ -70,6 +70,7 @@
     position: absolute; /* please don't change 'position' */
     bottom: 0; /* there must be 'bottom' for ps-scrollbar-x */
     height: 8px;
+    display:none;
     background-color: #aaa;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;

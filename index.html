@@ -21,12 +21,17 @@
 <body>
 	<!--[if lt IE 9]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 <![endif]-->
 
 	<div class="header-container">
 		<header class="wrapper clearfix">
 			<h1 class="title">Curriculum Vitae</h1>
 			<h2>Stephan Heijl</h2>
+			<p> Welkom op mijn curriculum vitae. Klik op één van de kopjes om direct hier naartoe te scrollen. 
+				Maak gebruik van het scrollwiel op uw muis, de scrollbar aan de zijkant van uw browser of uw pijltjestoetsen om door de pagina te navigeren.
+				U kunt ook op de bladen klikken om direct door te scrollen.
+			</p>
 		</header>
 		<nav>
 			<ul>
@@ -40,7 +45,7 @@
 		</nav>
 	</div>	
 
-	<article class="animate">
+	<article class="animate personalia">
 		<header>
 			<a name="personalia"></a>
 			<h2>Personalia</h2>
@@ -63,12 +68,19 @@
 					<td> Burgerlijke staat </td>
 					<td> Ongehuwd </td>
 				</tr>
+				<tr>
+					<td> Adres </td>
+					<td>
+						Okapistraat 10<br/>
+						6531RL, Nijmegen
+					</td>
+				</tr>
 			</tbody>
 		</table>
 
 	</article>
 
-	<article class="animate">
+	<article class="animate opleidingen">
 		<header>
 			<a name="opleidingen"></a>
 			<h2>Opleidingen</h2>
@@ -94,7 +106,7 @@
 		</div>
 	</article>
 
-	<article class="animate">
+	<article class="animate werkervaring">
 		<header>
 			<a name="werkervaring"></a>
 			<h2>Werkervaring</h2>
@@ -143,7 +155,7 @@
 		</div>
 	</article>
 
-	<article class="animate">
+	<article class="animate relevantekennis">
 		<header>
 			<a name="relevantekennis"></a>
 			<h2>Relevante kennis</h2>
@@ -164,31 +176,31 @@
 
 						<tr>
 							<td> Python </td>
-							<td> <progress class="experience-meter" value=90 max=100></progress></td>
+							<td> <div class="experience-meter" data-value="90"></div></td>
 						</tr>
 						<tr>
 							<td> Java </td>
-							<td> <progress class="experience-meter" value=70 max=100></progress></td>
+							<td> <div class="experience-meter" data-value="65"></div></td>
 						</tr>					
 						<tr>
 							<td> PHP </td>
-							<td> <progress class="experience-meter" value=75 max=100></progress></td>
+							<td> <div class="experience-meter" data-value="70"></div></td>
 						</tr>
-						
+
 						<tr>
-							<td> Javascript </td>
-							<td> <progress class="experience-meter" value=75 max=100></progress></td>
+							<td> Javascript (jQuery) </td>
+							<td> <div class="experience-meter" data-value="85"></div></td>
 						</tr>
-						
+
 						<tr>
-							<td> jQuery </td>
-							<td> <progress class="experience-meter" value=80 max=100></progress></td>
+							<td> HTML/CSS </td>
+							<td> <div class="experience-meter" data-value="80"></div></td>
 						</tr>
 
 					</tbody>
 				</table>
 			</div>
-			
+
 			<div class="experience-container">
 				<table table class="experience-table">
 					<thead>
@@ -200,18 +212,18 @@
 
 						<tr>
 							<td> Git en GitHub </td>
-							<td> <progress class="experience-meter" value=85 max=100></progress></td>
+							<td> <div class="experience-meter" data-value="85"></div></td>
 						</tr>
-						
+
 						<tr>
 							<td> Travis-CI </td>
-							<td> <progress class="experience-meter" value=75 max=100></progress></td>
+							<td> <div class="experience-meter" data-value="75"></div></td>
 						</tr>
 
 					</tbody>
 				</table>
 			</div>
-			
+
 			<div class="experience-container">
 				<table class="experience-table">
 					<thead>
@@ -222,21 +234,21 @@
 					<tbody>
 						<tr>
 							<td> Microsoft Office </td>
-							<td> <progress class="experience-meter" value=80 max=100></progress></td>
+							<td> <div class="experience-meter" data-value="80"></div></td>
 						</tr>
 						<tr>
 							<td> Open- en LibreOffice </td>
-							<td> <progress class="experience-meter" value=70 max=100></progress></td>
+							<td> <div class="experience-meter" data-value="70"></div></td>
 						</tr>					
 						<tr>
 							<td> LaTeX (MiKTeX) </td>
-							<td> <progress class="experience-meter" value=75 max=100></progress></td>
+							<td> <div class="experience-meter" data-value="75"></div></td>
 						</tr>
 
 					</tbody>
 				</table>
 			</div>
-			
+
 			<div class="experience-container">
 				<table class="experience-table">
 					<thead>
@@ -247,25 +259,25 @@
 					<tbody>
 						<tr>
 							<td> Netbeans </td>
-							<td> <progress class="experience-meter" value=80 max=100></progress></td>
+							<td> <div class="experience-meter" data-value="80"></div></td>
 						</tr>
 						<tr>
 							<td> Eclipse </td>
-							<td> <progress class="experience-meter" value=60 max=100></progress></td>
+							<td> <div class="experience-meter" data-value="60"></div></td>
 						</tr>					
 						<tr>
 							<td> Adobe Brackets </td>
-							<td> <progress class="experience-meter" value=85 max=100></progress></td>
+							<td> <div class="experience-meter" data-value="85"></div></td>
 						</tr>
 						<tr>
 							<td> Notepad++ </td>
-							<td> <progress class="experience-meter" value=90 max=100></progress></td>
+							<td> <div class="experience-meter" data-value="90"></div></td>
 						</tr>
 
 					</tbody>
 				</table>
 			</div>
-			
+
 			<div class="experience-container">
 				<table class="experience-table">
 					<thead>
@@ -276,22 +288,22 @@
 					<tbody>
 						<tr>
 							<td> MySQL </td>
-							<td> <progress class="experience-meter" value=80 max=100></progress></td>
+							<td> <div class="experience-meter" data-value="80"></div></td>
 						</tr>
 						<tr>
 							<td> MongoDB </td>
-							<td> <progress class="experience-meter" value=75 max=100></progress></td>
+							<td> <div class="experience-meter" data-value="75"></div></td>
 						</tr>					
 						<tr>
 							<td> Oracle </td>
-							<td> <progress class="experience-meter" value=65 max=100></progress></td>
+							<td> <div class="experience-meter" data-value="65"></div></td>
 						</tr>
 
 					</tbody>
 				</table>
 			</div>
-			
-			
+
+
 			<div class="experience-container">
 				<table class="experience-table">
 					<thead>
@@ -302,23 +314,23 @@
 					<tbody>
 						<tr>
 							<td> Adobe Photoshop </td>
-							<td> <progress class="experience-meter" value=75 max=100></progress></td>
+							<td> <div class="experience-meter" data-value="75"></div></td>
 						</tr>
 						<tr>
 							<td> Inkscape </td>
-							<td> <progress class="experience-meter" value=70 max=100></progress></td>
+							<td> <div class="experience-meter" data-value="70"></div></td>
 						</tr>
 						<tr>
 							<td> Adobe Illustator </td>
-							<td> <progress class="experience-meter" value=65 max=100></progress></td>
+							<td> <div class="experience-meter" data-value="65"></div></td>
 						</tr>
 						<tr>
 							<td> The GIMP </td>
-							<td> <progress class="experience-meter" value=70 max=100></progress></td>
+							<td> <div class="experience-meter" data-value="70"></div></td>
 						</tr>
 						<tr>
 							<td> Adobe Fireworks </td>
-							<td> <progress class="experience-meter" value=40 max=100></progress></td>
+							<td> <div class="experience-meter" data-value="40"></div></td>
 						</tr>
 
 					</tbody>
@@ -327,7 +339,7 @@
 		</div>
 	</article>
 
-	<article class="animate">
+	<article class="animate talen">
 		<header>
 			<a name="talen"></a>
 			<h2>Talen</h2>
@@ -351,7 +363,7 @@
 
 	</article>
 
-	<article class="animate">
+	<article class="animate contact">
 		<header>
 			<a name="contact"></a>
 			<h2>Contact</h2>
@@ -376,7 +388,7 @@
 				</tr>
 			</tbody>
 		</table>
-		
+
 	</article>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

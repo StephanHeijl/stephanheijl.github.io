@@ -60,7 +60,6 @@ textarea {
     padding: 0.2em 0;
 }
 
-
 /* ===== Initializr Styles ==================================================
 Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
 ========================================================================== */
@@ -171,6 +170,7 @@ article p {
     line-height: 1.2em;
     margin: 0;
     margin-top:0.2em;
+    text-shadow: 2px 2px black;
 }
 
 h2 {
@@ -182,7 +182,7 @@ h2 {
 
 nav {
     width: 90%;
-    padding: 5%;
+    padding: 0% 5%;
 }
 
 nav ul {
@@ -206,11 +206,15 @@ nav a {
     background: #555;
     transition: all 0.3s;
     border-radius: 3px;
+    text-shadow: 1px 1px rgba(0,0,0,0.5);
+    font-family: "Roboto Slab";
 }
 
 nav a:hover {
     box-shadow: 0px 2px 0 rgba(255,255,255,0.5) inset;
     -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    transform: scale(1.05);
 }
 .article-inner{
     height: 65%;
@@ -273,48 +277,49 @@ table td {
     }
 }
 
-body > article:nth-child(7) {
+article.contact {
     background-color: #232323;
 }
-body > article:nth-child(6) {
-    background-color: #C8385A;
+article.talen {
+    background-color: #1CA9C9;
 }
-body > article:nth-child(5) {
-    background-color: #EBB942;
-}
-body > article:nth-child(4) {
-    background-color: #55C44A;
-}
-body > article:nth-child(3) {
+article.relevantekennis {
     background-color: #1FCECB;
 }
-body > article:nth-child(2) {
-    background-color: #1CA9C9;
+article.werkervaring {
+    background-color: #55C44A;
+}
+article.opleidingen {
+    background-color: #EBB942;
+}
+article.personalia {
+    background-color: #C8385A;
+    
 }
 
 /* PROGRESS BAR */
 
-progress {
+.experience-meter {
     width: 200px;
-    height: 1.2em;
-    margin-top: 
-        display: block;
-    /* Important Thing */
-    -webkit-appearance: none;
+    height: 26px;
+    display: block;
     border: none;
-}
-
-/* All good till now. Now we'll style the background */
-progress::-webkit-progress-bar {
+    color: white;
     background: rgba(0,0,0,0.5);
     border-radius: 5px;
-    padding: 2px;
+    padding: 1px;
+    position:relative;
 }
 
 /* Now the value part */
-progress::-webkit-progress-value {
+.experience-meter .meter-value {
     border-radius: 3px;
     background: white;
+    position:absolute;
+    top: 4px;
+    left: 4px;
+    height: 20px;
+    width: 196px;
 }
 
 
