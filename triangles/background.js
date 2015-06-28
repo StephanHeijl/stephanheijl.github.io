@@ -12,6 +12,8 @@ var tWidth = 320,
 
 triangles = [];
 
+targetHue = 1
+
 function drawTriangles() {
 	canvas.clear().renderAll();
 	triangles = [];
@@ -29,7 +31,7 @@ function drawTriangles() {
 				height: tHeight+4,
 				top: y-2,
 				left: x-2,
-				fill: 'hsl(1,80%,50%)'
+				fill: 'hsl('+parseInt(targetHue+Math.random())+',80%,50%)'
 			})
 			triangles.push(t)
 			canvas.add(t);
@@ -41,7 +43,7 @@ function drawTriangles() {
 				height: tHeight,
 				top: y,
 				left: x,
-				fill: 'hsl(1,80%,50%)',
+				fill: 'hsl('+parseInt(targetHue+Math.random())+',80%,50%)',
 				angle: 180
 			});
 			triangles.push(t)
@@ -56,9 +58,6 @@ function drawTriangles() {
 }
 
 drawTriangles()
-
-targetHue = 1
-
 fps = 20
 lastLoop = new Date;
 frames = 0
