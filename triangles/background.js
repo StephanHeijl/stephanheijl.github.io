@@ -31,7 +31,7 @@ function drawTriangles() {
 				height: tHeight+4,
 				top: y-2,
 				left: x-2,
-				fill: 'hsl('+parseInt(targetHue+Math.random())+',80%,50%)'
+				fill: 'hsl('+parseInt(targetHue+Math.random())+',70%,50%)'
 			})
 			triangles.push(t)
 			canvas.add(t);
@@ -43,7 +43,7 @@ function drawTriangles() {
 				height: tHeight,
 				top: y,
 				left: x,
-				fill: 'hsl('+parseInt(targetHue+Math.random())+',80%,50%)',
+				fill: 'hsl('+parseInt(targetHue+Math.random())+',70%,50%)',
 				angle: 180
 			});
 			triangles.push(t)
@@ -58,9 +58,10 @@ function drawTriangles() {
 }
 
 drawTriangles()
-fps = 20
+fps = 30
 lastLoop = new Date;
 frames = 0
+title = document.getElementById("title")
 
 function animateStep() {
 	averageH = 0
@@ -71,8 +72,11 @@ function animateStep() {
 		h = (Math.random()*0.75)+(0.5-(1*distanceFromTarget))
 		ncol = hue+h
 
-		triangles[t].set("fill", 'hsl('+ncol+',80%,50%)' )
+		triangles[t].set("fill", 'hsl('+ncol+',70%,50%)' )
+		triangles[t].set("fill", 'hsl('+ncol+',70%,50%)' )
 	}
+	title.style.color = 'hsl('+targetHue+',70%,50%)';
+
 	targetHue = targetHue + 0.335
 	lastLoop = thisLoop
 	canvas.renderAll()

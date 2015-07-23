@@ -189,8 +189,8 @@ article {
     height: 100%;
     position:fixed;
     padding: 20px 3%;
-    border-top-right-radius: 1em;
-    border-top-left-radius: 1em;
+    border-top-right-radius: 0.5em;
+    border-top-left-radius: 0.5em;
     font-size: 16pt;
     overflow:hidden;
 }
