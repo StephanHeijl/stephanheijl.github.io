@@ -1,13 +1,14 @@
 var element = document.getElementById("background"),
 	canvas = this.__canvas = new fabric.StaticCanvas("background");
 
-canvas.setHeight(window.innerHeight);
+canvas.setHeight($("#canvas-container").height());
+console.log(document.getElementById("canvas-container").innerHeight)
 canvas.setWidth(window.innerWidth);
 canvas.renderOnAddRemove=false;
 canvas.stateful=false;
 
-var tWidth = 320,
-	tHeight = 256,
+var tWidth = 125,
+	tHeight = 100,
 	flip = true;
 
 triangles = [];
@@ -62,6 +63,7 @@ fps = 30
 lastLoop = new Date;
 frames = 0
 title = document.getElementById("title")
+links = $("a")
 
 function animateStep() {
 	averageH = 0
@@ -76,6 +78,7 @@ function animateStep() {
 		triangles[t].set("fill", 'hsl('+ncol+',70%,50%)' )
 	}
 	title.style.color = 'hsl('+targetHue+',70%,50%)';
+	links.css("color",'hsl('+targetHue+',70%,30%)')
 
 	targetHue = targetHue + 0.335
 	lastLoop = thisLoop
@@ -88,12 +91,12 @@ function testFPS() {
 	drawTriangles()
 
 	testAnimate = setInterval(animateStep,1000/fps)
-	
+
 	setTimeout(function() {
 		clearInterval(testAnimate)
 		runFps = (frames - startFrames)/4
 		console.log((frames - startFrames), (triangles.length), runFps);
-		
+
 		if(runFps > fps*0.75) {
 			tWidth = tWidth*0.9
 			tHeight = tHeight*0.9
@@ -105,8 +108,9 @@ function testFPS() {
 			console.log("Can sustain "+(triangles.length)+" triangles." )
 			setInterval(animateStep,1000/fps)
 		}
-		
+
 	}, 4000);
 }
 
-testFPS()
+setInterval(animateStep,1000/fps)
+//testFPS()
