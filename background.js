@@ -64,6 +64,7 @@ lastLoop = new Date;
 frames = 0
 title = document.getElementById("title")
 links = $("a")
+meters = $(".meter-value")
 
 function animateStep() {
 	averageH = 0
@@ -79,6 +80,7 @@ function animateStep() {
 	}
 	title.style.color = 'hsl('+targetHue+',70%,50%)';
 	links.css("color",'hsl('+targetHue+',70%,30%)')
+	meters.css("background",'hsl('+targetHue+',70%,50%)')
 
 	targetHue = targetHue + 0.335
 	lastLoop = thisLoop

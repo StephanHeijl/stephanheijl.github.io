@@ -112,23 +112,43 @@ article:before {
 	width: 100%;
 	opacity: 0.2;
 	background: black;
+	transition: all 0.4s;
 }
 
 article:hover {
-	transform: scale(1.01);
-	transition: all 0.5s;
-	box-shadow: 0 4px 1px rgba(0,0,0,0.2);
+	/*transform: scale(1.01);*/
+	transition: all 0.4s;
+	transform: translateY(-4px);
+	box-shadow: 0 4px 2px rgba(0,0,0,0.2);
+}
+
+article:hover:before {
+	opacity: 0.4;
+	transition: all 0.4s;
 }
 
 .experience-container {
-	width: 30%;
-	display:inline-block;
+	width: 29%;
+	display: inline-block;
 	vertical-align: top;
 	margin: 1.5%;
 }
 
+@media screen and (max-width: 1024px){
+	.experience-container  {
+		width: 45%;
+	}
+}
+
+@media screen and (max-width: 640px){
+	.experience-container  {
+		width: 97%;
+	}
+}
+
 .experience-container thead {
 	text-align:center;
+	width: 100%;
 }
 
 article h2 {
@@ -137,4 +157,59 @@ article h2 {
 	position: absolute;
 	bottom: 16px;
 	opacity: 0.5;
+}
+
+h3 {
+	font-weight:500;
+}
+
+/* Article colors */
+
+article.red:before {
+	background-color: red;
+}
+article.orange:before {
+	background-color: orange;
+}
+article.yellow:before {
+	background-color: yellow;
+}
+article.green:before {
+	background-color: green;
+}
+article.blue:before {
+	background-color: blue;
+}
+article.purple:before {
+	background-color: purple;
+}
+
+table tr td:first-child {
+	padding-right: 1em;
+}
+
+.experience-container tr td:nth-child(1) {
+	width:50%;
+}
+
+.experience-container tr td:nth-child(2) {
+	width: 100px;
+	text-align: right;
+}
+
+.experience-meter {
+	width:100%;
+	height: 11px;
+	background: white;
+	border: 2px solid #999;
+	padding: 2px;
+	position: relative;
+	border-radius: 10px;
+	display: inline-block;
+}
+
+.experience-meter .meter-value {
+	background: #999;
+	height: 100%;
+	border-radius: 6px;
 }
