@@ -4,13 +4,13 @@
     <style>
         body {
             text-align: center;
-            background: #00ECB9;
+            background: #c34242;
             font-family: sans-serif;
             font-weight: 100;
         }
         
         h1 {
-            color: #396;
+            color: rgba(0, 0, 0, 0.5);
             font-weight: 100;
             font-size: 40px;
             margin: 40px 0px 20px;
@@ -28,14 +28,14 @@
         #clockdiv > div {
             padding: 10px;
             border-radius: 3px;
-            background: #00BF96;
+            background: rgba(0, 0, 0, 0.2);
             display: inline-block;
         }
         
         #clockdiv div > span {
             padding: 15px;
             border-radius: 3px;
-            background: #00816A;
+            background: rgba(0, 0, 0, 0.3);
             display: inline-block;
         }
         
@@ -54,72 +54,29 @@
 
 <body>
 
-    <h1>Moet Marieke een rondje pils trakteren?</h1>
-    <span id="yes">JA!</span>
+    <h1>Moet Stephan een rondje pils trakteren?</h1>
+    <span id="yes">NEEN :(</span>
     <h1>EBA (Estimated Beer Arrival)</h1>
 
     <br/>
     <div id="clockdiv">
         <div>
-            <span class="days"></span>
+            <span class="days">--</span>
             <div class="smalltext">Days</div>
         </div>
         <div>
-            <span class="hours"></span>
+            <span class="hours">--</span>
             <div class="smalltext">Hours</div>
         </div>
         <div>
-            <span class="minutes"></span>
+            <span class="minutes">--</span>
             <div class="smalltext">Minutes</div>
         </div>
         <div>
-            <span class="seconds"></span>
+            <span class="seconds">--</span>
             <div class="smalltext">Seconds</div>
         </div>
     </div>
-    <script>
-        function getTimeRemaining(endtime) {
-            var t = Date.parse(endtime) - Date.parse(new Date());
-            var seconds = Math.floor((t / 1000) % 60);
-            var minutes = Math.floor((t / 1000 / 60) % 60);
-            var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
-            var days = Math.floor(t / (1000 * 60 * 60 * 24));
-            return {
-                'total': t,
-                'days': days,
-                'hours': hours,
-                'minutes': minutes,
-                'seconds': seconds
-            };
-        }
-
-        function initializeClock(id, endtime) {
-            var clock = document.getElementById(id);
-            var daysSpan = clock.querySelector('.days');
-            var hoursSpan = clock.querySelector('.hours');
-            var minutesSpan = clock.querySelector('.minutes');
-            var secondsSpan = clock.querySelector('.seconds');
-
-            function updateClock() {
-                var t = getTimeRemaining(endtime);
-
-                daysSpan.innerHTML = t.days;
-                hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-                minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-                secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-
-                if (t.total <= 0) {
-                    clearInterval(timeinterval);
-                }
-            }
-
-            updateClock();
-            var timeinterval = setInterval(updateClock, 1000);
-        }
-
-        var deadline = 'November 28 2015 00:00:50 UTC+0200';
-        initializeClock('clockdiv', deadline);
-    </script>
 </body>
 
 </html>
