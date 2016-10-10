@@ -1,6 +1,7 @@
 contentElement = $("#content")
 canvasContainerElement = $("#canvas-container")
 titleElement = $("#title")
+backgroundHeight = $("#background").height()
 titleHeight = titleElement.height()
 contentPadding = parseInt(contentElement.css("padding-bottom"))
 titleElement.width(contentElement.width()-contentPadding*2)
@@ -16,8 +17,8 @@ $(window).on("resize", function() {
 $(window).on("scroll", function() {
 	distance = window.scrollY
 
-	if( distance < 700 ) {
-		canvasContainerElement.height(300 - (distance/4))
+	if( distance < 600 ) {
+		canvasContainerElement.height(backgroundHeight - (distance/4))
 	}
 	if( distance > 100 ) {
 		titleElement.css({"position": "fixed", "margin-top": titleHeight*-1, "padding-top":contentPadding+20 })
