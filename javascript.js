@@ -17,7 +17,8 @@ $(window).on("scroll", function() {
 	distance = window.scrollY
 
 	if( distance < 700 ) {
-		canvasContainerElement.height(300- (distance/4))
+		canvasContainerElement.height(300 - (distance/4))
+		console.log(distance, 300 - (distance/4))
 	}
 	if( distance > 100 ) {
 		titleElement.css({"position": "fixed", "margin-top": titleHeight*-1, "padding-top":contentPadding+20 })
