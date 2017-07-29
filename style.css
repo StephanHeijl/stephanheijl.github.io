@@ -28,8 +28,7 @@ nav .logo {
     display: inline-block;
     border: 2px solid black;
     padding: 5px;
-    margin-left: 20px;
-    margin-top: 10px;
+    margin: 20px 20px;
     cursor: pointer;
     color: black;
     transition: background 0.2s;
@@ -48,18 +47,21 @@ nav ul {
 
 nav li {
     display: inline-block;
+    margin-bottom: 20px;
+}
+nav li > a {
     padding : 20px 10px;
-    cursor: pointer;
+    color: black;
     transition: background 0.2s;
 }
 
-nav li:hover {
+nav a:hover {
     background: rgba(0,0,0,0.05);
     
 }
 
 header {
-    background: #d6e6ff;
+    background: rgb(214, 230, 255);
     border-bottom: 1px solid #d6d6d6;
 }
 
@@ -102,13 +104,64 @@ header {
     border-bottom: 1px solid rgba(0,0,0, 0.2);
 }
 
+.profile-picture {
+    max-width:100%;
+    display: inline-block;
+    position: relative;
+    height: 300px;
+}
+.profile-picture img {
+    max-height: 100%;
+}
+.profile-picture:after {
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(214, 230, 255, 0) 0%, rgba(214, 230, 255, 1) 100%);
+    position: absolute;
+    top: 0;
+    right: 0;
+    content: '';
+}
+
 .details p{
     padding: 20px;
+}
+
+.internal-wrapper > h1 {
+    padding: 20px 0px 20px 20;
+    text-transform: uppercase;
+}
+
+h1 > a {
+    color: silver;
+    font-size: 0.5em;
+    position: relative;
+    top: -0.25em;
+}
+
+hr {
+    border: 0;
+    margin: 0;
+    border-top: 2px solid black;
 }
 
 a { 
     color: blue;
     text-decoration: none;
+}
+
+.card-collection {
+    margin: 0 auto;
+}
+
+.card-collection .card-wrapper {
+    margin: 13px;
+}
+
+.card-collection .card {
+    width: 150px;
+    height: 210px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Video */
