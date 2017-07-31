@@ -6,11 +6,34 @@ body {
     font-size: 14pt;
 }
 
+ul.chevron-list li {
+    list-style-type: none;
+    line-height: 1.3em;
+    padding-left: 1.0em;
+    text-indent: -1.0em; 
+}
+
+ul.chevron-list li:before {
+    content: '\00BB \0020';
+    font-weight: bold;
+    font-size: 140%;
+}
+
 h1 {
     font-family: Dosis;
     font-weight: bold;
     padding: 0;
     margin: 0;
+    color: rgba(0,0,0,0.6);
+    text-shadow: 1px 1px white;
+}
+
+h2 {
+    font-family: Dosis;
+    font-weight: bold;
+    padding: 0;
+    padding-left: 20px;
+    margin: 1em 0em;
     color: rgba(0,0,0,0.6);
     text-shadow: 1px 1px white;
 }
@@ -116,15 +139,15 @@ header {
 .profile-picture:after {
     width: 70%;
     height: 100%;
-    background: linear-gradient(to right, rgba(214, 230, 255, 0) 0%, rgba(214, 230, 255, 1) 100%);
+    background: linear-gradient(to right, rgba(214, 230, 255, 0) 80%, rgba(214, 230, 255, 1) 80%);
     position: absolute;
     top: 0;
     right: 0;
     content: '';
 }
 
-.details p{
-    padding: 20px;
+.details p {
+    padding-left: 20px;
 }
 
 .internal-wrapper > h1 {
