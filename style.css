@@ -28,7 +28,7 @@ h1 {
     text-shadow: 1px 1px white;
 }
 
-h2 {
+h2, h3 {
     font-family: Dosis;
     font-weight: bold;
     padding: 0;
@@ -36,6 +36,10 @@ h2 {
     margin: 1em 0em;
     color: rgba(0,0,0,0.6);
     text-shadow: 1px 1px white;
+}
+
+h3 {
+    font-size: 1.2em;
 }
 
 nav {
