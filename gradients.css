@@ -4,7 +4,11 @@
 }
 
 .gradient-tygers {
-    background: radial-gradient(ellipse at bottom left, rgba(34,170,129,1) 0%,rgb(56, 111, 154) 50%);
+    background: radial-gradient(
+        ellipse at bottom left,
+        rgb(34,170,129) 0%,
+        rgb(56, 111, 154) 50%
+    );
     background-size: 200% 100%;
 }
 
@@ -38,4 +42,13 @@
         #70b710 100%
     ); 
     background-size: 200% 100%;
+}
+
+.gradient-keygene {
+    background: radial-gradient(
+        ellipse at bottom left, 
+        #e1ff3a 0%,
+        #8ab710 100%
+    ); 
+    background-size: 100% 100%;
 }
