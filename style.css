@@ -15,6 +15,7 @@ ul.chevron-list li {
     list-style-type: none;
     line-height: 1.3em;
     padding-left: 1.0em;
+    padding-right: 0.5em;
     text-indent: -1.0em; 
 }
 
@@ -149,7 +150,7 @@ header {
 }
 
 .details p {
-    padding-left: 20px;
+    padding: 0px 20px;
 }
 
 .internal-wrapper > h1 {
