@@ -262,6 +262,10 @@ a {
         padding: 20px 0 0 0;
         position: relative;
     }
+    .card {
+        width: 130px !important;
+        height: 190px !important;
+    }
 }
 
 /* Skill bars */
