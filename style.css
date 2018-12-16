@@ -283,8 +283,11 @@ a {
 .skills-used table {
     width: 100%;
 }
-.skills-used table tr td:nth-child(2) {
-    width: 75%;
+.skills-used tr {
+    height: 2.5em;
+}
+.skills-used table tr td:last-child {
+    width: 70%;
 }
 
 .skill-bar-outer {

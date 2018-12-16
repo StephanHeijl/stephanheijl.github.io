@@ -44,6 +44,16 @@
     background-size: 200% 100%;
 }
 
+.gradient-bioprodict-bar-sub {
+    background: radial-gradient(
+        ellipse at top left, 
+        #62a5f4 0%,
+        #4780dd 100%
+    ); 
+    background-size: 200% 100%;
+}
+
+
 .gradient-keygene {
     background: radial-gradient(
         ellipse at bottom left, 
