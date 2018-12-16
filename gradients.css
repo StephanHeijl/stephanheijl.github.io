@@ -62,3 +62,8 @@
     ); 
     background-size: 100% 100%;
 }
+
+.gradient-edx {
+    background: radial-gradient(ellipse at bottom right, rgb(186, 232, 255) 20%, #fff 60%,rgb(255, 94, 118) 100%);
+    background-size: 100% 100%;
+}
