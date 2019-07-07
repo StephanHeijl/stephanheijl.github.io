@@ -331,6 +331,18 @@ img.certificate:hover {
     border-radius: 0.75em;
 }
 
+.post-name {
+    font-family: Dosis;
+    color: black;
+    font-size: 20pt;
+    text-align: center;    
+}
+
+.post-name i {
+    font-size: 200%;
+    margin: 0.3em;
+}
+
 
 .skill-bar-inner-fill{
   animation: animationFrames ease-in-out 3s;
