@@ -1,0 +1,256 @@
+<html>
+    <head>
+        <title>StephanHeijl.com</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="gradients.css" />
+        <script src="zepto.min.js"></script>
+        <script src="cards.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Dosis|Open+Sans" rel="stylesheet">
+
+        <script src="https://use.fontawesome.com/73f3b30236.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <style>
+            
+            .internal-wrapper p {
+                line-height: 1.5;
+            }
+        
+            .internal-wrapper img {
+                max-width: 100%;
+                max-height: 600px;
+                margin: 0 auto;
+                display: block;
+            }
+            .caption {
+                display: block;
+                width: 100%;
+                font-size: 75%;
+                text-align: center;
+            }
+            blockquote {
+                font-family: Serif;
+                line-height: 1.7em;
+                font-style: italic;
+            }
+        
+        </style>
+    </head>
+    <body>
+        <nav>
+            <div class="internal-wrapper">
+                <a class="logo" href="https://stephanheijl.com">StephanHeijl.com</a>
+                <ul>
+                    <li><a href="projects.html#projects">Projects</a></li>
+                    <!--<li><a href="projects.html#publications">Publications</a></li>-->
+                    <li><a href="projects.html#posts">Blog posts</a></li>
+                    <li><a href="projects.html#education">Education</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>            
+            </div>                     
+        </nav>
+        <header>
+            <div class="internal-wrapper">
+                <div class="header-card">
+                    <div class="card-wrapper">
+                        <div class="card gradient-paper">
+                            <div class="glare"></div>
+                            <div class="post-name">
+                                Notes on Large Scale Adversarial Representation Learning <br>
+                                <i class="fa fa-camera"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-annotation">
+                    <h1>Notes on Large Scale Adversarial Representation Learning </h1>
+                    <p>
+                       
+                    </p>
+                    <ul class="header-tags">
+                        <li>Education</li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        
+        <div class="details">
+            <div class="internal-wrapper">
+                <h2>Introduction</h2>
+
+                <p>Large Scale Adversarial Representation Learning, written by Jeff Donahue and Karen Simonyan,  introduces BigBiGAN, a Generative Adversarial Network that includes representation learning methods in order to produce a high-quality self-supervised image classifier. Results from this classifier appear to match those from state of the art unsupervised methods and approach the performance of the AlexNet architecture which was trained in a fully supervised regime. In this post I intend to interpret the results of the paper, annotate different concepts for readers who may be less familiar with them and highlight the relevance of this work.</p>
+
+                <h3>Why do I think this work is important?</h3>
+                <p>Although the term is not mentioned in the paper, I think the paper as a whole shows us a great example of effective transfer learning. The networks were taught a specific task, which resulted in a structure that could be trivially adapted (even by means of a simple linear classifier in some cases) into a very functional network for another task. This emphasizes the notion of generalizability in neural networks, not only to novel samples for the same task, but also across domains.</p>
+
+                <img src="img/notes_on_lsarl/image10.png"/>
+                <div class="caption">Figure 1: In 2017 Andrew Ng already <a href="https://www.youtube.com/watch?v=NQK4ZY_gwKI">recognized</a> the value being created by transfer learning and the potential of unsupervised learning. </div>
+
+                <p>I also appreciate the large number of samples and training details the authors have delivered in this paper, as well as the detailed ablation study. Showing what works is as important as showing what doesn’t work. Negative results allow the machine learning community to move forward more effectively by skipping methods that have failed to produce results in the past.</p>
+                <h2>Generative Adversarial Networks</h2>
+                <p>Generative Adversarial Networks (GANs) are a class of neural nets invented in 2014 by Ian Goodfellow. These networks aim to generate a distribution (generally an image) by means of an adversarial process. Two networks with separate tasks are created: A generator and a discriminator. The task of the discriminator is to distinguish between images that belong to the target dataset and those that don’t belong to the target dataset. The generator must try to render images that “fool” the discriminator. The generator uses the backpropagation signal from the discriminator to improve the generation quality.</p>
+
+                <p>This setup has yielded surprisingly high quality image generation networks like BigGAN, which produce very lifelike images. This paper aims to use the domain knowledge gained by these GANs to perform high quality representation learning, such that an image classifier can be trained in a self-supervised manner (that is, without labeled data).</p>
+                <h2>Representation learning</h2>
+                <p>Representation learning is a machine learning process whereby a neural network attempts to model the distribution of the dataset in order to provide features that describe instances sampled from that dataset. These features may then for example be used in another network or learning method to enable supervised learning.</p>
+
+                <p>Representation learning as a term is specifically used when it is a separate stage in the training process, mostly when unsupervised or self-supervised techniques are used to perform the representation learning stage. Normal CNNs like ResNet can also be thought of as performing representation learning, but the representation for each sample is explicitly directed by the class of each sample. This results in less “generic” representations. Still, even these networks are often pretrained on large datasets like ImageNet, while the representations they generate are used for transfer learning to a different domain.</p>
+
+                <h2>Unsupervised or self-supervised?</h2>
+                <p>The abstract of the paper notes a distinction between unsupervised and self-supervised learning. There are different sources that define this distinction, but the terminology does not  appear to have crystalized as of yet. </p>
+
+                <p>Yann Lecun, who has been a long time proponent of unsupervised learning, recently updated his terminology by replacing unsupervised learning with self-supervised learning, <a href="https://www.facebook.com/722677142/posts/10155934004262143/">stating:</a></p>
+
+                <blockquote>Self-supervised learning uses way more supervisory signals than supervised learning, and enormously more than reinforcement learning. That's why calling it "unsupervised" is totally misleading. That's also why more knowledge about the structure of the world can be learned through self-supervised learning than from the other two paradigms: the data is unlimited, and amount of feedback provided by each example is huge. </blockquote>
+
+                <p>Dr. Lecun continues to state that <a href="https://arxiv.org/pdf/1810.04805">BERT</a> (or see my <a href="https://stephanheijl.com/notes_on_bert.html">notes</a>) is self-supervised. The paper for BERT uses “unsupervised”.</p>
+
+            <p>Others see the two terms as separate. Dickey Singh <a href="https://hackernoon.com/self-supervised-learning-gets-us-closer-to-autonomous-learning-be77e6c86b5a">notes</a> the following:</p>
+
+            <blockquote>Self-supervised learning is like unsupervised Learning because the system learns without using explicitly-provided labels. It is different from unsupervised learning because we are not learning the inherent structure of data. Self-supervised learning, unlike unsupervised learning, is not centered around clustering and grouping, dimensionality reduction, recommendation engines, density estimation, or anomaly detection.</blockquote>
+
+
+                <p>On Quora, Shehroz Khan <a href="https://www.quora.com/What-is-the-difference-between-self-supervised-and-unsupervised-learning">says</a> that the self-supervised learning is a special case of unsupervised learning: </p>
+
+                <blockquote>That is, self-supervised is an approach that use non-visual domain knowledge to help the supervised method of feature learning. One can argue that does not mean anything but a variant of (un)supervised learning. However, it is not semi-supervised learning, which is an established field. </blockquote>
+
+                <p>The distinction, thus, remains debated, but the definition of self-supervised learning is clear. From Yann Lecun:</p>
+
+                <blockquote>In self-supervised learning, the system learns to predict part of its input from other parts of it input. In other words a portion of the input is used as a supervisory signal to a predictor fed with the remaining portion of the input. </blockquote>
+
+                <h2>Neural network architecture</h2>
+                <p>The authors use a variety of proven architectures and expand upon them. BigBiGAN uses the generator and discriminator from BigGAN, which is a state of the art Generative Adversarial Network. It introduces an encoder component derived from the BiGAN paper based on ResNet, with the best iterations using a variant called RevNet.</p>
+
+                
+                <img src="img/notes_on_lsarl/image17.png"/>
+                <div class="caption">Figure 2: An annotated illustration of the architecture of BiBigGAN. The red section is derived from BiGAN, whereas the blue sections are based on the BigGAN structure.</div>
+
+                <h2>BigGAN</h2>
+                <p>BigGAN is a state of the art, large scale GAN that is able to produce high quality images with exquisite detail. Images can be generated at resolutions from 128x128 to 512x512, and these resulting images score very high on the Inception Score metric.</p>
+
+                <img src="img/notes_on_lsarl/image14.png"/>
+                <div class="caption">Figure 3: Sample images generated by BigGAN</div>
+
+                <p>BigGAN was picked as a GAN structure because of this performance. It seems intuitive that a neural network that is capable of modeling the dataset with such detail would have a high level of understanding on that dataset. This should provide the encoder with a high quality signal to train off, as opposed to older, less capable vanilla GAN used in the 2016 BiGAN paper.</p>
+
+                <h3>Structure</h3>
+                <p>The BigGAN architecture used in BiBigGAN outputs images at 128x128. A 256x256 version was tried and performed better, but was too slow to train for the resulting improvements in score. Progressive growing, which previously yielded great results for human face generation, is not used for this GAN. The overall architecture is a modified version of SAGAN, which uses Self-Attention modules. These modules are similar to the ones used in the Transformer architecture for language modeling networks. Among other changes, BigGAN adds more modules for larger image generation and inserts the latent representation piece by piece in each section of the network.</p>
+
+                <img src="img/notes_on_lsarl/image9.png"/>
+                <div class="caption">Figure 4: The SAGAN architecture. This is the generator module. The discriminator uses the exact same structure, but does not have a final Tanh activation. Image by the author, derived from <a href="https://github.com/heykeetae/Self-Attention-GAN/blob/master/sagan_models.py">this GitHub repository</a>. </div>
+
+
+                <p>BiBigGAN improves upon the BigGAN architecture by adding two extra components to the Discriminator: H and J. These are both 8 layer multilayer perceptrons with skip connections as seen in the ResNet architecture. All the layers are 2048 neurons wide. These components expose the discriminator to the latent representation of an image (either the input latent vector or a vector generated by the encoder) and allow the discriminator to combine the image representation and the latent representation. </p>
+                
+                <h3>Encoder</h3>
+                <p>The encoder is a neural network that takes an image as an input and generates a latent representation for that image. In a sense, it performs the exact opposite function of the GAN, which takes a latent representation and generates an image. </p>
+
+                <p>It has been shown in the BiGAN paper that with an optimal Generator, Discriminator and Encoder, the Jensen-Shannon divergence can reach a global optimum between the two joint distributions Px𝓔 and P𝓖z. That is to say, it is possible that using the given objective, an optimal set of neural networks can create a perfect match between an encoder creating latent representations from images and a generator creating images from latent representations, such that 𝓔(𝓖(𝓔(x))) = 𝓔(x).</p>
+
+                <h4>Jensen-Shannon divergence</h4>
+                <p>Jensen-Shannon divergence is a metric used to measure the similarity between two probability distributions. A probability distribution can either be continuous, which results in a function, or discrete. The latter can be used when all the outcomes in a probability distribution are a finite set (like tossing a coin [0.5, 0.5] or rolling a die [0.1666…, 0.1666…, 0.1666…, 0.1666…, 0.1666…, 0.1666…]. The Jensen-Shannon divergence is a smoother version of the Kullback-Leibler divergence metric. When fully expressed in a single formula it seems quite involved:</p>
+
+                <img src="img/notes_on_lsarl/image4.png">
+
+                <p>It can be expressed in verbose Python in the following matter. </p>
+
+
+<pre style="color:#000020;background:#f6f8ff;"><span style="color:#200080; font-weight:bold; ">import</span> math
+
+P <span style="color:#308080; ">=</span> <span style="color:#308080; ">[</span><span style="color:#008000; ">0.1</span><span style="color:#308080; ">,</span> <span style="color:#008000; ">0.2</span><span style="color:#308080; ">,</span> <span style="color:#008000; ">0.4</span><span style="color:#308080; ">,</span> <span style="color:#008000; ">0.1</span><span style="color:#308080; ">,</span> <span style="color:#008000; ">0.7</span><span style="color:#308080; ">]</span>
+Q <span style="color:#308080; ">=</span> <span style="color:#308080; ">[</span><span style="color:#008000; ">0.4</span><span style="color:#308080; ">,</span> <span style="color:#008000; ">0.1</span><span style="color:#308080; ">,</span> <span style="color:#008000; ">0.3</span><span style="color:#308080; ">,</span> <span style="color:#008000; ">0.1</span><span style="color:#308080; ">,</span> <span style="color:#008000; ">0.4</span><span style="color:#308080; ">]</span>
+
+<span style="color:#200080; font-weight:bold; ">def</span> kl_divergence<span style="color:#308080; ">(</span>p<span style="color:#308080; ">,</span> q<span style="color:#308080; ">)</span><span style="color:#308080; ">:</span>
+    _sum <span style="color:#308080; ">=</span> <span style="color:#008c00; ">0</span>
+    <span style="color:#200080; font-weight:bold; ">for</span> x <span style="color:#200080; font-weight:bold; ">in</span> <span style="color:#400000; ">range</span><span style="color:#308080; ">(</span><span style="color:#400000; ">len</span><span style="color:#308080; ">(</span>p<span style="color:#308080; ">)</span><span style="color:#308080; ">)</span><span style="color:#308080; ">:</span>
+        _sum <span style="color:#44aadd; ">+</span><span style="color:#308080; ">=</span> p<span style="color:#308080; ">[</span>x<span style="color:#308080; ">]</span> <span style="color:#44aadd; ">*</span> math<span style="color:#308080; ">.</span>log<span style="color:#308080; ">(</span>q<span style="color:#308080; ">[</span>x<span style="color:#308080; ">]</span> <span style="color:#44aadd; ">/</span> p<span style="color:#308080; ">[</span>x<span style="color:#308080; ">]</span><span style="color:#308080; ">)</span>
+    <span style="color:#200080; font-weight:bold; ">return</span> _sum <span style="color:#44aadd; ">*</span> <span style="color:#44aadd; ">-</span><span style="color:#008c00; ">1</span>
+
+<span style="color:#200080; font-weight:bold; ">def</span> get_m<span style="color:#308080; ">(</span>p<span style="color:#308080; ">,</span> q<span style="color:#308080; ">)</span><span style="color:#308080; ">:</span>
+    m <span style="color:#308080; ">=</span> <span style="color:#308080; ">[</span><span style="color:#308080; ">]</span>
+    <span style="color:#200080; font-weight:bold; ">for</span> x <span style="color:#200080; font-weight:bold; ">in</span> <span style="color:#400000; ">range</span><span style="color:#308080; ">(</span><span style="color:#400000; ">len</span><span style="color:#308080; ">(</span>p<span style="color:#308080; ">)</span><span style="color:#308080; ">)</span><span style="color:#308080; ">:</span>
+        m<span style="color:#308080; ">.</span>append<span style="color:#308080; ">(</span><span style="color:#308080; ">(</span>p<span style="color:#308080; ">[</span>x<span style="color:#308080; ">]</span> <span style="color:#44aadd; ">+</span> q<span style="color:#308080; ">[</span>x<span style="color:#308080; ">]</span><span style="color:#308080; ">)</span> <span style="color:#44aadd; ">/</span> <span style="color:#008c00; ">2</span><span style="color:#308080; ">)</span>
+    <span style="color:#200080; font-weight:bold; ">return</span> m
+
+<span style="color:#200080; font-weight:bold; ">def</span> normalize<span style="color:#308080; ">(</span>p<span style="color:#308080; ">)</span><span style="color:#308080; ">:</span>
+    <span style="color:#200080; font-weight:bold; ">return</span> <span style="color:#308080; ">[</span>_p <span style="color:#44aadd; ">/</span> <span style="color:#400000; ">sum</span><span style="color:#308080; ">(</span>p<span style="color:#308080; ">)</span> <span style="color:#200080; font-weight:bold; ">for</span> _p <span style="color:#200080; font-weight:bold; ">in</span> p<span style="color:#308080; ">]</span>
+
+<span style="color:#200080; font-weight:bold; ">def</span> get_jsd<span style="color:#308080; ">(</span>p<span style="color:#308080; ">,</span> q<span style="color:#308080; ">)</span><span style="color:#308080; ">:</span>
+    p <span style="color:#308080; ">=</span> normalize<span style="color:#308080; ">(</span>p<span style="color:#308080; ">)</span>
+    q <span style="color:#308080; ">=</span> normalize<span style="color:#308080; ">(</span>q<span style="color:#308080; ">)</span>
+    m <span style="color:#308080; ">=</span> get_m<span style="color:#308080; ">(</span>p<span style="color:#308080; ">,</span> q<span style="color:#308080; ">)</span>
+    <span style="color:#200080; font-weight:bold; ">return</span> <span style="color:#308080; ">(</span>kl_divergence<span style="color:#308080; ">(</span>p<span style="color:#308080; ">,</span> m<span style="color:#308080; ">)</span> <span style="color:#44aadd; ">/</span> <span style="color:#008c00; ">2</span><span style="color:#308080; ">)</span> <span style="color:#44aadd; ">+</span> <span style="color:#308080; ">(</span>kl_divergence<span style="color:#308080; ">(</span>q<span style="color:#308080; ">,</span> m<span style="color:#308080; ">)</span> <span style="color:#44aadd; ">/</span> <span style="color:#008c00; ">2</span><span style="color:#308080; ">)</span>
+
+JSD <span style="color:#308080; ">=</span> get_jsd<span style="color:#308080; ">(</span>P<span style="color:#308080; ">,</span> Q<span style="color:#308080; ">)</span>
+</pre>
+
+
+                <h4>Structure</h4>
+                <p>The structure of the encoder was based initially on the ResNet architecture. An input resolution of 256x256 yields the best results. Most of the experimentation with the encoder involved increasing the number of neurons. ResNet-101, a deeper version of ResNet-50, yielded the poorest results of all the experiments in the ablation study. When the wider networks are considered, RevNet architectures overtake the original ResNet. The reason for this is not clear, as RevNets are said to perform very closely to ResNets for similar structures. Training times are similar, and thus do not appear to contribute to this phenomenon. RevNets do seem to use less parameters for a similar structure to a ResNet with the same number of neurons. The exact mechanism by which this could aid the network is not apparent. </p>
+                
+                <img src="img/notes_on_lsarl/image8.png"/>
+                <div class="caption">Figure 5: ResNet 50, the structure used as a base for the encoder. The final model uses a similar structure with reversible connections, which allows for more memory efficient calculations.</div>
+
+                <p>The convolutional structure is followed up by a large, 4096 neuron wide MLP with 4 layers, similar to the ones used in the discriminator components. The convolutional output is globally average pooled before insertion into the MLP.  This component of the encoding structure remains the same across all ablation experiments.</p>
+                <h2>Explanation of the loss algebra</h2>
+                <p>When I started out with reading machine learning literature, I found the mathematics included in the paper daunting. There are many symbols that can at times be unclear and are often left unidentified. Coming from a non-mathematical background, the process of deciphering the algebra does not come intuitively at first. A large block of these equations is present on page three, and while the accompanying text is surprisingly clear and explanatory, many may still choose to skip them. I have included a step-by-step annotation of every equation in that block, in the hope that this will help people starting out with interpreting algebra related to machine learning. Note: I am still a novice myself, so any corrections to this explanation are more than welcome.</p>
+                
+                <img src="img/notes_on_lsarl/image20.png"/><br/>
+                <img src="img/notes_on_lsarl/image19.png"/><br/>
+                <img src="img/notes_on_lsarl/image25.png"/><br/>           
+                <img src="img/notes_on_lsarl/image18.png"/><br/>
+                <img src="img/notes_on_lsarl/image11.png"/><br/>
+                <img src="img/notes_on_lsarl/image7.png"/><br/>
+                <img src="img/notes_on_lsarl/image12.png"/><br/>
+
+                <h3>A note on hinge functions</h3>
+                <p>The authors state that for the discriminator loss two different approaches were tried. The first option was summing the losses and performing the hinge function over that sum. The second was taking the hinge function over each of the losses and summing them. The former was found to work significantly worse by the authors. While visualizing the outputs for 3 separate interacting values is difficult, we can simplify this problem to 2 values. This is illustrated in figure 6. When the hinge function is calculated once over the sum of the losses, we see that information is lost when the values diverge. This loss of information may be the reason for the poorer performance in that instance.</p>
+            
+                <img src="img/notes_on_lsarl/image16.png"/>
+                <div class="caption">Figure 6: A contour plot showing the difference in function output between h(x) + h(y) and h(x + y). Note that the <code>contourf</code> function introduces banding into the visualization.</div>
+
+
+                <h2>Results</h2>
+                <h3>Encoder/Generator</h3>
+                <p>One of the most interesting components of the results are those achieved by the encoder. That is, how effective was the encoder at translating an image sample into a latent representation that could be transformed into a similar image by the generator? Or more precisely: How close is 𝓖(𝓔(x))to x?</p>
+
+                <p>Both BiGAN and BigBiGAN produced images of this category. A simple visual inspection tells us that BigBiGAN definitely preserved more semantic information. In figure 7 below I have attempted to select some images that contain somewhat similar information. BigBiGAN clearly generates images that:<p>
+
+                <ul>
+                    <li>Are recognizable</li>
+                    <li>Contain the relevant elements (a person and a tree, a flamingo etc)</li>
+                    <li>Contain these elements in similar poses</li>
+                    <li>Replicate colors (to some extent)</li>
+                    <li>And can deal with subjects that are partially cropped</li>
+                </ul>
+
+                <img src="img/notes_on_lsarl/image13.png"/>
+                <img src="img/notes_on_lsarl/image15.png"/>
+<div class="caption">Figure 7: Comparison between BiBigGAN (top two rows of images) and BiGAN (bottom two rows). In each section the top row is the ground truth image (x) and the bottom row is the result of encoding the ground truth and using the generator to recreate the image.</div>
+
+                <p>These intuitions are confirmed by the Inception Score and Frechet Inception Distance, which are respectively higher and lower for the BigBiGAN, indicating better performance. IS shows an increase of approximately 18% and the FID is about a third lower for the best configurations. It should be noted that these scores are not nearly as high as BigGANs, however. The training time was not based on generator quality, but on the validation performance of the derived classifier.</p>
+
+                <h3>Classifier</h3>
+                <p>The ImageNet classifier for the initial ablation study was built by training a logistic regression classifier on the latent representation produced by the encoded (the features) with 10.000 images randomly sampled from the ImageNet dataset. It makes intuitive sense that a vector able to describe an image accurately to a generator would be of use to a classifying algorithm. This is confirmed by the classification accuracy, which tops out at 60% top-1 accuracy using a wide large RevNet architecture. </p>
+
+                <p>The linear classifier was further enhanced using Batch Normalization and the use of a CReLU activation. This yielded 61% top-1 accuracy and 81.9% top-5 classification accuracy on the full ImageNet validation set. The linear classifier was trained on the 10.000 images from the initial stage, which means that this approach was able to achieve results comparable to AlexNet with less than one 1% of the data. (AlexNet achieved 62.5% top-1 accuracy and 83% top-5 accuracy).</p>
+
+                <p>This GAN approach is on par with the state of the art in unsupervised (or self-supervised) techniques, specifically the Contrastive Predictive Coding technique which was developed in parallel with this work. The results from CPC appear to correspond to using 10% of the labelled data from the ImageNet training set, however (100 images per class, which would equal 100.000 images for the 1000 class challenge), which means that the GAN approach appears to be more data-efficient.</p>
+                <h2>Conclusion</h2>
+                <p>Large Scale Adversarial Representation Learning proposes an improved GAN architecture that yields both an impressive advance in image encoding, as well as a very efficient, state of the art feature learner for image classification. One applications for the encoder would be quickly generating initial latent states for GANs from existing images, which can later be finetuned when applied to a network like StyleGAN. Another is the more straightforward use: Pretraining a network for a difficult image classification task where little data labelled data is present, but many unlabeled samples can be found with relatively little effort. The medical domain is one of these areas, as gathering labeled data is labour intensive, requires the input from expensive experts and is fraught with privacy implications. I personally see BiBigGAN as a potentially very valuable part of the Data Scientist’s toolbelt.</p>
+
+                
+                <h2>References/Further reading</h2>
+                
+                <ol>
+                    <li>Large Scale adversarial Representation Learning: https://arxiv.org/pdf/1907.02544 </li>
+                    <li>Deep Residual Learning for Image Recognition: https://arxiv.org/pdf/1512.03385</li>
+                    <li>The Reversible Residual Network:Backpropagation Without Storing Activations: https://arxiv.org/pdf/1707.04585</li>
+                    <li>Large Scale GAN Training for High Fidelity Natural Image Synthesis: https://arxiv.org/abs/1809.11096</li>
+                    <li>ImageNet Classification with Deep Convolutional Neural Networks (AlexNet) https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf </li>
+                    
+                </ol>
+
+            </div>        
+        </div>       
+    </body>
+</html>
