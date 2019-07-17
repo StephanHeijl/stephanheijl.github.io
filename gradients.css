@@ -70,9 +70,9 @@
 
 .gradient-paper {
     background: radial-gradient(
-        ellipse at bottom left, 
-        #ffffff 0%,
-        #eaeaea 100%
+        ellipse at top left, 
+        #440154, #482475, #414487, #355f8d, #2a788e, #21908d, #22a884, #42be71, #7ad151, #bddf26, #bddf26
     ); 
     background-size: 100% 100%;
 }
+.gradient-paper * { color: white; }

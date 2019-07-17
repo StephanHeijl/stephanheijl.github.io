@@ -146,6 +146,29 @@ header {
     margin: 1.3em 0em 0em 1em;
 }
 
+.internal-wrapper p {
+    line-height: 1.5;
+}
+
+.internal-wrapper img {
+    max-width: 100%;
+    max-height: 600px;
+    margin: 0 auto;
+    display: block;
+}
+.caption {
+    display: block;
+    width: calc(100% - 10px);
+    font-size: 75%;
+    text-align: center;
+    padding: 0 5px;
+}
+blockquote {
+    font-family: Serif;
+    line-height: 1.7em;
+    font-style: italic;
+}
+
 .profile-picture img {
     max-height: 100%;
 }
@@ -273,6 +296,10 @@ a {
         width: 130px !important;
         height: 190px !important;
     }
+    
+    .post-name i {
+        line-height: 100px !important;
+    }
 }
 
 img.certificate {
@@ -349,6 +376,11 @@ img.certificate.certificate-small {
 .post-name i {
     font-size: 200%;
     margin: 0.3em;
+}
+
+.header-card .post-name i {
+    font-size: 300%;
+    line-height: 200px;
 }
 
 
