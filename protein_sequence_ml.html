@@ -39,7 +39,8 @@
                 <div class="header-annotation">
                     <h1>Python Tutorial: Using protein sequences to make better classifiers</h1>
                     <p>
-                        Intro
+                        In this intermediate-level tutorial we will use protein sequence embeddings
+                        as features for machine learning algorithms to improve their performance.
                     </p>
                     <ul class="header-tags">
                         <li>Education</li>
@@ -50,7 +51,16 @@
         
         <div class="details">
             <div class="internal-wrapper">
-                <h2>Introduction</h2>
+                <h2>Index</h2>
+                <ul class="chevron-list">
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#theory">Theory</a></li>
+                    <li><a href="#solution">Solution</a></li>
+                    <li><a href="#solution">Conclusion</a></li>
+                    <li><a href="#solution">References</a></li>
+                </ul>
+                
+                <h2 id="introduction">Introduction</h2>
                 
                 <p>
                     In bioinformatics, we often encounter situations where empirical data on some biological phenomenon is available and we would like to predict whether this also occurs in other cases. Many times, we find that interactions between variables are complex and not directly correlated to what is being studied. In those cases we can use machine learning to make these predictions for us. Machine learning has led to many revolutionary developments in the biological world [cite samples here]. What if, instead of just using straightforward tabular data or image data, we could also use protein sequence data in solving these problems?
@@ -59,11 +69,27 @@
                 <p>If you're already comfortable with the advantages of using protein sequences and the theory behind it, click <a href="#solution">here</a>. If not, read on!</p>
                 
                 <h3>Use cases</h3>
-                <p>List some use cases here</p>
+                
+                <h4>Transmembrane prediction</h4>
+                
+                <img src="img/membrane_protein.png" />
+                <div class="caption">Figure 1: A protein position in a membrane, visualized by Dr. Thomas Splettstoesser. <small><a href="">CC-BY-SA</a></small> </div>
+                
+                <p>The technique being presented has been used to achieve state of the art results on transmembrane prediction tasks[7]. In this task a classifier is required to predict the exact type of transmembrane protein based on a sequence. Bepler et al. used this technique to demonstrate the transferability of protein sequence embeddings to new tasks.</p>
+                
+                <h4>Protein similarity prediction</h4>
+                <p>A large amount of proteins have been sequenced, but only a tiny minority have analyzed structurally. It is difficult to predict how similar two proteins are based only on their sequence, as a given structure can be achieved by a wide variety of different sequences.</p>
+                
+                <h4>Thermostability prediction</h4>
+                
+                <img src="img/denaturation.png" />
+                <div class="caption">Figure 2: The protein denaturation process, visualized by Scott Curran. <small><a href="">CC-BY-SA</a></small> </div>
+                
+                <p>Proteins rely on their structure to function. These structures are sensitive to temperature, and will lose integrity when the temperature is too high. This process is called denaturation. Variants in a protein can cause that threshold temperature to change. Protein sequence embeddings can be valuable in predicting which variants will cause the protein to become more thermostable. </p>
 
                 
                 <h3>Problem description</h3>
-                <p>There are many different algorithms that can be used to perform machine learning, from the simplest linear models to complex neural networks. Most of these methods, however, have difficulty dealing with sequence data, for the following reasons:</p>
+                <p>There are many different algorithms that can be used to perform machine learning, from the simplest linear models to complex neural networks. Most of these methods, however, have difficulty dealing with sequence data for the following reasons:</p>
                 
                 <ul class="chevron-list">
                     <li>Sequences can vary in length.</li>
@@ -77,7 +103,7 @@
                 
                 <ul class="chevron-list">
                     <li>You are automatically limited to the length of the longest sequence in your training set.</li>
-                    <li>Even when working with short sequences (&lt; 250 amino acids) this method will quickly result in 5250 features per sample. (250 * 21, as there are 20 different amino acids and one padding value), way too many variables for smaller datasets.</li>
+                    <li>Even when working with short sequences (&lt; 250 amino acids) this method will quickly result in 5250 features per sample. (250 &times; 21, as there are 20 different amino acids and one padding value), way too many variables for smaller datasets. </li>
                     <li>If a sequence is observed with a simple insertion in the middle of the sequence, it will throw off the algorithm, as feature influence is dependent on absolute position, not relative position.</li>
                 </ul>               
                 
@@ -89,7 +115,10 @@
                 
                 <p>Sequences can generally be defined as a collection of objects in a certain order where repetition is allowed. They occur in many different shapes and sizes. A single number can be regarded as a sequence containing one number, and the entire works of Shakespeare can be seen as a long sequence of words (or characters). In Python sequences are often represented in strings, lists or numpy arrays. Sets are generally not used, as repetition is excluded by definition.</p>
                 
-                <p>Protein sequences are sequences of symbols, generally 20 different characters representing the 20 used amino acids used in human proteins. Proteins sequences can range from the very short (20 amino acids in total, https://www.science20.com/princerain/blog/smallest_protein) to the very long (38 183 amino acids for Titin, https://www.ncbi.nlm.nih.gov/pubmed/11717165). The average human protein comes in at around 375 amino acids (http://book.bionumbers.org/how-big-is-the-average-protein/). </p>
+                <p>Protein sequences are sequences of symbols, generally 20 different characters representing the 20 used amino acids used in human proteins. Proteins sequences can range from the very short (20 amino acids in total[1]) to the very long (38 183 amino acids for Titin[2]). The average human protein comes in at around 375 amino acids[3]. </p>
+                
+                <img src="img/amino_acid_table.png" />
+                <div class="caption">Figure 3: Amino acids are discrete elements with inherent as well as contextual properties. This makes representing them as numbers difficult. </div>
                 
                 <p>There are several ways in which sequences can be represented for use in machine learning purposes.</p>
                 
@@ -104,9 +133,12 @@
                 
                 <h3>Embeddings</h3>
                 
-                <p>Neural networks have always had to contend with the issue of representation. Given that they consist of a pile of linear algebra (https://xkcd.com/1838/) only numbers can be inserted into the mix, with categorical data generally being reduced to a one-hot encoding in order for the network to accept it. However, this approach generally does not yield great results when the vocabulary is very large, as the number of features quickly gets out of hand. This was the case in natural language processing. Hence, neural networks were first used in 2003 by Bengio et al. (https://link.springer.com/chapter/10.1007%2F3-540-33486-6_6) to produce distributed representations of words. </p>
+                <p>Neural networks have always had to contend with the issue of representation. Given that they consist of a pile of linear algebra[4] only numbers can be inserted into the mix, with categorical data generally being reduced to a one-hot encoding in order for the network to accept it. However, this approach generally does not yield great results when the vocabulary is very large, as the number of features quickly gets out of hand. This was the case in natural language processing. Hence, neural networks were first used in 2003 by Bengio et al. [5] to produce distributed representations of words. </p>
                 
                 <p>This concept was later expanded upon by a team of researchers at Google, who produced Word2Vec (https://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality), a fast generator of word vectors, which are real valued representations of words that describe their meaning in N-dimensional space. One can even perform algebraic operations on these representations to derive the meaning from different words. This is exemplified by the now-famous “king - man = queen” expression.</p>
+                
+                <img src="img/word_embeddings.png" />
+                <div class="caption">Figure 4: Words can be projected into latent space, which encodes their meaning along a number of dimensions. Algebraic operations can even be performed on these word vectors, resulting in the ability to transform a word based on a property. </div>
                 
                 <p>When working with sentences or even paragraphs, one can use any of a number of techniques to reduce a sequence of these vectors to a fixed number of dimensions. These include averaging, summing or performing more advanced dimensionality reduction techniques. We will get into those later in this post.</p>
                 
@@ -124,23 +156,218 @@
                 
                 <h4>1: Clone GitHub Repo &amp; Download models</h4>
                 
-                <p>First, use Git to clone the repository from the authors, it is located here: https://github.com/tbepler/protein-sequence-embedding-iclr2019 . While you’re there, leave a star if you want to show your appreciation! ★</p>
+                <p>First, use Git to clone the repository from the authors, it is located on <a href="https://github.com/tbepler/protein-sequence-embedding-iclr2019" target="_blank">Github</a>. While you’re there, leave a star if you want to show your appreciation! ★</p>
 
                 <p>Second, download the pretrained models, the link is listed in the repository README. Untar this package to find the PyTorch models saved in binary form.</p>
+
+                <pre><code class="language-python">import os
+import sys
+import pandas as pd
+import numpy as np
+import requests
+from pprint import pprint
+
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split, KFold, \
+    GroupKFold
+from scipy.stats import pearsonr, mode
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Import data from protein sequence embedding repository.
+sys.path.append("/home/stephan/protein-sequence-embedding-iclr2019")
+from src.alphabets import Uniprot21
+from torch.nn.utils.rnn import PackedSequence
+from src.utils import pack_sequences, unpack_sequences
+
+import torch
+%matplotlib inline</code></pre>
 
                 <h4>2: Baseline example for comparison</h4>
                 <p>The FireProt Protein Thermostability database will be used in order to demonstrate the use of these sequence embeddings. Thermostability predictions are a rather difficult affair, but maybe some sequence embeddings can help.</p>
                 
                 <p>Start by loading the data from the CSV into a pandas dataframe and retrieving the corresponding sequences. Because the PDB identifiers are given, we can use the RCSB website to retrieve the relevant sequences.</p>
                 
-                <p>The sequences are, of course, in their wildtype form. This is valuable, but every proposed variant will yield different results. Thus, we also want to generate an embedding for the mutated protein sequence. </p>
+                <pre><code class="language-python"># Load stability data from FireProtDB
+stability_data = pd.read_csv(
+    "https://loschmidt.chemi.muni.cz/fireprotdb/data.csv"
+)
+stability_data.head()
+
+def download_pdb_sequence(pdb_id):
+    """ Download the sequence for a given structure from RCSB. """
+    url = "https://www.rcsb.org/pdb/download/downloadFastaFiles.do?structureIdList={}&compressionType=uncompressed".format(pdb_id)
+    data = requests.get(url).content.decode('utf8')
+    sequence = "".join(data.split("\n")[1:])
+    return sequence
+    
+# Annotate stability data
+for pdb_id in stability_data.protein.str.upper().unique():
+    sequence = download_pdb_sequence(pdb_id)
+    stability_data.loc[
+        stability_data.protein.str.upper() == pdb_id, "sequence"
+    ] = sequence
+stability_data.head()</code></pre>
                 
-                <p>For this example, I will evaluate the performance based on the Pearson correlation, with a very simple model with minimal features as a base: The base model is a RandomForestRegressor with 200 estimators and 3 features: Secondary structure, wildtype and varianttype. In 10 fold cross validation, this classifier performs as a baseline, with a 0.18 PearsonR score. </p>
+                <p>The sequences are, of course, in their wildtype form. This is valuable, but every proposed variant will yield different results. Thus, we also want to generate an embedding for the mutated protein sequence. Some of the positions for a mutation in the source file are outdated, so we can try to find a good offset for each </p>
+                
+                <pre><code class="language-python">def find_offset(row):
+    resnum = int(row.mutation[1:-1])
+    wt = row.mutation[0]
+    seq = row.sequence
+    if seq[resnum - 1] == wt:
+        return 0
+    for offset in range(1, 7):
+        if seq[resnum - 1 - offset] == wt:
+            return offset * -1
+        if seq[resnum - 1 + offset] == wt:
+            return offset
+    return None
+
+stability_data.loc[:, "offset"] = stability_data.apply(
+    find_offset, axis=1
+)
+offsets = stability_data.loc[:, ["protein", "offset"]].groupby(
+    "protein"
+).apply(lambda x: mode(x, axis=None)[0][0])
+
+def mutate_sequence(row):
+    pos = int(row.mutation[1:-1]) + int(offsets[row.protein]) - 1
+    assert pos < len(row.sequence)
+    new_sequence = row.sequence[:pos] 
+    new_sequence += row.mutation[-1] 
+    new_sequence += row.sequence[pos + 1:]
+    
+    assert new_sequence[pos] == row.mutation[-1]
+    assert len(new_sequence) == len(row.sequence)
+    return new_sequence
+
+stability_data.loc[:, "sequence_mut"] = stability_data.apply(
+    mutate_sequence, axis=1
+)
+
+# Add simple features
+stability_data.loc[:, "wildtype"] = \
+    stability_data.mutation.apply(lambda m: m[0])
+stability_data.loc[:, "varianttype"] = \
+    stability_data.mutation.apply(lambda m: m[-1])
+stability_data.head()</code></pre>                
+                
+                <p>For this example, I will evaluate the performance based on the Pearson correlation, with a very simple model with minimal features as a base: The base model is a RandomForestRegressor with 200 estimators and 3 features: Secondary structure, wildtype and varianttype. In 10 fold cross validation, this classifier performs as a baseline, with a 0.18 Pearson R score. </p>
                 
                 <p>A special case of 10 fold cross validation is used, where the training sets contain only proteins that are not present in the test sets. This helps in ensuring that thermostability features are learning, instead of the distribution of the protein. Note that this is a difficult problem, especially with a small dataset! It is also the best way to avoid fooling oneself when evaluating the improvements gained from adding these features.</p>
                 
+<pre><code class="language-python">def find_offset(row):
+    resnum = int(row.mutation[1:-1])
+    wt = row.mutation[0]
+    seq = row.sequence
+    if seq[resnum - 1] == wt:
+        return 0
+    for offset in range(1, 7):
+        if seq[resnum - 1 - offset] == wt:
+            return offset * -1
+        if seq[resnum - 1 + offset] == wt:
+            return offset
+    return None
+
+stability_data.loc[:, "offset"] = stability_data.apply(
+    find_offset, axis=1
+)
+offsets = stability_data.loc[:, ["protein", "offset"]].groupby(
+    "protein"
+).apply(lambda x: mode(x, axis=None)[0][0])
+
+def mutate_sequence(row):
+    pos = int(row.mutation[1:-1]) + int(offsets[row.protein]) - 1
+    assert pos &lt; len(row.sequence)
+    new_sequence = row.sequence[:pos] 
+    new_sequence += row.mutation[-1] 
+    new_sequence += row.sequence[pos + 1:]
+    
+    assert new_sequence[pos] == row.mutation[-1]
+    assert len(new_sequence) == len(row.sequence)
+    return new_sequence
+
+stability_data.loc[:, "sequence_mut"] = stability_data.apply(
+    mutate_sequence, axis=1
+)
+
+# Add simple features
+stability_data.loc[:, "wildtype"] = \
+    stability_data.mutation.apply(lambda m: m[0])
+stability_data.loc[:, "varianttype"] = \
+    stability_data.mutation.apply(lambda m: m[-1])
+stability_data.head()</code></pre>
+                
                 <h4>3: Adding vectors</h4>
                 <p>Using the pretrained models we can generate vectors that describe each sequence. The models in question are created in PyTorch, which means we need to prepare the input data in a PyTorch format and move the results back to numpy. On the upside, we are able to the GPU to speed up these operations. An example sequence-to-embedding conversion is listed here:</p>
+                
+<pre><code class="language-python">model_dir = "/home/sheijl/pretrained_sequence_models/"
+u21 = Uniprot21()
+
+def embed_sequences(sequences, lm_embed, positions, offsets):
+    """ Embed sequences 
+    :param sequences: An iterable containing uppercase sequences strings.
+    :param lm_embed: A pytorch embedding model that accepts encodeded 
+                     and produces matrices of size &lt;seqlen&gt;&times;&lt;vecsize&gt;.
+    :param sequences: An iterable containing the position of each variant.
+    :param sequences: An iterable with position offsets for each variant.
+    :returns: A dictionary containing the average vector, the last vector and the vector of the variant type.
+    """
+    enc_sequences = [u21.encode(bytes(seq, "ascii")) for seq in sequences]
+    enc_sequences = [torch.from_numpy(x_).long().cuda() for x_ in enc_sequences]
+    with torch.no_grad():
+        data, order = pack_sequences(enc_sequences)
+        z = lm_embed(data)
+        embedded_sequences = unpack_sequences(z, order)
+
+    avg_vec = np.array([seq.mean(0).detach().cpu().numpy() for seq in embedded_sequences])
+    lst_vec = np.array([seq[-1].detach().cpu().numpy() for seq in embedded_sequences])
+    var_vec = np.array([seq[positions[v] + offsets[v]].detach().cpu().numpy() for v, seq in enumerate(embedded_sequences)])
+    assert not np.isnan(avg_vec).any()
+    assert not np.isnan(lst_vec).any()
+    assert not np.isnan(var_vec).any()
+
+    return {"avg": avg_vec, "lst": lst_vec, "var": var_vec}
+    
+def get_sequence_embeddings_df(stability_data, sequence_col, prefix):
+    """ Takes a dataframe and produces 3 dataframes containing embeddings.
+    :param stability_data: Thermostability source dataframe.
+    :param sequence_col: The column in the dataframe containing the sequences,
+                         ie. 'sequence' or 'sequence_mut'.
+    :param prefix: A string that is prefixed to each embedding column.
+    :returns: Three dataframes with average, last and variant position embeddings
+              respectively.
+    """
+    es_avg, es_fst, es_lst, es_var = [], [], [], []
+
+    for i in range(0, len(stability_data), 10):
+        e = embed_sequences(
+            stability_data[sequence_col].iloc[i:i+10],
+            emb,
+            [int(m[1:-1]) - 1 for m in stability_data.mutation[i:i+10]],
+            [int(offsets[p]) for p in stability_data.protein[i:i+10]]
+        )
+        
+        es_avg.append(e["avg"])
+        es_lst.append(e["lst"])
+        es_var.append(e["var"])
+
+    avg_embeddings = np.concatenate(es_avg)
+    lst_embeddings = np.concatenate(es_lst)
+    var_embeddings = np.concatenate(es_var)
+
+    assert not np.isnan(avg_embeddings).any()
+    assert not np.isnan(lst_embeddings).any()
+    assert not np.isnan(var_embeddings).any()
+
+    n_features = avg_embeddings.shape[1]
+    avg_embeddings_df = pd.DataFrame(avg_embeddings, columns=["%s_avg_e%i" % (prefix, i) for i in range(n_features)])
+    lst_embeddings_df = pd.DataFrame(lst_embeddings, columns=["%s_lst_e%i" % (prefix, i) for i in range(n_features)])
+    var_embeddings_df = pd.DataFrame(var_embeddings, columns=["%s_var_e%i" % (prefix, i) for i in range(n_features)])
+    return avg_embeddings_df, lst_embeddings_df, var_embeddings_df
+</code></pre>
                 
                 <h4>4: Combining the vectors</h4>
                 <p>In the spirit of performing a sort-of scientific analysis as part of this article, I have outlined some factors to be tested and generated a number of competing hypotheses for these factors.</p>
@@ -179,6 +406,8 @@
                 <h2>Conclusion</h2>
                 <p>In this article, we looked at why it is useful to add protein sequence data to bioinformatics machine learning feature sets, what it means to include this data and how it is done in practice. If you followed along, you should have a thermostability regressor that  can adequately predict the ΔΔG for a given variant. You should also have some insights in the best practices of using these vectors, as well as a jumping off point for the creation of your own models.</p>
                 
+                <p></p>
+                
                 <h2>References</h2>
                 <ol>
                     <li>
@@ -216,6 +445,8 @@
                 <p>&nbsp;</p>
                 
             </div>        
-        </div>       
+        </div>
     </body>
+    <link rel="stylesheet" href="/prism.css" />
+    <script src="/prism.js"></script>
 </html>
