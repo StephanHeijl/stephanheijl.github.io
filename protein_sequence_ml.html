@@ -75,7 +75,7 @@
                 <h4>Transmembrane prediction</h4>
                 
                 <img src="img/membrane_protein.png" />
-                <div class="caption">Figure 1: A protein position in a membrane, visualized by Dr. Thomas Splettstoesser. <small><a href="">CC-BY-SA</a></small> </div>
+                <div class="caption">Figure 1: A protein position in a membrane, visualized by Dr. Thomas Splettstoesser. <small><a href="https://creativecommons.org/licenses/by-sa/3.0">CC-BY-SA</a></small> </div>
                 
                 <p>The technique being presented has been used to achieve state of the art results on transmembrane prediction tasks[7]. In this task a classifier is required to predict the exact type of transmembrane protein based on a sequence. Bepler et al. used this technique to demonstrate the transferability of protein sequence embeddings to new tasks.</p>
                 
@@ -85,7 +85,7 @@
                 <h4>Thermostability prediction</h4>
                 
                 <img src="img/denaturation.png" />
-                <div class="caption">Figure 2: The protein denaturation process, visualized by Scott Curran. <small><a href="">CC-BY-SA</a></small> </div>
+                <div class="caption">Figure 2: The protein denaturation process, visualized by Scott Curran. <small><a href="https://creativecommons.org/licenses/by-sa/3.0">CC-BY-SA</a></small> </div>
                 
                 <p>Proteins rely on their structure to function. These structures are sensitive to temperature, and will lose integrity when the temperature is too high. This process is called denaturation. Variants in a protein can cause that threshold temperature to change. Protein sequence embeddings can be valuable in predicting which variants will cause the protein to become more thermostable. </p>
 
@@ -137,7 +137,7 @@
                 
                 <p>Neural networks have always had to contend with the issue of representation. Given that they consist of a pile of linear algebra[4] only numbers can be inserted into the mix, with categorical data generally being reduced to a one-hot encoding in order for the network to accept it. However, this approach generally does not yield great results when the vocabulary is very large, as the number of features quickly gets out of hand. This was the case in natural language processing. Hence, neural networks were first used in 2003 by Bengio et al. [5] to produce distributed representations of words. </p>
                 
-                <p>This concept was later expanded upon by a team of researchers at Google, who produced Word2Vec (https://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality), a fast generator of word vectors, which are real valued representations of words that describe their meaning in N-dimensional space. One can even perform algebraic operations on these representations to derive the meaning from different words. This is exemplified by the now-famous “king - man = queen” expression.</p>
+                <p>This concept was later expanded upon by a team of researchers at Google, who produced Word2Vec[6], a fast generator of word vectors, which are real valued representations of words that describe their meaning in N-dimensional space. One can even perform algebraic operations on these representations to derive the meaning from different words. This is exemplified by the now-famous “king - man = queen” expression.</p>
                 
                 <img src="img/word_embeddings.png" />
                 <div class="caption">Figure 4: Words can be projected into latent space, which encodes their meaning along a number of dimensions. Algebraic operations can even be performed on these word vectors, resulting in the ability to transform a word based on a property. </div>
@@ -151,7 +151,7 @@
                 
                 <h2 id="solution">Solution</h2>
                 
-                <p>One solution to the protein sequence embedding problem comes in the form of a paper from Bepler and Berger released in 2018 and published at the 2019 ICLR. (https://openreview.net/forum?id=SygLehCqtm). The authors produced a set of recurrent neural networks trained on generic protein prediction tasks, like secondary structure prediction, contact map prediction and transmembrane prediction. The intermediate representations of those pre-trained networks can be used to annotate your dataset and enhance your predictor’s performance.</p>
+                <p>One solution to the protein sequence embedding problem comes in the form of a paper from Bepler and Berger released in 2018 and published at the 2019 ICLR[7]. The authors produced a set of recurrent neural networks trained on generic protein prediction tasks, like secondary structure prediction, contact map prediction and transmembrane prediction. The intermediate representations of those pre-trained networks can be used to annotate your dataset and enhance your predictor’s performance.</p>
                 
                 <h3>Instructions</h3>
                 <p>This tutorial assumes some prior knowledge of Python programming and machine learning. This is not a beginner’s tutorial. There are excellent resources available online to teach you this stuff, for example on https://reddit.com/r/learnmachinelearning .</p>
@@ -487,7 +487,7 @@ print("Test correlation: ", pearsonr(truths, predictions)[0])
                         <a href="https://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality">link <i class="fa fa-link"></i></a>
                     </li>
                     <li>
-                        Learning protein sequence embeddings using information from structure. Beplet et al. 2018
+                        Learning protein sequence embeddings using information from structure. Tristan Bepler and Bonnie Berger, 2018
                         <a href="https://openreview.net/forum?id=SygLehCqtm">link <i class="fa fa-link"></i></a>
                     </li>
                 
