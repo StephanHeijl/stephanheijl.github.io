@@ -1,0 +1,189 @@
+<html>
+    <head>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.0/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <style>
+            body {
+                /*background-image: url(halicin_network.svg);*/
+                padding: 0;
+                margin: 0;
+                background-size: 600px;
+            }
+            #halicin {
+                width: 600px;
+                position: absolute;
+            }
+            
+            #halicin_network {
+                width: 600px;
+                position: absolute;
+            }
+            
+            #nodes {
+                width: 600px;
+                height: 00px;
+                position: absolute;
+            }
+            
+            #messages {
+                width: 600px;
+                height: 184px;
+                position: absolute;
+            }
+            
+            .node { 
+                background: #5791ff; 
+                position:absolute;
+                width: 20px;
+                height: 20px;
+                border: 3px solid #000000;
+                border-radius: 50%;
+            }
+            
+            .message {
+                background: url(/img/chemprop/envelope.svg);
+                background-size: contain;
+                background-repeat: no-repeat;
+                width: 32px;
+                display:block;
+                height: 30px;
+                position: absolute;
+                transform: scale(0);
+            }
+        
+        </style>
+    </head>
+    <body>
+        <object id="halicin" data="/img/chemprop/halicin.svg" type="image/svg+xml"></object>
+        <object id="halicin_network" data="/img/chemprop/halicin_network.svg" type="image/svg+xml"></object>
+        
+        <div id="nodes"></div>
+        <div id="messages">
+        </div>
+    </body>
+    
+    <script>
+        $(function() {
+            halicin = document.getElementById("halicin");        
+            halicin_network = document.getElementById("halicin_network");  
+
+            var tl = gsap.timeline({repeat: 0, repeatDelay: 1});
+
+            function create_node(x, y, n) {
+                var new_node = $("<div class='node' style='left:"+ x +"px; top: "+y+"px'></div>");
+                $("#nodes").append(new_node)
+                return new_node
+            }
+            function create_message(x, y, angle) {
+                var new_message = $("<div class='message' style='left:"+ x +"px; top: "+y+"px;'></div>");
+                $("#messages").append(new_message)
+                return new_message
+            }
+
+            coords = [
+                [64, 40],
+                [128, 60],
+                [151, 125],
+                [185, 18],
+                [221, 125],
+                [242, 58],
+                [313, 41],
+                [365, 82],
+                [356, 151],
+                [420, 182],
+                [433, 68],
+                [467, 130],
+                [538, 141]
+            ]
+            
+            function get_angle(a, b) {
+                return Math.atan2(b[1] - a[1], b[0] - a[0]) * 180 / Math.PI;
+            }
+            
+            function get_distance(a, b) {
+                var k = a[0] - b[0];
+                var l = a[1] - b[1];
+
+                return Math.sqrt( k*k + l*l );
+            }
+            
+            tl.from(halicin, { scale: 0.0, duration: 1});
+            tl.to(halicin, {opacity: 0.0, duration: 1}, 2)
+            tl.from(halicin_network, { opacity: 0, duration: 1}, "<");
+            
+            for (c in coords) {
+                node = create_node(
+                    (coords[c][0] - 11), 
+                    (coords[c][1] - 11),
+                    c
+                );
+                tl.from(node, {scale: 0.0, duration:0.2}, "-=0.1")
+            }            
+            
+            for(c in coords) {
+                tl.to($(".node")[c], {
+                    backgroundColor: "#ffd700"
+                })
+                for (c2 in coords) {
+                    if (c != c2) {
+                        d = get_distance(
+                            coords[c], coords[c2]
+                        )
+                        if( d < 100 ) {
+                            angle = get_angle(coords[c], coords[c2])
+
+                            message = create_message(
+                                coords[c][0] - 11,
+                                coords[c][1] - 11,
+                                angle,
+                            )
+
+                            tl.to(message, {
+                                x: coords[c2][0] - coords[c][0],
+                                y: coords[c2][1] - coords[c][1],
+                                duration:1.0
+                            },"-=0.5");
+                            tl.to(message, {
+                                scale: 1,
+                                rotate: angle,
+                                duration: 0.5
+                            }, "<");
+                            tl.to(message, {
+                                scale: 0,
+                                duration: 0.5
+                            }, "-=0.5");
+                            
+//                            tl.to($(".node")[c2], {
+//                                backgroundColor: "#cb00cb"
+//                            })
+                        }
+                    }
+                }  
+                tl.to($(".node")[c], {
+                    backgroundColor: "#cb00cb",
+                    //borderColor:  "#cb00cb"
+                })
+            }
+            
+            tl.to($(".node"), {
+                backgroundColor: "#5791ff",
+            })
+
+            speed = 1
+            tl.timeScale(speed)
+            dur = tl.totalDuration() * 1000 / speed
+            console.log(dur)
+            tl.play()
+            
+            setInterval(function() {
+                tl.seek(4.25)
+                tl.play()
+            }, dur)
+        });
+
+        
+
+    </script>
+    
+</html>
