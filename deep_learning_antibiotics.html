@@ -1,6 +1,14 @@
 <html>
     <head>
-        <title>StephanHeijl.com - Notes on BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding.</title>
+        <title>StephanHeijl.com - Deep Learning Antibiotics</title>
+        <meta name="description" content="A blog post detailing the recent innovation by Stokes et al where deep neural networks were used to find a novel antibiotic molecule.">
+        <meta name="keywords" content="antiobiotics,deep learning,chemprop,explained,halicin">
+        <meta name="robots" content="index, follow">
+        <meta name="language" content="EN">
+        <meta name="author" content="Stephan Heijl">
+        <meta name="creationdate" content="17/3/2020">
+        <meta name="distribution" content="global">
+        <meta name="rating" content="general">
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="gradients.css" />
         <script src="zepto.min.js"></script>
@@ -9,6 +17,30 @@
 
         <script src="https://kit.fontawesome.com/af71bba04e.js" crossorigin="anonymous"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <style>
+            table {
+                border-spacing: 0;
+            }
+            td {
+                padding: 5px;
+            }
+            thead {
+                background: silver;
+                font-weight: bold;
+                
+            }
+            tr:nth-child(even) {
+                background: #e1e1e1;
+            }
+            
+            ol > ol {
+                list-style-type: lower-roman;
+            }
+            
+            ol > ol > ol {
+                list-style-type: lower-alpha;
+            }
+        </style>
     </head>
     <body>
         <nav>
@@ -30,7 +62,7 @@
                         <div class="card gradient-paper">
                             <div class="glare"></div>
                             <div class="post-name">
-                                Notes on BERT <br>
+                                Deep Learning Antibiotics <br>
                                 <i class="fa fa-pills"></i>
                             </div>
                         </div>
@@ -52,55 +84,52 @@
       <iframe src='/chemprop_animations/message_passing_animation.html' style="border:0; height:200px; width: 600px; margin: 0 auto; display: block; margin-top: 2em;"></iframe>
 
       <ol>
-        <li>Introduction</li>
+        <li><a href="#introduction">Introduction</a></li>
 
-        <li>Graph Neural Networks
+        <li><a href="#gnn">Graph Neural Networks</a>
           
           <ol>
-            <li>Molecules as graphs</li>
+              <li><a href="#molecules-as-graphs">Molecules as graphs</a></li>
+              <li><a href="#mpnn">Message Passing Neural Networks</a></li>
+                  <ol>
+                      <li><a href="#mpnn-mpp">Message Passing Phase</a></li>
+                      <li><a href="#mpnn-readout">Readout Phase</a></li>
+                  </ol>
+              
+            </ol>
+            
+        </li>
+          
+        <li><a href="#chemprop">ChemProp</a>
+          
+          <ol>
+              <li><a href="#atombondfeatures">Atom and bond features</a></li>
+              <li><a href="#hyperopt">Hyperparameter optimization</a></li>
+          </ol>
+    
+        </li>
+        <li><a href="#stokes">Stokes et al. Methodology</a>
+          <ol>
+              <li><a href="#stokes-chemprop">Chemprop use</a></li>
+
+              <ol>
+
+                  <li><a href="#architecture">Architecture</a></li>
+
+                  <li><a href="#dataset">Dataset</a>a</li>
+
+            <li><a href="human-itl">Active Learning</a></li>
+                </ol>
+
+
+            <li><a href="#mechanism">Halicin Mechanism of action</a></li>
           </ol>
         </li>
-            
-        <li>Message Passing Neural Networks
-          
-          <ol>
-            <li>Message Passing Phase</li>
-
-            <li>Readout Phase</li>
-          </ol>
-
-          </li>
-          
-        <li>ChemProp
-          
-          <ol>
-        <li>Atom and bond features</li>
-
-        <li>Hyperparameter optimization</li>
-      </ol>
-          </li>
-    
-        <li>Stokes et al. Methodology
-      <ol>
-        <li>Chemprop use
-          
-          <ol>
-            
-            <li>Architecture</li>
-
-        <li>Dataset</li>
-
-        <li>Active Learning</li>
-            </ol></li>
-          
-
-        <li>Mechanism of action</li>
-      </ol>
-
-        <li>Conclusion</li>
+          <li><a href="#discussion">Discussion</a></li>
+          <li><a href="#conclusion">Conclusion</a></li>
       </ol>
           <img src="img/chemprop/MessagePassingConvNet.png"/>
-      <h2>Introduction</h2>
+      <h2 id="introduction">Introduction</h2>
 
       <p>The space of molecules wherein antibiotics may occur is large and becoming
       larger. Many antibiotic discovery programs choose to look inside large existing
@@ -153,16 +182,16 @@
       this model later this month (<a href=
       "https://www.google.com/url?q=https://www.aidm.mit.edu/posters1&amp;sa=D&amp;ust=1584290029589000">https://www.aidm.mit.edu/posters1</a>).</p>
 
-      <h2>Graph Neural Networks</h2>
+      <h2 id="gnn">Graph Neural Networks</h2>
 
-      <h3>Molecules as Graphs</h3>
+      <h3 id="molecules-as-graphs">Molecules as Graphs</h3>
 
       <p>Molecules are groups of atoms held together by chemical bonds. In chemistry
       molecules are often illustrated by connecting the letters representing the atoms
       with lines. Take for example, Halicin (less popularly known as:
       5-[(5-Nitro-1,3-thiazol-2-yl)sulfanyl]-1,3,4-thiadiazol-2-amine).</p>
 
-      <p><img src="/img/chemprop/halicin.png" /></p>
+      <p><img src="/img/chemprop/halicin.png" alt="Halicin structure"/></p>
 
       <p>Halicin&rsquo;s structure prominently features two rings. These rings consist of
       Sulfur (S) atoms and one or two Nitrogen (N) atoms. In addition, by convention
@@ -173,24 +202,24 @@
       contiguous, it is easy to see how they could be converted into a graph. Atoms
       become nodes and the chemical bonds between them become vertices.</p>
 
-      <p><img src="/img/chemprop/halicin_network_nodes.png" /></p>
+      <p><img src="/img/chemprop/halicin_network_nodes.png" alt="Halicin structure as a graph"/></p>
 
       <p>In a graph we can assign properties to nodes, in this case we can annotate each
       note by which atom is present at each location.</p>
 
-      <p><img src="/img/chemprop/halicin_network_nodes_color.png" /></p>
+      <p><img src="/img/chemprop/halicin_network_nodes_color.png" alt="Halicin structure as a graph with color" /></p>
 
       <p>Some atoms are connected by double (or in the case of other molecules, even
       triple bonds). The vertices can be annotated to reflect this so that the network is
       aware of this.</p>
 
-      <h3><img src="/img/chemprop/halicin_network_nodes_color_edges.png" /></h3>
+      <h3><img src="/img/chemprop/halicin_network_nodes_color_edges.png"  alt="Halicin structure with colored nodes and edges"/></h3>
 
       <p>The illustration here is still simplified, as hydrogen atoms are generally also
       omitted or combined with other atoms as groups in this visualization. Adding these
       would yield a more complex graph but equally valid graph.</p>
 
-      <h3>Message Passing Neural Networks</h3>
+      <h3 id="mpnn">Message Passing Neural Networks</h3>
 
       <p>Message Passing Neural Networks (MPNNs) take advantage of the ability of
       molecules to be represented as graphs in order to compute compute meaningful
@@ -206,14 +235,21 @@
       of the molecule over set amount steps. The latter combines these properties into a
       fixed size vector that represents the molecule as a whole.</p>
 
-      <h4>Message Passing Phase</h4>
+      <h4 id="mpnn-mpp">Message Passing Phase</h4>
 
       <p>During the Message Passing Phase, each node and vertex in the graph has a hidden
       state associated with it. This hidden state includes properties like the type of
       atom or bond the node or vertex represents. These hidden states are updated during
       t timesteps. For every timestep the following operations occur:</p>
+        
+      <figure>
+        <iframe src='/chemprop_animations/message_passing_animation.html' style="border:0; height:200px; width: 600px; margin: 0 auto; display: block; margin-top: 2em;"></iframe>
+        <figcaption>
+            <b>Figure 1:</b> Animation showing the message passing phase on a projection of Halicin.
+        </figcaption>
+      </figure>
 
-      <iframe src='/chemprop_animations/message_passing_animation.html' style="border:0; height:200px; width: 600px; margin: 0 auto; display: block; margin-top: 2em;"></iframe>
+      
 
       <ol>
         <li>First, for every node the message function is computed. This function takes
@@ -246,7 +282,7 @@
       This allows this phase to be invariant to the order in which the nodes are
       processed and robust in the face of parallel execution.</p>
 
-      <h4>Readout Phase</h4>
+      <h4 id="mpnn-readout">Readout Phase</h4>
 
       <p>The readout phase of the MPNN takes place after the full message passing phase
       completes. The hidden states of all the nodes are passed into a readout function.
@@ -258,7 +294,7 @@
       trained end-to-end on the property of a chemical. The representation can also be
       followed by a feed forward neural network.</p>
 
-      <h3>ChemProp</h3>
+      <h3 id="chemprop">ChemProp</h3>
 
       <p>Chemprop is a Message Passing Neural Network, it builds upon the structure of
       the MPNN from 2017, but introduces several changes that increase its
@@ -280,7 +316,7 @@
         generalization.</li>
       </ul>
 
-      <h4>Atom and bond features</h4>
+      <h4 id="atombondfeatures">Atom and bond features</h4>
 
       <p>The following features are used to annotate each atom:</p>
 
@@ -326,7 +362,7 @@
             </td>
 
             <td>
-              <p>Integer,, 6d</p>
+              <p>Integer, 6d</p>
             </td>
           </tr>
 
@@ -371,7 +407,7 @@
             </td>
 
             <td>
-              <p>Integer,, 5d</p>
+              <p>Integer, 5d</p>
             </td>
           </tr>
 
@@ -425,32 +461,22 @@
       represented as one-hot encoded integers. This may aid the network in interpretation
       of these discrete numbers. Only the atomic mass is represented as a float. It is
       divided by 100 which means that a large part of the periodic table will have a
-      value between 0 and 1, including a majority of the organic atoms (Figure X). In
+      value between 0 and 1, including a majority of the organic atoms (Figure 2). In
       addition, 200 molecular features are computed in silico by RDKit and added to this
       feature list. Features are normalized to mean 0 and standard deviation 1 before
       being fed into the network.</p>
 
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <h2><img src="img/chemprop/periodic_table.png" /></h2>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <p>Figure X: Periodic table of the elements with atomic masses below 1
-              labelled in blue. Original image by C. Miller, CC BY-SA.</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <figure>
+        <img src="img/chemprop/periodic_table.png" /><br/>
+        <figcaption>
+            <b>Figure 2:</b> Periodic table of the elements with atomic masses below 1 labelled in blue. Original image by C. Miller, CC BY-SA.
+        </figcaption>
+      </figure>
 
       <p>The following features are added to each bond/vertex:</p>
 
       <table>
-        <tbody>
+        <thead>
           <tr>
             <td>
               <p>Feature</p>
@@ -464,7 +490,8 @@
               <p>Dimensionality</p>
             </td>
           </tr>
-
+        </thead>
+        <tbody>
           <tr>
             <td>
               <p>Type of bond</p>
@@ -523,7 +550,7 @@
         </tbody>
       </table>
 
-      <h4>Hyperparameter optimization</h4>
+      <h4 id="hyperopt">Hyperparameter optimization</h4>
 
       <p>Out of the box ChemProp supports hyperparameter optimization. The authors use
       Bayesian Optimization to tune a number of aspects of the model. The following
@@ -534,7 +561,17 @@
         number of steps means that atom and bond states are propagated over a longer
         distance. Information from one side of the molecule takes time to traverse to the
         other side.</li>
-<iframe src='/chemprop_animations/message_propagation_animation.html' style="border:0; height:310px; width: 700px; margin: 0 auto; display: block;"></iframe>
+          
+          
+    <figure>
+        <iframe src='/chemprop_animations/message_propagation_animation.html' style="border:0; height:310px; width: 700px; margin: 0 auto; display: block;"></iframe>
+        <figcaption>
+            <b>Figure 3:</b> Animation of the effects of model depth. 9 steps are required to propagate information from one side of the atom graph to the other side.
+        </figcaption>
+      </figure>
+          
+          
+
         <li>Hidden size of the bonds vectors.</li>
 
         <li>Number of feed forward layers in the feed forward network that follows the
@@ -543,9 +580,9 @@
         <li>Dropout in the MPNN.</li>
       </ul>
 
-      <h2>Stokes et al Methodology</h2>
+      <h2 id="stokes">Stokes et al Methodology</h2>
 
-      <h3>ChemProp Use</h3>
+      <h3 id="stokes-chemprop">ChemProp Use</h3>
 
       <p>Stokes et al recognize the need for in silico methods of determining molecule
       properties. Being able to predict how a molecule is going to behave under specific
@@ -554,7 +591,7 @@
       the growth of E. coli, a model organism used in the study of bacteria. The neural
       network is initially trained in 2335 molecules with annotations.</p>
 
-      <h4>Architecture</h4>
+      <h4 id="architecture">Architecture</h4>
 
       <p>ChemProp is basically used as is, with the following hyperparameters:</p>
 
@@ -570,7 +607,7 @@
 
       <p>These hyperparameters were found using the built-in hyperopt system.</p>
 
-      <h4>Dataset</h4>
+      <h4 id="dataset">Dataset</h4>
 
       <p>Stokes et al initially measured the growth inhibition effects of 2335 different
       molecules. The molecules were selected from different resources to ensure
@@ -596,7 +633,7 @@
 
       <p>An ensemble of 20 models was used to improve performance.</p>
 
-      <h3>Active Learning/Human in the loop learning</h3>
+      <h3 id="human-itl">Active Learning/Human in the loop learning</h3>
 
       <p>ChemProp was trained on 2335 molecules in the first phase of this project. In
       the second phase the authors predicted the growth inhibiting properties of 6111
@@ -611,7 +648,7 @@
       Strictly speaking it is not a form of active learning, as the algorithm is not able
       to actively query a human itself.</p>
 
-      <h3>Halicin mechanism of action</h3>
+      <h3 id="mechanism">Halicin mechanism of action</h3>
 
       <p>The authors note that because halicin retained its growth inhibiting activity
       even in E. coli and M. tuberculosis colonies that were mutated to be antibiotic
@@ -637,7 +674,7 @@
       less effective. This points to halicins mechanism of action involving the ability
       of bacteria to maintain a difference in pH.</p>
 
-      <p><img src="img/chemprop/halicin_ph.png" /></p>
+      <img src="img/chemprop/halicin_ph.png" alt="The higher the pH, the more halicin is required to inhibit growth. // pH 5.4: 0.5ug/ml required for >90% growth inhibition. // pH 6.4: 1ug/ml required for >90% growth inhibition. // pH 7.4: 2ug/ml required for >90% growth inhibition. // pH 8.4: 20ug/ml required for >90% growth inhibition. // pH 9.4: 100+ ug/ml required for >90% growth inhibition."/>
 
       <p>A final test was performed where bacteria were exposed to a fluorescent molecule
       (DISC) that becomes less fluorescent in higher concentrations. When the electric
@@ -645,9 +682,9 @@
       in higher fluorescence. When the difference in pH is disturbed, the uptake of DISC
       is increased which results in lower fluorescence.</p>
 
-      <p><img src="img/chemprop/halicin_fluorescence.png" /></p>
+      <img src="img/chemprop/halicin_fluorescence.png" alt="Higher halicin concentrations are correlated with lower DISC fluoresence, indidating disturbance of pH gradient. // PMB (disturbs electric potential) -> increased fluorescence. // DMSO (neutral substance) -> no change in fluorescence. // Halicin 2 ug/ml -> 1400 RFU decrease in fluorescence. // Halicin 4 ug/ml -> 1800 RFU decrease in fluorescence. // Halicin 8 ug/ml -> 4400 RFU decrease in fluorescence." />
 
-      <h2>Discussion</h2>
+      <h2 id="discussion">Discussion</h2>
 
       <p>In this section I humbly submit some thoughts on the ChemProp network. Note that
       I have not worked on or with the network, this is just &ldquo;thinking aloud&rdquo;
@@ -681,9 +718,14 @@
       attention to parts or regions of the input. Given the benefits it has had for NLP,
       introducing attention to ChemProp may also yield increased performance.</p>
 
-      <p><img src="img/chemprop/halicin_attention_network.png" /></p>
+      <figure>
+        <img src="img/chemprop/halicin_attention_network.png" />
+        <figcaption>
+            <b>Figure 4:</b> Illustration of a proposed attention network base on  ChemProp.
+        </figcaption>
+        </figure>
 
-      <h2>Conclusion</h2>
+      <h2 id="conclusion">Conclusion</h2>
 
       <p>Jonathan Stokes, Keving Yang, Kyle Swanson and the other authors of the &ldquo;A
       Deep Learning Approach to Antibiotic Discovery&rdquo; and &ldquo;Analyzing Learned
@@ -701,23 +743,26 @@
 
       <h2>References:</h2>
 
-      <p>Stokes et al. <a href=
-      "https://www.google.com/url?q=https://www.cell.com/cell/fulltext/S0092-8674(20)30102-1&amp;sa=D&amp;ust=1584290029620000">
-      https://www.cell.com/cell/fulltext/S0092-8674(20)30102-1</a></p>
-
-      <p>Gomez Bombarelli et al. <a href=
-      "https://www.google.com/url?q=https://arxiv.org/abs/1610.02415&amp;sa=D&amp;ust=1584290029620000">
-      https://arxiv.org/abs/1610.02415</a></p>
-
-      <p>Yang et al. <a href=
-      "https://www.google.com/url?q=https://www.ncbi.nlm.nih.gov/pubmed/31361484?dopt%3DAbstract&amp;sa=D&amp;ust=1584290029620000">
-      https://www.ncbi.nlm.nih.gov/pubmed/31361484</a></p>
-
-      <p>Implementation of MPNN: <a href=
-      "https://www.google.com/url?q=https://github.com/deepchem/deepchem/blob/master/deepchem/models/tensorgraph/graph_layers.py%23L384&amp;sa=D&amp;ust=1584290029621000">
+      <p>Stokes et al., Cell, February 20, 2020 <br/><a href=
+      "https://www.cell.com/cell/fulltext/S0092-8674(20)30102-1&amp;sa=D&amp;ust=1584290029620000">
+      https://www.cell.com/cell/fulltext/S0092-8674(20)30102-1</a>
+        </p>
+      <p>
+      Gomez Bombarelli et al.<br/> ACS Cent. Sci. 2018, 4, 2, 268-276 <br/>
+Publication Date:January 12, 2018<br/>
+<a href=
+      "https://doi.org/10.1021/acscentsci.7b00572">
+    https://doi.org/10.1021/acscentsci.7b00572</a></p>
+      <p>
+        Yang et al. <br/>
+          J. Chem. Inf. Model. 2019, 59, 8, 3370-3388<br/>
+Publication Date:July 30, 2019<br/>
+<a href="https://doi.org/10.1021/acs.jcim.9b00237">https://doi.org/10.1021/acs.jcim.9b00237</a>
+          </p>        
+    <p>
+      Implementation of MPNN:<br/> <a href=
+      "https://github.com/deepchem/deepchem/blob/master/deepchem/models/tensorgraph/graph_layers.py%23L384&amp;sa=D&amp;ust=1584290029621000">
       https://github.com/deepchem/deepchem/blob/master/deepchem/models/tensorgraph/graph_layers.py#L384</a></p>
-
-      <p><img src="images/image2.png" /></p>
 
       <p>&nbsp;</p>
     </div>

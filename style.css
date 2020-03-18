@@ -297,9 +297,6 @@ a {
         height: 190px !important;
     }
     
-    .post-name i {
-        line-height: 100px !important;
-    }
 }
 
 img.certificate {
@@ -376,11 +373,17 @@ img.certificate.certificate-small {
 .post-name i {
     font-size: 200%;
     margin: 0.3em;
+    display: block;
+    bottom: 0.5em;
+    position: absolute;
+    left: 50%;
+    margin-left: -20pt;
+    
 }
 
 .header-card .post-name i {
     font-size: 300%;
-    line-height: 200px;
+    margin-left: -30pt;
 }
 
 
