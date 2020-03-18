@@ -25,12 +25,12 @@
                 padding: 5px;
             }
             thead {
-                background: silver;
+                background: rgb(214, 230, 255);
                 font-weight: bold;
                 
             }
             tr:nth-child(even) {
-                background: #e1e1e1;
+                background: rgb(227, 236, 250);;
             }
             
             ol > ol {
@@ -70,7 +70,7 @@
                 </div>
                 <div class="header-annotation">
                     <h1>Deep Learning Antibiotics</h1>
-                     <p>On february 20th 2020, Stokes et al published “A Deep Learning Approach to Antibiotic Discovery” in Cell. In this paper, the authors lay out their effort in using a deep learning model to predict antibiotic activity based on molecular structure. This model predicts halicin as an antibacterial molecule. The authors perform extensive testing to show that halicin functions as a broad-spectrum bactericidal antibiotic. This post will dive into the technical aspects behind this discovery, with specific attention to the deep learning model used.
+                     <p>On february 20th 2020, Stokes et al published “A Deep Learning Approach to Antibiotic Discovery” in Cell. In this paper, the authors lay out their effort in using a deep learning model to predict antibiotic activity based on molecular structure. This model predicts halicin as an antibacterial molecule. The authors perform extensive testing to show that halicin functions as a broad-spectrum bactericidal antibiotic. This post will dive into some of the technical aspects behind this discovery, with specific attention to the deep learning model used.
                     </p>
                     <ul class="header-tags">
                         <li>Education</li>
@@ -100,7 +100,7 @@
             
         </li>
           
-        <li><a href="#chemprop">ChemProp</a>
+        <li><a href="#chemprop">chemprop</a>
           
           <ol>
               <li><a href="#atombondfeatures">Atom and bond features</a></li>
@@ -110,7 +110,7 @@
         </li>
         <li><a href="#stokes">Stokes et al. Methodology</a>
           <ol>
-              <li><a href="#stokes-chemprop">Chemprop use</a></li>
+              <li><a href="#stokes-chemprop">chemprop use</a></li>
 
               <ol>
 
@@ -172,7 +172,7 @@
 
       <p>The neural network used is a message passing network called chemprop. It is
       publically available on GitHub: <a href=
-      "https://www.google.com/url?q=https://github.com/chemprop/chemprop&amp;sa=D&amp;ust=1584290029589000">
+      "https://github.com/chemprop/chemprop&amp;sa=D&amp;ust=1584290029589000">
       https://github.com/chemprop/chemprop</a> and development has been ongoing since at
       least June 12th 2018. Shared second authors Kevin Yang and Kyle Swanson (order as
       shown in the author listing for the paper) published this network in JCIM in 2019
@@ -180,7 +180,7 @@
       been working with this neural network for other purposes, like property prediction
       of 2-molecule mixtures by Allison Tam at MIT. We can expect more results based on
       this model later this month (<a href=
-      "https://www.google.com/url?q=https://www.aidm.mit.edu/posters1&amp;sa=D&amp;ust=1584290029589000">https://www.aidm.mit.edu/posters1</a>).</p>
+      "https://www.aidm.mit.edu/posters1&amp;sa=D&amp;ust=1584290029589000">https://www.aidm.mit.edu/posters1</a>).</p>
 
       <h2 id="gnn">Graph Neural Networks</h2>
 
@@ -294,25 +294,25 @@
       trained end-to-end on the property of a chemical. The representation can also be
       followed by a feed forward neural network.</p>
 
-      <h3 id="chemprop">ChemProp</h3>
+      <h3 id="chemprop">chemprop</h3>
 
-      <p>Chemprop is a Message Passing Neural Network, it builds upon the structure of
+      <p>chemprop is a Message Passing Neural Network, it builds upon the structure of
       the MPNN from 2017, but introduces several changes that increase its
       performance.</p>
 
       <ul>
-        <li>ChemProp calculates the messages over each vector instead of over each
+        <li>chemprop calculates the messages over each vector instead of over each
         node.</li>
 
         <li>In addition to annotations of type for each atom and chemical bond,
-        ChemProp&rsquo;s best models include molecule level annotations from RDKit. These
+        chemprop&rsquo;s best models include molecule level annotations from RDKit. These
         features help describe the molecule by imparting expert knowledge onto the
         graph.</li>
 
-        <li>ChemProp uses summation as an update function instead of a Gated Recurrent
+        <li>chemprop uses summation as an update function instead of a Gated Recurrent
         Unit.</li>
 
-        <li>ChemProp adds Dropout after each message passing step, presumably to improve
+        <li>chemprop adds Dropout after each message passing step, presumably to improve
         generalization.</li>
       </ul>
 
@@ -552,7 +552,7 @@
 
       <h4 id="hyperopt">Hyperparameter optimization</h4>
 
-      <p>Out of the box ChemProp supports hyperparameter optimization. The authors use
+      <p>Out of the box chemprop supports hyperparameter optimization. The authors use
       Bayesian Optimization to tune a number of aspects of the model. The following
       hyperparameters are tunable by default.</p>
 
@@ -582,18 +582,18 @@
 
       <h2 id="stokes">Stokes et al Methodology</h2>
 
-      <h3 id="stokes-chemprop">ChemProp Use</h3>
+      <h3 id="stokes-chemprop">chemprop Use</h3>
 
       <p>Stokes et al recognize the need for in silico methods of determining molecule
       properties. Being able to predict how a molecule is going to behave under specific
       circumstances without having to run an experiment speeds up research and lowers
-      research costs. The authors train ChemProp to predict the effect of molecules on
+      research costs. The authors train chemprop to predict the effect of molecules on
       the growth of E. coli, a model organism used in the study of bacteria. The neural
       network is initially trained in 2335 molecules with annotations.</p>
 
       <h4 id="architecture">Architecture</h4>
 
-      <p>ChemProp is basically used as is, with the following hyperparameters:</p>
+      <p>chemprop is basically used as is, with the following hyperparameters:</p>
 
       <ul>
         <li>Message passing steps: 6</li>
@@ -626,7 +626,7 @@
         network.</li>
       </ol>
 
-      <p>Yang et al note in the ChemProp paper that their model underperforms on severely
+      <p>Yang et al note in the chemprop paper that their model underperforms on severely
       imbalanced datasets (a dataset with 0.2% hits is given as an example). Either the
       authors found a way to mitigate this, or this particular dataset was balanced
       enough so as not to cause stability problems.</p>
@@ -635,7 +635,7 @@
 
       <h3 id="human-itl">Active Learning/Human in the loop learning</h3>
 
-      <p>ChemProp was trained on 2335 molecules in the first phase of this project. In
+      <p>chemprop was trained on 2335 molecules in the first phase of this project. In
       the second phase the authors predicted the growth inhibiting properties of 6111
       molecules and used the results to build a new dataset. These molecules were derived
       from the Drug Repurposing Hub, which contains drug molecules at various stages of
@@ -686,7 +686,7 @@
 
       <h2 id="discussion">Discussion</h2>
 
-      <p>In this section I humbly submit some thoughts on the ChemProp network. Note that
+      <p>In this section I humbly submit some thoughts on the chemprop network. Note that
       I have not worked on or with the network, this is just &ldquo;thinking aloud&rdquo;
       as it were. I invite anyone to comment on these and correct me where I&rsquo;m
       wrong.</p>
@@ -697,14 +697,14 @@
       class weighting or bootstrapping can help in rebalancing the dataset, which could
       lead to better performance.</p>
 
-      <h3>Pretraining Chemprop</h3>
+      <h3>Pretraining chemprop</h3>
 
       <p>In Natural Language Processing we find that increases in the state of the art
       performance have come from pre-training large neural nets in self-supervised
       settings. That is: models are given part of an input and expected to fill in the
       blanks. This requires no labeling and allows the model to get the structure of the
       training language imparted upon it before being exposed to a task-specific dataset.
-      ChemProp might benefit from a pre-training step, where it could predict parts of a
+      chemprop might benefit from a pre-training step, where it could predict parts of a
       molecule that are masked out from the graph. The number of molecules for which a
       structure is available is vast, requiring no labeling. This might aid the model in
       creating an internal representation of the existing molecule space, which could
@@ -716,12 +716,12 @@
       since the introduction of Transformers to the Natural Language Processing field.
       Simply put, attention mechanisms allow a neural network to selectively pay
       attention to parts or regions of the input. Given the benefits it has had for NLP,
-      introducing attention to ChemProp may also yield increased performance.</p>
+      introducing attention to chemprop may also yield increased performance.</p>
 
       <figure>
         <img src="img/chemprop/halicin_attention_network.png" />
         <figcaption>
-            <b>Figure 4:</b> Illustration of a proposed attention network base on  ChemProp.
+            <b>Figure 4:</b> Illustration of a proposed attention network base on  chemprop.
         </figcaption>
         </figure>
 
