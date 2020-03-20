@@ -1,0 +1,160 @@
+<html>
+    <head>
+        <title>StephanHeijl.com - Using TLS and SNI with RustLS in Actix </title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="gradients.css" />
+        
+        <meta name="description" content="Using TLS and SNI with RustLS in Actix">
+        <meta name="keywords" content="tls. ssl, sni, server name identification, rustls, actix, actix-web, rust">
+        <meta name="robots" content="index, follow">
+        <meta name="language" content="EN">
+        <meta name="author" content="Stephan Heijl">
+        <meta name="creationdate" content="20/3/2020">
+        <meta name="distribution" content="global">
+        <meta name="rating" content="general">
+        
+        <script src="zepto.min.js"></script>
+        <script src="cards.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Dosis|Open+Sans" rel="stylesheet">
+
+        <script src="https://kit.fontawesome.com/af71bba04e.js" crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+    </head>
+    <body>
+        <nav>
+            <div class="internal-wrapper">
+                <a class="logo" href="https://stephanheijl.com">StephanHeijl.com</a>
+                <ul>
+                    <li><a href="projects.html#projects">Projects</a></li>
+                    <!--<li><a href="projects.html#publications">Publications</a></li>-->
+                    <li><a href="projects.html#posts">Blog posts</a></li>
+                    <li><a href="projects.html#education">Education</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>            
+            </div>                     
+        </nav>
+        <header>
+            <div class="internal-wrapper">
+                <div class="header-card">
+                    <div class="card-wrapper">
+                        <div class="card gradient-paper">
+                            <div class="glare"></div>
+                            <div class="post-name">
+                                TLS and SNI in Actix<br>
+                                <i class="fa fa-lock"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-annotation">
+                    <h1>Using TLS and SNI with RustLS in Actix</h1>
+                    <p>This tutorial will show you how to use TLS with Actix-Web 2. It will also show you how to present different certificates based on SNI (server hostname identification)
+                    </p>
+                    <ul class="header-tags">
+                        <li>Education</li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        
+        <div class="details">
+            <div class="internal-wrapper">
+
+                    <p>In this tutorial I assume that you have already obtained a certificate from LetsEncrypt. If not, please start with that process first. Once you have obtained the certificate, we will need two files that are included int `certbot`s output: fullchain.pem and privkey.pem. Place these into your certificates folder inside the Rust directory.</p>
+
+                    <p>In order to use RustLS, you will need to build a ServerConfig object. </p>
+
+                    <p>In your imports add:</p>
+
+                    <pre><code class="hljs rust">use rustls::{NoClientAuth, ServerConfig};
+use rustls::internal::pemfile::{certs, pkcs8_private_keys};
+                    </code></pre>
+
+                    <p>And before starting your Actix web HttpServer with Actix App, add:</p>
+
+                    <pre><code class="hljs rust">// Create configuration
+let mut config = ServerConfig::new(NoClientAuth::new());
+
+// Load key files
+let cert_file = &mut BufReader::new(File::open("certificates/fullchain.pem").unwrap());
+let key_file = &mut BufReader::new(File::open("certificates/privkey.pem").unwrap());
+
+// Parse the certificate and set it in the configuration
+let cert_chain = certs(cert_file).unwrap();
+let mut keys = pkcs8_private_keys(key_file).unwrap();
+config.set_single_cert(cert_chain, keys.remove(0)).unwrap();\
+                    </code></pre>
+
+                    <p>This configuration can be used to add your certificate to your HTTPServer. Normally your would bind your HTTPServer like this:</p>
+<pre><code class="hljs rust">HttpServer::new(move || {
+    App::new()
+        ...
+}).bind(bind_addr)?.run()
+</code></pre>
+                    <p>But in this case we will bind the RustLS config</p>
+
+<pre><code class="hljs rust">HttpServer::new(move || {
+    App::new()
+        ...
+}).bind_rustls(bind_addr, config)?.run()
+</code></pre>
+                         
+
+                    <p>With these changes, build and launch your app. If you set your hostname to 127.0.0.1 in /etc/hosts, you should encounter a working website! If not, you should get a warning that the certificate is not correct for your current host.</p>
+
+                    <h2>Using SNI with RustLS</h2>
+                    <p>You may want to present different certificates based on the hostname the client uses to approach your server. Or you may want to reject service if the hostname does not match the one you are expecting. In that case, a slightly more involved method is required. This method assumes that you have one or more certificates with cert_file.pem and privkey.pem files stored inside subdirectories of your certificates dir.</p>
+
+                    <p>First off, you need a resolver. Add the following to your imports section:</p>
+
+                <pre><code class="hljs rust">use rustls::ResolvesServerCertUsingSNI;</code></pre>
+
+                    <p>And instantiate it after making your ServerConfig:</p>
+
+                <pre><code class="hljs rust">let mut resolver = ResolvesServerCertUsingSNI::new();</code></pre>
+
+                    <p>Adding this function above your main will allow you to easily add certificates to your resolver. It takes three arguments: The name of the subdirectory where your certificate is stored, the hostname you wish to target and finally, a mutably borrowed instance of your resolver.</p>
+
+<pre><code class="hljs rust">fn add_certificate_to_resolver(
+        name: &str, hostname: &str, resolver: &mut ResolvesServerCertUsingSNI
+    ) {
+        let cert_file = &mut BufReader::new(File::open(
+                    format!("certificates/{}/fullchain.pem", name)
+        ).unwrap());
+        let key_file = &mut BufReader::new(File::open(
+                format!("certificates/{}/privkey.pem", name)
+        ).unwrap());
+        let cert_chain = certs(cert_file).unwrap();
+        let mut keys = pkcs8_private_keys(key_file).unwrap();
+        let signing_key = rustls::sign::RSASigningKey::new(&keys.remove(0)).unwrap();
+        let signing_key_boxed: Arc<Box<dyn rustls::sign::SigningKey>> = Arc::new(Box::new(signing_key));
+
+        resolver.add(hostname, rustls::sign::CertifiedKey::new(
+            cert_chain, signing_key_boxed
+        )).expect("Invalid certificate for corona.ai");
+    }</code></pre>
+
+
+                    <p>You can call this function directly after instantiating your resolver, like so:</p>
+
+                <pre><code class="hljs rust">add_certificate_to_resolver("helixlabs", "api.helixlabs.ai", &mut resolver);</code></pre>
+
+                    <p>This call would look in your ‘certiicates/helixlabs’ directory to find the certificate that is presented to the client if contacts your Actix app over the ‘api.helixlabs.ai’ hostname.</p>
+
+                    <p>Finally, before starting your server, you need to assign the resolver to your configuration instance.</p>
+
+                <pre><code class="hljs rust">config.cert_resolver = Arc::new(resolver);</code></pre>
+
+                    <p>Make sure to add `use std::sync::{Arc};` in your import section if you do not have Arc imported already.</p>
+
+                    <p>If you launch your app and added all the code correctly, you can visit your webapp on localhost. This will likely fail  with a TLS error mentioning that a valid certificate was presented, but access was denied. This is expected. Try adding the hostname you intend to use to your /etc/hosts file and visiting your server with that name. Make sure not to forget the port number!</p>
+
+                
+            </div>        
+        </div>       
+    </body>
+</html>
