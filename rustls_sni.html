@@ -52,10 +52,12 @@
                 </div>
                 <div class="header-annotation">
                     <h1>Using TLS and SNI with RustLS in Actix</h1>
-                    <p>This tutorial will show you how to use TLS with Actix-Web 2. It will also show you how to present different certificates based on SNI (server hostname identification)
+                    <p>This tutorial will show you how to use TLS with <a href="https://actix.rs/">Actix-Web 2</a>. It will also show you how to present different certificates based on SNI (<a href="https://en.wikipedia.org/wiki/Server_Name_Indication">server name identification</a>)
                     </p>
                     <ul class="header-tags">
-                        <li>Education</li>
+                        <li>Rust</li>
+                        <li>Tutorial</li>
+                        <li>Web</li>
                     </ul>
                 </div>
             </div>
@@ -64,9 +66,9 @@
         <div class="details">
             <div class="internal-wrapper">
 
-                    <p>In this tutorial I assume that you have already obtained a certificate from LetsEncrypt. If not, please start with that process first. Once you have obtained the certificate, we will need two files that are included int `certbot`s output: fullchain.pem and privkey.pem. Place these into your certificates folder inside the Rust directory.</p>
+                    <p>In this tutorial I assume that you have already obtained a certificate from <a href="https://letsencrypt.org/">LetsEncrypt</a>. If not, please start with that process first. Once you have obtained the certificate, we will need two files that are included int <code>certbot</code>s output: <code>fullchain.pem</code> and <code>privkey.pem</code>. Place these into your certificates folder inside the Rust directory.</p>
 
-                    <p>In order to use RustLS, you will need to build a ServerConfig object. </p>
+                    <p>In order to use <a href="https://github.com/ctz/rustls">RustLS</a>, you will need to build a ServerConfig object. </p>
 
                     <p>In your imports add:</p>
 
@@ -159,7 +161,7 @@ use rustls::sign::{SigningKey, RSASigningKey};
                     <p>Make sure to add <code>use std::sync::{Arc};</code> in your import section if you do not have Arc imported already.</p>
 
                     <p>If you launch your app and added all the code correctly, you can visit your webapp on localhost. This will likely fail  with a TLS error mentioning that a valid certificate was presented, but access was denied. This is expected. Try adding the hostname you intend to use to your /etc/hosts file and visiting your server with that name.</p>
-                <p></p>
+                <p><br/></p>
                 
             </div>        
         </div>     
