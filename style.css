@@ -297,6 +297,11 @@ a {
         height: 190px !important;
     }
     
+    .header-card .post-name i {
+        font-size: 150% !important;
+        margin-left: -15pt !important;
+    }
+    
 }
 
 img.certificate {

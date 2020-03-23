@@ -5,7 +5,7 @@
         <meta name="keywords" content="antiobiotics,deep learning,chemprop,explained,halicin">
         <meta name="robots" content="index, follow">
         <meta name="language" content="EN">
-        <meta name="author" content="Stephan Heijl">
+        <meta name="author" stycontent="Stephan Heijl">
         <meta name="creationdate" content="17/3/2020">
         <meta name="distribution" content="global">
         <meta name="rating" content="general">
@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <div class="header-annotation">
-                    <h1>Deep Learning Antibiotics</h1>
+                    <h1>Notes on Deep Learning Antibiotics</h1>
                      <p>On february 20th 2020, Stokes et al published “A Deep Learning Approach to Antibiotic Discovery” in Cell. In this paper, the authors lay out their effort in using a deep learning model to predict antibiotic activity based on molecular structure. This model predicts halicin as an antibacterial molecule. The authors perform extensive testing to show that halicin functions as a broad-spectrum bactericidal antibiotic. This post will dive into some of the technical aspects behind this discovery, with specific attention to the deep learning model used.
                     </p>
                     <ul class="header-tags">
@@ -81,7 +81,7 @@
         
        <div class="details">
     <div class="internal-wrapper">
-      <iframe src='/chemprop_animations/message_passing_animation.html' style="border:0; height:200px; width: 600px; margin: 0 auto; display: block; margin-top: 2em;"></iframe>
+      <p><iframe src='/chemprop_animations/message_passing_animation.html' style="border:0; height:200px; width: 600px; margin: 0 auto; display: block; margin-top: 2em;"></iframe></p>
 
       <ol>
         <li><a href="#introduction">Introduction</a></li>
@@ -319,7 +319,7 @@
       <h4 id="atombondfeatures">Atom and bond features</h4>
 
       <p>The following features are used to annotate each atom:</p>
-
+    <div style="overflow-x:auto;">
       <table>
         <thead>
           <tr>
@@ -456,6 +456,7 @@
           </tr>
         </tbody>
       </table>
+        </div>
 
       <p>Of note is that many features which could be given as a (normalized) number are
       represented as one-hot encoded integers. This may aid the network in interpretation
@@ -474,7 +475,7 @@
       </figure>
 
       <p>The following features are added to each bond/vertex:</p>
-
+        <div style="overflow-x:auto;">
       <table>
         <thead>
           <tr>
@@ -549,6 +550,7 @@
           </tr>
         </tbody>
       </table>
+        </div>
 
       <h4 id="hyperopt">Hyperparameter optimization</h4>
 
@@ -561,16 +563,7 @@
         number of steps means that atom and bond states are propagated over a longer
         distance. Information from one side of the molecule takes time to traverse to the
         other side.</li>
-          
-          
-    <figure>
-        <iframe src='/chemprop_animations/message_propagation_animation.html' style="border:0; height:310px; width: 700px; margin: 0 auto; display: block;"></iframe>
-        <figcaption>
-            <b>Figure 3:</b> Animation of the effects of model depth. 9 steps are required to propagate information from one side of the atom graph to the other side.
-        </figcaption>
-      </figure>
-          
-          
+      
 
         <li>Hidden size of the bonds vectors.</li>
 
@@ -579,6 +572,13 @@
 
         <li>Dropout in the MPNN.</li>
       </ul>
+        
+        <figure>
+        <iframe src='/chemprop_animations/message_propagation_animation.html' style="border:0; height:310px; width: 700px; margin: 0 auto; display: block;"></iframe>
+        <figcaption>
+            <b>Figure 3:</b> Animation of the effects of model depth. 9 steps are required to propagate information from one side of the atom graph to the other side.
+        </figcaption>
+      </figure>
 
       <h2 id="stokes">Stokes et al Methodology</h2>
 
@@ -717,6 +717,8 @@
       Simply put, attention mechanisms allow a neural network to selectively pay
       attention to parts or regions of the input. Given the benefits it has had for NLP,
       introducing attention to chemprop may also yield increased performance.</p>
+        
+        <p style="font-style: italic; background: rgb(214, 230, 255); border-radius: 4px; padding: 1em;">Note: I contacted <a href="https://twitter.com/KevinKaichuang">Kevin Yang</a>, one of the main authors of both the chemprop and halicin papers to validate this blog post. He mentions that attention mechanisms were one of the methods they tried to improve performance, as both he and Kyle Swanson originally come from an NLP background. Unfortunately this did not yield significant results.  </p>
 
       <figure>
         <img src="img/chemprop/halicin_attention_network.png" />
@@ -767,6 +769,22 @@ Publication Date:July 30, 2019<br/>
       <p>&nbsp;</p>
     </div>
   </div> 
+        
+        <script>
+            function scaleBasedOnWindow(elm, scale=1, fit=false){
+                if (window.innerWidth < 700) {
+                    elm.style.transform = "scale(" + (window.innerWidth / 750) + ")";
+                    elm.style.transformOrigin = "0 0";
+                }
+                
+            }
+            
+            var iframes = document.querySelectorAll("iframe");
+            for (i in iframes) {
+                scaleBasedOnWindow(iframes[i], scale=0.5, fit=true)
+            }
+            
+        </script>
         <script async defer src="https://sa.stephanheijl.com/app.js"></script>
 <noscript><img src="https://sa.stephanheijl.com/image.gif" alt=""></noscript>
     </body>
