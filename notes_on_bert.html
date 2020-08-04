@@ -49,9 +49,76 @@
         
         <div class="details">
             <div class="internal-wrapper">
+                <h2>Technical notes</h2>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead style="font-weight:bold; background: #e1e1e1;">
+                            <tr>
+                                <td>Setting</td>
+                                <td>Pretraining</td>
+                                <td>Finetuning</td>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td colspan=3 style="font-style:italic; background: #f1f1f1">Adam settings</td>                    
+                        </tr>
+                        <tr>
+                            <td>Learning rate</td>
+                            <td>1e-4</td>
+                            <td>Best of [5e-5, 4e-5, 3e-5, 2e-5]</td>
+                        </tr>
+                        <tr>
+                            <td>Learning rate warmup</td>
+                            <td>10000 steps</td>
+                            <td>10000 steps</td>
+                        </tr>
+                        <tr>
+                            <td>L2 weight decay</td>
+                            <td>0.01</td>
+                            <td>0.01</td>
+                        </tr>
+                        <tr>
+                            <td>β1</td>
+                            <td>0.9</td>
+                            <td>0.9</td>
+                        </tr>
+                        <tr>
+                            <td>β2</td>
+                            <td>0.99</td>
+                            <td>0.99</td>
+                        </tr>
+                        <tr>
+                            <td colspan=3 style="font-style:italic; background: #f1f1f1;">Architecture settings</td>                    
+                        </tr>
+                        <tr>
+                            <td>Dropout</td>
+                            <td>0.1</td>
+                            <td>0.1</td>
+                        </tr>
+                        <tr>
+                            <td>Activation</td>
+                            <td>GELU</td>
+                            <td>GELU</td>
+                        </tr>
+                        <tr>
+                            <td colspan=3 style="font-style:italic; background: #f1f1f1">Training settings</td>                    
+                        </tr>
+                        <tr>
+                            <td>Batch size</td>
+                            <td>256</td>
+                            <td>Best of [16, 32]</td>
+                        </tr>
+                        <tr>
+                            <td>Epochs</td>
+                            <td>40</td>
+                            <td>Best of [2, 3, 4]</td>
+                        </tr>
+
+                    </table>
+
+                <h2>Summary</h2>
+                <table>
                 <p>
                     On the whole, this paper was easy to read, with very little mathematics included, save the occasional vector or softmax definition. The focus was primarily (and rightfully) on the empirical results, not so much the technical decisions; these were offloaded onto the Transformers paper (Attention is all you need), which I intend to read next.
-
                 </p>
                 
                 <p>As an overview, the BERT paper introduces a neural network based on the Transformer architecture which should serve as a base of myriad natural language processing tasks. The model is pretrained on a very large corpus (3.3 billion words) and the user need only make small refinements to the architecture to adjust to a specific NLP task.
