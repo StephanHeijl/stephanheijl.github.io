@@ -68,6 +68,11 @@
     background-size: 100% 100%;
 }
 
+.gradient-delftx {
+    background: radial-gradient(ellipse at bottom right, rgb(186, 232, 255) 20%, #fff 100%);
+    background-size: 100% 100%;
+}
+
 .gradient-paper {
     background: radial-gradient(
         ellipse at top left, 
