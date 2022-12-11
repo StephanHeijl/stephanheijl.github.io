@@ -81,3 +81,11 @@
     background-size: 100% 100%;
 }
 .gradient-paper * { color: white; }
+
+.gradient-bot-tooltip {
+    background: radial-gradient(
+        ellipse at top left, 
+        #140019, #1c0e2e, #1b1c38, #1c3249, #133742, #0d3a38, #0e4436, #205f38, #3c6927, #697b14, #748c07
+    ); 
+    background-size: 100% 100%;
+}

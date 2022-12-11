@@ -391,6 +391,44 @@ img.certificate.certificate-small {
     margin-left: -30pt;
 }
 
+.bot-tooltip-link {
+    text-decoration: underline dashed;
+    vertical-align: super;
+    font-size: 50%;
+
+}
+
+.bot-tooltip {
+    background-color: rgb(0, 49, 89);
+    color: white;
+    padding: 1em;
+    font-size: 80%;
+    border-radius: 5px;
+    display: none;
+}
+
+.bot-tooltip .exit {
+    float: right;
+    background: white;
+    color: black;
+    border-radius: 50%;
+    width: 1.35em;
+    height: 1.35em;
+    text-align: center;
+    font-size: 125%;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.bot-tooltip > em {
+    font-size: 75%;
+    opacity: 0.8;
+}
+
+.bot-tooltip .prompt {
+
+}
+
 
 .skill-bar-inner-fill{
   animation: animationFrames ease-in-out 3s;
