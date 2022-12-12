@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>StephanHeijl.com - A new Protein Design Era with Protein Diffusion</title>
@@ -243,7 +243,7 @@
                     of these models resulted in an outpouring of creativity, with over 5 million images recorded by
                     Stable
                     Diffusion search engine <a href="https://lexica.art">Lexica.art</a> as of September.</em> </p>
-            <p>The general principle of iteratively updating some input to get better results was exactly new in the
+            <p>The general principle of iteratively updating some input to get better results wasn't exactly new in the
                 machine learning structural biology space. AlphaFold implements this method as well in order to make
                 fine grained updates to the output structure after first finding a good approximation using the multiple
                 sequence alignment. It is even hypothesized that this recycling function is a good approximation of the
@@ -436,19 +436,21 @@
 
         </div>
     </div>
-    <script async defer src="zepto.min.js"></script>
-    <script async defer src="cards.js"></script>
-    <script async defer src="https://sa.stephanheijl.com/app.js"></script>
+    <script defer src="zepto.min.js"></script>
+    <script defer src="cards.js"></script>
+    <script defer src="https://sa.stephanheijl.com/app.js"></script>
     <noscript><img src="https://sa.stephanheijl.com/image.gif" alt=""></noscript>
     <script>
-        $("a.bot-tooltip-link").click(function (l) {
-            $("#" + l.target.dataset.target).toggle();
-        });
-        $(".bot-tooltip .exit").click(function (l) {
-            $(l.target).parent().hide();
+        window.addEventListener('load', function () {
+            $("a.bot-tooltip-link").click(function (l) {
+                $("#" + l.target.dataset.target).toggle();
+            });
+            $(".bot-tooltip .exit").click(function (l) {
+                $(l.target).parent().hide();
+            });
         });
     </script>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script defer src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 
 </html>
