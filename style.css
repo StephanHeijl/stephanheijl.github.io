@@ -428,7 +428,7 @@ img.certificate.certificate-small {
     cursor: pointer;
 }
 
-.bot-tooltip > em {
+.bot-tooltip > i {
     font-size: 75%;
     opacity: 0.8;
 }
