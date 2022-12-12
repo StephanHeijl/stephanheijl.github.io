@@ -177,6 +177,14 @@ blockquote {
     padding: 0px 20px;
 }
 
+.details p em {
+    background: rgb(214, 230, 255);
+    font-style: normal;
+    border-radius: 5px;
+    padding: 2px;
+    
+}
+
 .internal-wrapper > h1 {
     padding: 20px 0px 20px 20;
     text-transform: uppercase;

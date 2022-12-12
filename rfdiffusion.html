@@ -15,6 +15,11 @@
     <meta name="distribution" content="global">
     <meta name="rating" content="general">
 
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="A new Protein Design Era with Protein Diffusion">
+    <meta name="twitter:description" content="The past month has been an amazing time for AI news, but we should be careful not to miss out on a pre-publication that could be one of the most disruptive technologies in structural biology in the coming decade.">
+    <meta name="twitter:image" content="img/rfdiffusion/card_text.png">
+
     <script src="zepto.min.js"></script>
     <script src="cards.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Dosis|Open+Sans" rel="stylesheet">
@@ -24,6 +29,17 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+        .card {
+            background: url(img/rfdiffusion/card.jpg);
+            background-size: cover;
+            background-position: 20%;
+        }
+        .card * {
+            color: white;
+            text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 3px;
+        }
+    </style>
 </head>
 
 <body>
@@ -42,10 +58,10 @@
         <div class="internal-wrapper">
             <div class="header-card">
                 <div class="card-wrapper">
-                    <div class="card gradient-paper">
+                    <div class="card">
                         <div class="glare"></div>
                         <div class="post-name">
-                            A new Protein Design Era with Protein Diffusion<br>
+                            Protein Diffusion
                             <i class="fa fa-dna"></i>
                         </div>
                     </div>
@@ -54,7 +70,7 @@
             <div class="header-annotation">
                 <h1>A new Protein Design Era with Protein Diffusion</h1>
                 <p>I believe we stand at the precipice of a new era of protein design using machine learning.
-                    RFDiffusion is leading the way.
+                    RF<i>Diffusion</i> is leading the way.
                 </p>
                 <ul class="header-tags">
                     <li>Proteins</li>
@@ -69,18 +85,25 @@
         <div class="internal-wrapper">
             <p>The past month has been an amazing time for AI news. I post this amid a flurry of ChatGPT screenshots and
                 at the leading edge of a ton of blog posts on CASP15 results in the coming weeks. But we should be
-                careful not to miss out on a pre-publication that I believe could be one of the most disruptive
-                technologies in the structural biology field in the coming decade.</p>
+                careful not to miss out on a pre-publication that I believe could be <em>one of the most disruptive
+                    technologies in the structural biology field in the coming decade.</em></p>
             <p>Baker Lab<a href="javascript:void(0);" class="bot-tooltip-link" data-target="baker-lab"
                     title="Click to find out more!">🤖💬</a>, the
                 originator of the Rosetta algorithm for ab initio protein structure prediction and a slew
                 of other protein structure related tools like Rosetta@Home and FoldIt released a prepublication at the
                 start of this month. There, they introduce <a
-                    href="https://www.bakerlab.org/2022/11/30/diffusion-model-for-protein-design/">RFDiffusion</a>, a
+                    href="https://www.bakerlab.org/2022/11/30/diffusion-model-for-protein-design/">RF<i>Diffusion</i></a>,
+                a
                 novel application of Diffusion algorithms to
-                the protein design problem. Using RFDiffusion, the authors (Joseph Watson, David Juergens, Nate Bennett,
-                Brian Trippe, and Jason Yim et al.) achieve multiple orders of magnitude advances in de novo protein
-                design. With these advances, I believe we are at the cusp of a new era of protein design.</p>
+                the protein design problem. Using RF<i>Diffusion</i>, the authors (<a
+                    href="https://twitter.com/_JosephWatson">Joseph Watson</a>, <a
+                    href="https://twitter.com/DaveJuergens">David
+                    Juergens</a>, <a href="https://twitter.com/naterbennett0">Nate Bennett</a>,
+                <a href="https://twitter.com/brianltrippe">Brian Trippe</a>, and Jason Yim et al.) achieve multiple
+                orders of magnitude advances in de
+                novo protein
+                design. With these advances, I believe we are at the cusp of a new era of protein design.
+            </p>
 
             <div class="bot-tooltip gradient-bot-tooltip" id="baker-lab">
                 <div class="exit">×</div>
@@ -132,8 +155,10 @@
                     data-target="alphafold" title="Click to find out more!">🤖💬</a>. This deep learning based system
                 achieved a ~20% improvement over
                 the next competitor. In 2020, AlphaFold2 swept the board with a 265% score improvement over Baker Labs’
-                submission. Following this, Science’s Robert F. Service called protein structure prediction “Solved by
-                AI”.</p>
+                submission. <em>Following this, Science’s Robert F. Service <a
+                    href="https://www.science.org/content/article/game-has-changed-ai-triumphs-solving-protein-structures">called</a>
+                protein structure prediction “Solved by
+                AI”</em>.</p>
             <p>Nevertheless, the frontiers are always shifting. With one problem solved, a multitude of new challenges
                 rear their head, previously not even considered possible to tackle. Baker Lab is back with a vengeance,
                 applying their own in-house tech to revolutionize protein design in several novel ways.</p>
@@ -197,25 +222,27 @@
                 While the initial release of DALL-E used a VQGAN architecture, the second iteration was equipped with a
                 diffusion based generator. Beta access was granted to select individuals in July, but alternative
                 implementations of the technology began sprouting up even before that. Midjourney became accessible on
-                July 12th and Stable Diffusion, a fully open source implementation was released in August. The release
+                July 12th and Stable Diffusion, a fully open source implementation was released in August. <em>The release
                 of these models resulted in an outpouring of creativity, with over 5 million images recorded by Stable
-                Diffusion search engine Lexica.art as of september. </p>
+                Diffusion search engine <a href="https://lexica.art">Lexica.art</a> as of September.</em> </p>
             <p>The general principle of iteratively updating some input to get better results was exactly new in the
                 machine learning structural biology space. AlphaFold implements this method as well in order to make
                 fine grained updates to the output structure after first finding a good approximation using the multiple
                 sequence alignment. It is even hypothesized that this recycling function is a good approximation of the
                 energy function actually used for folding. This process was cited as an inspiration by the authors of
-                the RFDiffusion paper, and improving on it would lead to the amazing innovation that is the topic of
+                the RF<i>Diffusion</i> paper, and improving on it would lead to the amazing innovation that is the topic
+                of
                 this blog post.</p>
         </div>
         <img src="img/rfdiffusion/hero_3.jpg" style="width:100%">
         <div class="internal-wrapper">
-            <h2 id="rfdiffusion">RFDiffusion</h2>
+            <h2 id="rfdiffusion">RF<i>Diffusion</i></h2>
             <p>On December 1st 2022, Joseph Watson from Baker Lab used DALL-E as a hook to introduce their newest
-                (pre-)pre-publication: “Broadly applicable and accurate protein design by integrating structure
-                prediction networks and diffusion generative models”. Using diffusion models with protein generation
-                models allowed them to design proteins quickly and accurately. They named their technology
-                RosettaFoldDiffusion (RFdiffusion). </p>
+                (pre-)pre-publication: <a
+                href="https://www.bakerlab.org/2022/11/30/diffusion-model-for-protein-design/">“Broadly applicable and accurate protein design by integrating structure
+                prediction networks and diffusion generative models”</a>. Using diffusion models with protein generation
+                models allowed them to <em>design proteins quickly and accurately</em>. They named their technology
+                RosettaFoldDiffusion (RF<i>Diffusion</i>). </p>
             <center>
                 <blockquote class="twitter-tweet">
                     <p lang="en" dir="ltr">DALL-E’s amazing images are popping up all over the web. That software uses
@@ -251,7 +278,8 @@
             </center>
 
             <h3 id="implementation">Implementation</h3>
-            <p>In the RFDiffusion paper, the authors make use of an SE(3) equivariant diffusion model, referred to as
+            <p>In the RF<i>Diffusion</i> paper, the authors make use of an SE(3) equivariant diffusion model, referred
+                to as
                 DDPMs, to generate the backbone. Recent work has adapted these DDPMs for protein monomer design, with
                 limited success. To address this, RosettaFold was used as a good candidate to improve on this, as it had
                 already shown that it could design parts of protein backbones by doing inpainting of protein structures,
@@ -261,40 +289,44 @@
                 and the residue orientation being perturbed. The Ca positions are translated randomly and residues are
                 randomly rotated in a stepwise manner, and the model is trained to minimize mean squared error loss
                 between predictions and the true structure. </p>
-            <p>During inference, a random set of residues are generated and fed in RFDiffusion to denoise. The input for
+            <p>During inference, a random set of residues are generated and fed in RF<i>Diffusion</i> to denoise. The
+                input for
                 the next step is calculated by moving into the direction of the denoised step and adding some noise, to
                 make sure that the denoising process mimics the initial noising process used for training. This is done
                 iteratively until a protein-like structure is formed. When the backbone is designed, ProteinMPNN is used
                 to predict a sequence that will translate into that backbone. The generated structure is then checked
                 against the output of AlphaFold2 for the designed sequence. If the generated structure is close to the
-                AF2 result, it is deemed a successful design.</p>
+                AF2 result, it is deemed a successful design <i>in silico</i>.</p>
         </div>
         <img src="img/rfdiffusion/implementation.jpg" style="width:100%">
         <div class="internal-wrapper">
             <h3 id="capabilities">Capabilities</h3>
-            <p>RFDiffusion has turned out to be a powerful tool capable of designing protein structures with a variety
+            <p>RF<i>Diffusion</i> has turned out to be a powerful tool capable of designing protein structures with a
+                variety
                 of applications. It has the ability to generate monomers unconditionally, with little similarity to
                 existing known protein structures. Generating a 100 residue structure takes approximately 2.5 minutes on
-                an A4000 GPU (with time requirements likely scaling quadratically with sequence length). In vitro
+                an A4000 GPU (with time requirements likely scaling quadratically with sequence length). <i>In vitro</i>
                 characterization of 11 TIM barrel designs indicated that nine designs aligned with expected protein
                 parameters. </p>
             <p>It can also design higher order oligomers, which can serve as vaccine platforms, delivery vehicles and
-                catalytic agents. The expected oligomerization pattern was found in ~16% of generated structures in
-                vitro. Additionally, it can design scaffolds for protein structural motifs used for binding and
+                catalytic agents. The expected oligomerization pattern was found in ~16% of generated structures <i>in
+                    vitro</i>. Additionally, it can design scaffolds for protein structural motifs used for binding and
                 catalytic functions, with the constraint that the motif must retain its exact geometry for optimal
                 performance. Out of 25 benchmark problems, RFDiffussion solves 23, 11 more than competitor
                 “Hallucination”. No tuning was required. It can also design scaffolds for enzyme active sites, while it
                 cannot model small molecules, this can be done implicitly. </p>
             <p>Lastly, it can be used to design de novo protein-binding proteins. Characterized as a grand challenge in
-                protein design, RFDiffusion achieved an 18% success rate in designing protein binders. Experimental
+                protein design, RF<i>Diffusion</i> achieved an 18% success rate in designing protein binders.
+                Experimental
                 success rate compared to Rosetta-based methods ranges from 5x to 214x improvement depending on the
-                target protein. RFDiffusion was finetuned on protein complexes in order to achieve this.</p>
+                target protein. RF<i>Diffusion</i> was finetuned on protein complexes in order to achieve this.</p>
             <h2 id="implications">Implications</h2>
             <p>What is possible with this kind of model combined with its reported effectiveness is nearly endless. If
                 these results hold up in practice, this could easily be the best application of diffusion models for
                 mankind. It could share the crown for biggest advance in structural biology of this decade together with
                 AlphaFold. </p>
-            <p>Currently RFDiffusion is a potent method for the creation of protein-binders. Applications for this
+            <p>Currently RF<i>Diffusion</i> is a potent method for the creation of protein-binders. Applications for
+                this
                 specifically are amazing in themselves, as it will allow for the rapid design and iteration of a myriad
                 of drugs that target proteins specifically. Rapidly designing antibodies comes to mind immediately,
                 provided that the technique proves robust for this notoriously hard to model protein type. Even without
@@ -310,15 +342,17 @@
                 small molecules as opposed to just other proteins. Getting proteins that bind well to specific ligands
                 is still an open problem. Generally, this process starts in nature, by trying to find a naturally
                 occurring protein with a desired functionality that might bind to a desired substrate. While tools like
-                Bio-Prodict’s 3DM can aid in this process by searching literature and grouping protein families, this
+                Bio-Prodict’s <a href="https://3dm.bio-prodict.nl">3DM</a> can aid in this process by searching
+                literature and grouping protein families, this
                 can still be an arduous process. Next, the protein needs to be optimized. Nature’s best attempt for
                 binding and/or converting a ligand of interest is likely not the best for industrial applications.
                 Activity, specificity and stability are generally tuned for several rounds of guided evolution or
                 (machine learning guided) rational design with the aim of getting several orders of magnitude increase
                 in fit. These processes can take months and may not even yield a suitable design. If the high success
-                rates reported for RFDiffusion hold up in this case, it would skip several steps in this process,
+                rates reported for RF<i>Diffusion</i> hold up in this case, it would skip several steps in this process,
                 lowering costs for designing custom proteins significantly.</p>
-            <p>I project that RFDiffusion will first be enhanced by replacing the Rosetta protein folding module with a
+            <p>I project that RF<i>Diffusion</i> will first be enhanced by replacing the Rosetta protein folding module
+                with a
                 more capable model. This could be AlphaFold2 or one of the high performers in CASP15 (Baker
                 unfortunately did not rank in the top 10 this year). The paper notes explicitly that his is possible for
                 an array of different models. Sergey Ovchinikov already accomplished a hacked version of this on
@@ -344,7 +378,8 @@
                 produce structures more like a specific family of proteins would be a boon for enzyme design. Imagine
                 specifying a target family of enzymes, a target ligand and letting the model rapidly design a protein
                 that satisfies those constraints with high accuracy. Any number of pharmaceutical companies would be
-                chomping at the bit to get access to this technology. RFDiffusion already is able to scaffold enzyme
+                chomping at the bit to get access to this technology. RF<i>Diffusion</i> already is able to scaffold
+                enzyme
                 active sites without modeling small molecules explicitly. The authors demonstrate this capability in an
                 experiment where they scaffold a retroaldolase active site.</p>
             <p>Finally and most futuristically, this process could be used to design complex biological machinery.
@@ -360,7 +395,8 @@
             <p>Baker Labs has made significant strides in the space of protein design, with a great application of
                 modern ML techniques combined with convincing experimental lab work. I trust that the very capable team
                 is already working on further developing this technique further, improving accuracy and speed of this
-                solution. In line with their previous projects, I expect that the source code for RFDiffusion will soon
+                solution. In line with their previous projects, I expect that the source code for RF<i>Diffusion</i>
+                will soon
                 be published on GitHub under the BSD license. This will allow even more experimentation and innovative
                 work to take place here. Given the pace at which advances take place in the Machine Learning/Protein
                 space, I have no doubt that we are on the cusp of a decade of rapid innovation. This will lead to giant
