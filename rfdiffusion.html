@@ -17,14 +17,16 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="A new Protein Design Era with Protein Diffusion">
-    <meta name="twitter:description" content="The past month has been an amazing time for AI news, but we should be careful not to miss out on a pre-publication that could be one of the most disruptive technologies in structural biology in the coming decade.">
+    <meta name="twitter:description"
+        content="The past month has been an amazing time for AI news, but we should be careful not to miss out on a pre-publication that could be one of the most disruptive technologies in structural biology in the coming decade.">
     <meta name="twitter:image" content="https://stephanheijl.com/img/rfdiffusion/card_text.png">
 
 
-    <meta property='og:title' content='A new Protein Design Era with Protein Diffusion'/>
-    <meta property='og:image' content='https://stephanheijl.com/img/rfdiffusion/card_text_li.png'/>
-    <meta property='og:description' content='The past month has been an amazing time for AI news, but we should be careful not to miss out on a pre-publication that could be one of the most disruptive technologies in structural biology in the coming decade.'/>
-    <meta property='og:url' content='https://stephanheijl.com/rfdiffusion.html'/>
+    <meta property='og:title' content='A new Protein Design Era with Protein Diffusion' />
+    <meta property='og:image' content='https://stephanheijl.com/img/rfdiffusion/card_text_li.png' />
+    <meta property='og:description'
+        content='The past month has been an amazing time for AI news, but we should be careful not to miss out on a pre-publication that could be one of the most disruptive technologies in structural biology in the coming decade.' />
+    <meta property='og:url' content='https://stephanheijl.com/rfdiffusion.html' />
 
 
     <script src="zepto.min.js"></script>
@@ -42,6 +44,7 @@
             background-size: cover;
             background-position: 20%;
         }
+
         .card * {
             color: white;
             text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 3px;
@@ -106,10 +109,11 @@
                     href="https://twitter.com/_JosephWatson">Joseph Watson</a>, <a
                     href="https://twitter.com/DaveJuergens">David
                     Juergens</a>, <a href="https://twitter.com/naterbennett0">Nate Bennett</a>,
-                <a href="https://twitter.com/brianltrippe">Brian Trippe</a>, and Jason Yim et al.) achieve multiple
-                orders of magnitude advances in de
-                novo protein
-                design. With these advances, I believe we are at the cusp of a new era of protein design.
+                <a href="https://twitter.com/brianltrippe">Brian Trippe</a>, and Jason Yim et al.) <em>achieve multiple
+                    orders of magnitude advances in de
+                    novo protein
+                    design. </em> With these advances, I believe we are at the cusp of a new era of protein design where
+                applying proteins, to complex pharmaceutical and industrial problems becomes the go-to solution.
             </p>
 
             <div class="bot-tooltip gradient-bot-tooltip" id="baker-lab">
@@ -163,9 +167,9 @@
                 achieved a ~20% improvement over
                 the next competitor. In 2020, AlphaFold2 swept the board with a 265% score improvement over Baker Labs’
                 submission. <em>Following this, Science’s Robert F. Service <a
-                    href="https://www.science.org/content/article/game-has-changed-ai-triumphs-solving-protein-structures">called</a>
-                protein structure prediction “Solved by
-                AI”</em>.</p>
+                        href="https://www.science.org/content/article/game-has-changed-ai-triumphs-solving-protein-structures">called</a>
+                    protein structure prediction “Solved by
+                    AI”</em>.</p>
             <p>Nevertheless, the frontiers are always shifting. With one problem solved, a multitude of new challenges
                 rear their head, previously not even considered possible to tackle. Baker Lab is back with a vengeance,
                 applying their own in-house tech to revolutionize protein design in several novel ways.</p>
@@ -229,9 +233,11 @@
                 While the initial release of DALL-E used a VQGAN architecture, the second iteration was equipped with a
                 diffusion based generator. Beta access was granted to select individuals in July, but alternative
                 implementations of the technology began sprouting up even before that. Midjourney became accessible on
-                July 12th and Stable Diffusion, a fully open source implementation was released in August. <em>The release
-                of these models resulted in an outpouring of creativity, with over 5 million images recorded by Stable
-                Diffusion search engine <a href="https://lexica.art">Lexica.art</a> as of September.</em> </p>
+                July 12th and Stable Diffusion, a fully open source implementation was released in August. <em>The
+                    release
+                    of these models resulted in an outpouring of creativity, with over 5 million images recorded by
+                    Stable
+                    Diffusion search engine <a href="https://lexica.art">Lexica.art</a> as of September.</em> </p>
             <p>The general principle of iteratively updating some input to get better results was exactly new in the
                 machine learning structural biology space. AlphaFold implements this method as well in order to make
                 fine grained updates to the output structure after first finding a good approximation using the multiple
@@ -246,8 +252,10 @@
             <h2 id="rfdiffusion">RF<i>Diffusion</i></h2>
             <p>On December 1st 2022, Joseph Watson from Baker Lab used DALL-E as a hook to introduce their newest
                 (pre-)pre-publication: <a
-                href="https://www.bakerlab.org/2022/11/30/diffusion-model-for-protein-design/">“Broadly applicable and accurate protein design by integrating structure
-                prediction networks and diffusion generative models”</a>. Using diffusion models with protein generation
+                    href="https://www.bakerlab.org/2022/11/30/diffusion-model-for-protein-design/">“Broadly applicable
+                    and accurate protein design by integrating structure
+                    prediction networks and diffusion generative models”</a>. Using diffusion models with protein
+                generation
                 models allowed them to <em>design proteins quickly and accurately</em>. They named their technology
                 RosettaFoldDiffusion (RF<i>Diffusion</i>). </p>
             <center>
