@@ -46,6 +46,13 @@
             color: white;
             text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 3px;
         }
+
+        blockquote {
+            border-radius: 5px;
+            border: 1px solid silver;
+            padding-bottom: 15px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px;
+        }
     </style>
 </head>
 
@@ -448,9 +455,14 @@
             $(".bot-tooltip .exit").click(function (l) {
                 $(l.target).parent().hide();
             });
+            if (screen && screen.width > 615) {
+                var s = document.createElement("script");
+                s.type = "text/javascript";
+                s.src = "https://platform.twitter.com/widgets.js";
+                $("body").append(s);
+            }
         }); 
     </script>
-    <!--<script defer src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>-->
 </body>
 
 </html>
