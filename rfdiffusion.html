@@ -40,7 +40,7 @@
     <script>hljs.initHighlightingOnLoad();</script>
     <style>
         .card {
-            background: url(img/rfdiffusion/card.jpg);
+            background: url(img/rfdiffusion/card_small.jpg);
             background-size: cover;
             background-position: 20%;
         }
@@ -149,7 +149,15 @@
             </div>
             <br />
         </div>
-        <img src="img/rfdiffusion/hero.jpg" style="width:100%">
+        <picture style="width:100%">
+            <source 
+               media="(max-width: 650px)"
+               srcset="img/rfdiffusion/hero_mobile.jpg" style="width:100%">
+            <source 
+               media="(min-width: 651px)"
+               srcset="img/rfdiffusion/hero.jpg" style="width:100%">
+               <img src="img/rfdiffusion/hero.jpg" style="width:100%">
+         </picture>
         <div class="internal-wrapper">
             <h2 id="protein-structure-prediction">Protein structure prediction</h2>
             <p>Protein structure prediction was, for a long time, a holy grail of structural biology. Solving how a
@@ -194,7 +202,15 @@
             </div>
             <br />
         </div>
-        <img src="img/rfdiffusion/hero_2.jpg" style="width:100%">
+        <picture style="width:100%">
+            <source 
+               media="(max-width: 650px)"
+               srcset="img/rfdiffusion/hero_2_mobile.jpg" style="width:100%">
+            <source 
+               media="(min-width: 651px)"
+               srcset="img/rfdiffusion/hero_2.jpg" style="width:100%">
+               <img src="img/rfdiffusion/hero_2.jpg" style="width:100%">
+         </picture>
         <div class="internal-wrapper">
             <h2 id="diffusion">Diffusion</h2>
             <p>Diffusion models are a relatively new type of model that allow for the generation of complex outputs.
@@ -247,7 +263,15 @@
                 of
                 this blog post.</p>
         </div>
-        <img src="img/rfdiffusion/hero_3.jpg" style="width:100%">
+        <picture style="width:100%">
+            <source 
+               media="(max-width: 650px)"
+               srcset="img/rfdiffusion/hero_3_mobile.jpg" style="width:100%">
+            <source 
+               media="(min-width: 651px)"
+               srcset="img/rfdiffusion/hero_3.jpg" style="width:100%">
+               <img src="img/rfdiffusion/hero_3.jpg" style="width:100%">
+         </picture>
         <div class="internal-wrapper">
             <h2 id="rfdiffusion">RF<i>Diffusion</i></h2>
             <p>On December 1st 2022, Joseph Watson from Baker Lab used DALL-E as a hook to introduce their newest
@@ -313,7 +337,15 @@
                 against the output of AlphaFold2 for the designed sequence. If the generated structure is close to the
                 AF2 result, it is deemed a successful design <i>in silico</i>.</p>
         </div>
-        <img src="img/rfdiffusion/implementation.jpg" style="width:100%">
+        <picture style="width:100%">
+            <source 
+               media="(max-width: 650px)"
+               srcset="img/rfdiffusion/implementation_mobile.jpg" style="width:100%">
+            <source 
+               media="(min-width: 651px)"
+               srcset="img/rfdiffusion/implementation.jpg" style="width:100%">
+               <img src="img/rfdiffusion/implementation.jpg" style="width:100%">
+         </picture>
         <div class="internal-wrapper">
             <h3 id="capabilities">Capabilities</h3>
             <p>RF<i>Diffusion</i> has turned out to be a powerful tool capable of designing protein structures with a
@@ -404,7 +436,15 @@
                 biological process design. Just enter a resource and target molecule, let the servers run for a bit and
                 test the resulting pathway to find your required complex molecule being made in the lab! </p>
         </div>
-        <img src="img/rfdiffusion/hero_4.jpg" style="width:100%">
+        <picture style="width:100%">
+            <source 
+               media="(max-width: 650px)"
+               srcset="img/rfdiffusion/hero_4_mobile.jpg" style="width:100%">
+            <source 
+               media="(min-width: 651px)"
+               srcset="img/rfdiffusion/hero_4.jpg" style="width:100%">
+               <img src="img/rfdiffusion/hero_4.jpg" style="width:100%">
+         </picture>
         <div class="internal-wrapper">
             <h2 id="conclusion">Conclusion</h2>
             <p>Baker Labs has made significant strides in the space of protein design, with a great application of
