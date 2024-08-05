@@ -27,7 +27,7 @@
 }
 
 .gradient-bioprodict-pro {
-    radial-gradient( ellipse at top left,#173d6f 0%,#4f94ff 100% );
+    background: radial-gradient( ellipse at top left, #173d6f 0%, #4f94ff 100%);
     background-size: 200% 100%;
 }
 
