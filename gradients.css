@@ -18,7 +18,7 @@
 }
 
 .gradient-mads {
-    background: radial-gradient(ellipse at bottom left, black 10%, rgb(255, 94, 118) 100%);
+    background: radial-gradient(ellipse at bottom left, white 10%, rgb(255, 94, 118) 100%);
     background-size: 200% 100%;
 }
 
