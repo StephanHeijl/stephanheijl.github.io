@@ -17,6 +17,11 @@
     background-size: 200% 100%;
 }
 
+.gradient-mads {
+    background: radial-gradient(ellipse at bottom left, black 10%, rgb(255, 94, 118) 100%);
+    background-size: 200% 100%;
+}
+
 .gradient-bioprodict {
     background: radial-gradient(
         ellipse at bottom left, 
