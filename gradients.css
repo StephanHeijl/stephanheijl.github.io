@@ -22,6 +22,17 @@
     background-size: 200% 100%;
 }
 
+.gradient-mads * {
+    color: white;
+    text-shadow: rgba(0, 0, 0, 0.3) 0 1px 1px;
+
+}
+
+.gradient-han * {
+    color: white;
+    text-shadow: rgba(0, 0, 0, 0.3) 0 1px 1px;
+}
+
 .gradient-bioprodict {
     background: radial-gradient(
         ellipse at bottom left, 
