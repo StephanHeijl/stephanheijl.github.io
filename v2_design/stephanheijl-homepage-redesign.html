@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stephan Heijl — AI Leadership & Data Science</title>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #fdfcfa;
+            --bg-secondary: #f5f3ef;
+            --bg-dark: #1a1816;
+            --text-primary: #1a1816;
+            --text-secondary: #6b635a;
+            --text-light: #9a928a;
+            --accent-warm: #2563eb;
+            --accent-gold: #d4a853;
+            --accent-ember: #1d4ed8;
+            --border-subtle: rgba(26, 24, 22, 0.08);
+            --network-node: rgba(37, 99, 235, 0.6);
+            --network-line: rgba(37, 99, 235, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Neural Network Canvas */
+        #networkCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            touch-action: none;
+        }
+
+        /* Allow clicks through canvas to content below */
+        .hero, .approach, .expertise, .cta-section, footer, nav {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            mix-blend-mode: multiply;
+        }
+
+        .logo {
+            font-family: 'Newsreader', serif;
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-warm);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-left {
+            padding: 12rem 4rem 6rem 8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-right {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .role-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent-warm);
+            margin-bottom: 2rem;
+        }
+
+        .role-tag::before {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: var(--accent-warm);
+        }
+
+        h1 {
+            font-family: 'Newsreader', serif;
+            font-size: clamp(3rem, 5.5vw, 4.5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
+        }
+
+        h1 .emphasis {
+            display: block;
+            font-style: italic;
+            color: var(--accent-warm);
+        }
+
+        .hero-intro {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 480px;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .hero-intro strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Value Props */
+        .value-props {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .value-prop {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .value-prop::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 3px;
+            height: calc(100% - 0.5rem);
+            background: linear-gradient(to bottom, var(--accent-warm), transparent);
+        }
+
+        .value-prop-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .value-prop-text {
+            font-family: 'Newsreader', serif;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        /* CTA */
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--bg-dark);
+            color: var(--bg-primary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-warm);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(201, 117, 44, 0.25);
+        }
+
+        .btn-secondary {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            color: var(--accent-warm);
+        }
+
+        /* Profile Visual */
+        .profile-visual {
+            position: relative;
+            width: 420px;
+            height: 520px;
+        }
+
+        .profile-frame {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            right: -40px;
+            bottom: -40px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .profile-image-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.1);
+            transition: filter 0.5s ease;
+        }
+
+        .profile-visual:hover .profile-image {
+            filter: grayscale(0%) contrast(1);
+        }
+
+        .profile-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(201, 117, 44, 0.1) 0%, transparent 60%);
+            mix-blend-mode: multiply;
+        }
+
+        /* Floating Card */
+        .floating-card {
+            position: absolute;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        .floating-card.bottom-left {
+            bottom: 60px;
+            left: -60px;
+        }
+
+        .floating-card-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .floating-card-value {
+            font-family: 'Newsreader', serif;
+            font-size: 1.5rem;
+            color: var(--accent-warm);
+        }
+
+        /* Approach Section */
+        .approach {
+            padding: 10rem 8rem;
+            position: relative;
+            z-index: 1;
+            background: var(--bg-secondary);
+        }
+
+        .approach-header {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 6rem;
+            margin-bottom: 6rem;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-warm);
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-family: 'Newsreader', serif;
+            font-size: clamp(2rem, 3.5vw, 2.75rem);
+            font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .approach-text {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            padding-top: 3rem;
+        }
+
+        /* Approach Cards */
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background: var(--border-subtle);
+        }
+
+        .approach-card {
+            background: var(--bg-primary);
+            padding: 3rem;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .approach-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent-warm);
+            transition: width 0.4s ease;
+        }
+
+        .approach-card:hover::before {
+            width: 100%;
+        }
+
+        .approach-card:hover {
+            background: var(--bg-secondary);
+        }
+
+        .approach-number {
+            font-family: 'Newsreader', serif;
+            font-size: 3rem;
+            font-style: italic;
+            color: var(--accent-gold);
+            opacity: 0.4;
+            margin-bottom: 1.5rem;
+            line-height: 1;
+        }
+
+        .approach-card h3 {
+            font-family: 'Newsreader', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .approach-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Expertise Section */
+        .expertise {
+            padding: 10rem 8rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .expertise-item {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 2rem;
+            padding: 2.5rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .expertise-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .expertise-item h3 {
+            font-family: 'Newsreader', serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .expertise-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem;
+            background: var(--bg-dark);
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .cta-section .section-label {
+            color: var(--accent-gold);
+        }
+
+        .cta-section h2 {
+            color: var(--bg-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            color: rgba(253, 252, 250, 0.6);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .btn-light {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--bg-primary);
+            color: var(--bg-dark);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-light:hover {
+            background: var(--accent-gold);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer-text {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-warm);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-left {
+                padding: 10rem 4rem 4rem;
+            }
+
+            .hero-right {
+                display: none;
+            }
+
+            .approach, .expertise {
+                padding: 6rem 4rem;
+            }
+
+            .approach-header {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .approach-text {
+                padding-top: 0;
+            }
+
+            .approach-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            footer {
+                padding: 2rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .value-props {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cta-section {
+                padding: 4rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Neural Network Background -->
+    <canvas id="networkCanvas"></canvas>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">Stephan Heijl</a>
+        <ul class="nav-links">
+            <li><a href="projects.html">Work</a></li>
+            <li><a href="projects.html#posts">Writing</a></li>
+            <li><a href="projects.html#education">Background</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-left">
+            <div class="role-tag">Lead AI · Data Science</div>
+            <h1>
+                Turning complex data
+                <span class="emphasis">into clear decisions.</span>
+            </h1>
+            <p class="hero-intro">
+                I'm a <strong>data scientist and AI leader</strong> who bridges the gap between 
+                technical possibility and business reality. Currently leading AI initiatives 
+                in agri-food, where the right insights can transform entire value chains.
+            </p>
+
+            <div class="value-props">
+                <div class="value-prop">
+                    <div class="value-prop-label">Drive</div>
+                    <div class="value-prop-text">Creating real value</div>
+                </div>
+                <div class="value-prop">
+                    <div class="value-prop-label">Approach</div>
+                    <div class="value-prop-text">Honest communication</div>
+                </div>
+                <div class="value-prop">
+                    <div class="value-prop-label">Focus</div>
+                    <div class="value-prop-text">Solving client problems</div>
+                </div>
+            </div>
+
+            <div class="cta-group">
+                <a href="projects.html" class="btn-primary">
+                    View My Work
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="contact.html" class="btn-secondary">
+                    Let's talk
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M7 7h10v10"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <div class="profile-visual">
+                <div class="profile-frame"></div>
+                <div class="profile-image-container">
+                    <img src="img/profile_photo_small.jpg" alt="Stephan Heijl" class="profile-image">
+                    <div class="profile-overlay"></div>
+                </div>
+                <div class="floating-card bottom-left">
+                    <div class="floating-card-label">Current Focus</div>
+                    <div class="floating-card-value">Agri-Food AI</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="approach">
+        <div class="approach-header">
+            <div>
+                <div class="section-label">How I Work</div>
+                <h2>Technical depth meets<br>strategic clarity</h2>
+            </div>
+            <p class="approach-text">
+                I've learned that the best AI solutions aren't built in isolation. They emerge from 
+                understanding the real problem, communicating openly about what's possible, and 
+                iterating closely with the people who'll use them. That's the approach I bring to 
+                every project—whether I'm building models or leading teams.
+            </p>
+        </div>
+
+        <div class="approach-grid">
+            <div class="approach-card">
+                <div class="approach-number">01</div>
+                <h3>Understand First</h3>
+                <p>Before touching data, I dig into the business context. What decision are we trying to improve? What does success actually look like? The technical solution follows from there.</p>
+            </div>
+            <div class="approach-card">
+                <div class="approach-number">02</div>
+                <h3>Communicate Clearly</h3>
+                <p>I translate between technical and business language fluently. Stakeholders know what we're building and why. Teams know what's expected. No black boxes, no jargon walls.</p>
+            </div>
+            <div class="approach-card">
+                <div class="approach-number">03</div>
+                <h3>Deliver Value</h3>
+                <p>Models that don't ship don't matter. I focus on practical solutions that work in production, with clear metrics tied to business outcomes—not just algorithmic performance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section class="expertise">
+        <div class="section-label">Expertise</div>
+        <h2>Deep technical skills,<br>applied strategically</h2>
+
+        <div class="expertise-grid">
+            <div class="expertise-item">
+                <div class="expertise-icon">⚡</div>
+                <div>
+                    <h3>Machine Learning & Deep Learning</h3>
+                    <p>End-to-end ML pipelines, from feature engineering to production deployment. Specialized in neural architectures for structured and sequential data.</p>
+                </div>
+            </div>
+            <div class="expertise-item">
+                <div class="expertise-icon">📊</div>
+                <div>
+                    <h3>Predictive Analytics</h3>
+                    <p>Building systems that forecast outcomes and surface insights from complex datasets. Particular experience with time-series and high-dimensional biological data.</p>
+                </div>
+            </div>
+            <div class="expertise-item">
+                <div class="expertise-icon">🗣️</div>
+                <div>
+                    <h3>Technical Leadership</h3>
+                    <p>Leading data science teams, setting technical direction, and bridging the gap between R&D and business stakeholders. Public speaking and workshop facilitation.</p>
+                </div>
+            </div>
+            <div class="expertise-item">
+                <div class="expertise-icon">🔬</div>
+                <div>
+                    <h3>Domain: Agri-Food & Life Sciences</h3>
+                    <p>Deep experience applying AI to agriculture, food systems, and biological research. Understanding the unique constraints and opportunities in these sectors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="section-label">Let's Connect</div>
+        <h2>Have a problem worth solving?</h2>
+        <p>I'm always interested in discussing new challenges, especially where AI can create real impact in agri-food and beyond.</p>
+        <a href="contact.html" class="btn-light">
+            Get in Touch
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">© 2024 Stephan Heijl</p>
+        <div class="footer-links">
+            <a href="https://github.com/StephanHeijl">GitHub</a>
+            <a href="https://linkedin.com/in/stephanheijl">LinkedIn</a>
+            <a href="contact.html">Email</a>
+        </div>
+    </footer>
+
+    <script>
+        // Rippling Field Visualization
+        // Chaotic flowing lines that straighten into ordered grid on mouse/touch proximity
+        
+        const canvas = document.getElementById('networkCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let mouse = { x: null, y: null, active: false };
+        let targetInfluencePoint = { x: null, y: null, active: false };
+        let currentInfluencePoint = { x: null, y: null, strength: 0, idleTime: 0 };
+        let time = 0;
+        
+        // Store glow state for each line to enable smooth color transitions
+        let horizontalLineGlow = [];
+        let verticalLineGlow = [];
+        
+        const config = {
+            lineSpacing: 36,
+            influenceRadius: 140,
+            waveAmplitude: 14,
+            waveSpeed: 0.0008,
+            fadeInSpeed: 0.08,
+            fadeOutSpeed: 0.04,
+            idleFadeSpeed: 0.008,
+            glowFadeSpeed: 0.02,
+            glowColor: 'rgba(37, 99, 235, ',
+            lineColor: 'rgba(212, 168, 83, 0.12)',
+            lineColorBright: 'rgba(212, 168, 83, ',
+        };
+
+        let pulses = [];
+
+        function init() {
+            // Account for device pixel ratio for crisp lines on high-DPI screens
+            const dpr = window.devicePixelRatio || 1;
+            width = window.innerWidth;
+            height = window.innerHeight;
+            
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
+            
+            ctx.scale(dpr, dpr);
+            
+            // Initialize glow arrays for smooth color transitions
+            const numHorizontal = Math.ceil(height / config.lineSpacing) + 8;
+            const numVertical = Math.ceil(width / config.lineSpacing) + 8;
+            horizontalLineGlow = new Array(numHorizontal).fill(0);
+            verticalLineGlow = new Array(numVertical).fill(0);
+        }
+
+        function createPulse(x, y) {
+            if (pulses.length < 6) {
+                pulses.push({
+                    x: x,
+                    y: y,
+                    radius: 0,
+                    opacity: 1.0
+                });
+            }
+        }
+
+        function getWaveOffset(primary, secondary, timeOffset) {
+            const wave1 = Math.sin(primary * 0.015 + time + secondary * 0.01) * config.waveAmplitude;
+            const wave2 = Math.sin(primary * 0.025 + time * 1.3 - secondary * 0.012) * config.waveAmplitude * 0.6;
+            const wave3 = Math.sin(primary * 0.008 + time * 0.7 + secondary * 0.018) * config.waveAmplitude * 0.8;
+            return wave1 + wave2 + wave3;
+        }
+
+        function getInfluence(x, y) {
+            if (currentInfluencePoint.strength <= 0 || currentInfluencePoint.x === null) return 0;
+            const dist = Math.sqrt(Math.pow(x - currentInfluencePoint.x, 2) + Math.pow(y - currentInfluencePoint.y, 2));
+            if (dist > config.influenceRadius) return 0;
+            const t = dist / config.influenceRadius;
+            return (1 - (t * t)) * currentInfluencePoint.strength;
+        }
+
+        function getPulseGlow(x, y) {
+            let glow = 0;
+            pulses.forEach(pulse => {
+                const dist = Math.sqrt(Math.pow(x - pulse.x, 2) + Math.pow(y - pulse.y, 2));
+                // Wider, more visible ring
+                const ringWidth = 100 + pulse.radius * 0.2;
+                const ringDist = Math.abs(dist - pulse.radius);
+                if (ringDist < ringWidth) {
+                    const t = ringDist / ringWidth;
+                    // Stronger glow multiplier
+                    glow += (1 - t * t) * pulse.opacity * 1.8;
+                }
+            });
+            return Math.min(1, glow);
+        }
+
+        function updateInfluencePoint() {
+            if (targetInfluencePoint.active) {
+                // Fade in and move towards target
+                currentInfluencePoint.strength += (1 - currentInfluencePoint.strength) * config.fadeInSpeed;
+                currentInfluencePoint.idleTime = 0;
+                
+                if (currentInfluencePoint.x === null) {
+                    currentInfluencePoint.x = targetInfluencePoint.x;
+                    currentInfluencePoint.y = targetInfluencePoint.y;
+                } else {
+                    currentInfluencePoint.x += (targetInfluencePoint.x - currentInfluencePoint.x) * config.fadeInSpeed;
+                    currentInfluencePoint.y += (targetInfluencePoint.y - currentInfluencePoint.y) * config.fadeInSpeed;
+                }
+            } else {
+                // Fade out when not active
+                currentInfluencePoint.strength *= (1 - config.fadeOutSpeed);
+                if (currentInfluencePoint.strength < 0.01) {
+                    currentInfluencePoint.strength = 0;
+                }
+            }
+            
+            // Also fade out over time even when touch is held (idle fade)
+            if (currentInfluencePoint.idleTime !== undefined) {
+                currentInfluencePoint.idleTime++;
+                if (currentInfluencePoint.idleTime > 60) { // Start fading after ~1 second
+                    currentInfluencePoint.strength *= (1 - config.idleFadeSpeed);
+                    if (currentInfluencePoint.strength < 0.01) {
+                        currentInfluencePoint.strength = 0;
+                    }
+                }
+            }
+        }
+
+        function drawHorizontalLine(baseY, lineIndex) {
+            const segments = 100;
+            const segmentWidth = (width + 100) / segments;
+            
+            const points = [];
+            let targetGlow = 0;
+            
+            for (let i = 0; i <= segments; i++) {
+                const x = -50 + i * segmentWidth;
+                const influence = getInfluence(x, baseY);
+                const pulseGlow = getPulseGlow(x, baseY);
+                
+                targetGlow = Math.max(targetGlow, influence + pulseGlow * 0.5);
+                
+                const waveOffset = getWaveOffset(x, baseY, time) * (1 - influence);
+                
+                points.push({
+                    x: x,
+                    y: baseY + waveOffset
+                });
+            }
+            
+            // Smooth glow transition - fast rise, slow fall
+            if (lineIndex < horizontalLineGlow.length) {
+                if (targetGlow > horizontalLineGlow[lineIndex]) {
+                    horizontalLineGlow[lineIndex] += (targetGlow - horizontalLineGlow[lineIndex]) * 0.15;
+                } else {
+                    horizontalLineGlow[lineIndex] += (targetGlow - horizontalLineGlow[lineIndex]) * config.glowFadeSpeed;
+                }
+            }
+            
+            const currentGlow = lineIndex < horizontalLineGlow.length ? horizontalLineGlow[lineIndex] : targetGlow;
+            
+            ctx.beginPath();
+            for (let i = 0; i <= segments; i++) {
+                if (i === 0) {
+                    ctx.moveTo(points[i].x, points[i].y);
+                } else {
+                    ctx.lineTo(points[i].x, points[i].y);
+                }
+            }
+            
+            // Blend colors based on glow: gold (212,168,83) -> blue (37,99,235)
+            if (currentGlow > 0.01) {
+                const t = Math.min(1, currentGlow);
+                const r = Math.round(212 + (37 - 212) * t);
+                const g = Math.round(168 + (99 - 168) * t);
+                const b = Math.round(83 + (235 - 83) * t);
+                const alpha = 0.12 + currentGlow * 0.4;
+                ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+                ctx.lineWidth = 1;
+                if (currentGlow > 0.15) {
+                    ctx.shadowColor = config.glowColor + '0.5)';
+                    ctx.shadowBlur = currentGlow * 20;
+                }
+            } else {
+                ctx.strokeStyle = config.lineColor;
+                ctx.lineWidth = 1;
+                ctx.shadowBlur = 0;
+            }
+            
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+        }
+
+        function drawVerticalLine(baseX, lineIndex) {
+            const segments = 80;
+            const segmentHeight = (height + 100) / segments;
+            
+            const points = [];
+            let targetGlow = 0;
+            
+            for (let i = 0; i <= segments; i++) {
+                const y = -50 + i * segmentHeight;
+                const influence = getInfluence(baseX, y);
+                const pulseGlow = getPulseGlow(baseX, y);
+                
+                targetGlow = Math.max(targetGlow, influence + pulseGlow * 0.5);
+                
+                const waveOffset = getWaveOffset(y, baseX, time * 1.1) * (1 - influence);
+                
+                points.push({
+                    x: baseX + waveOffset,
+                    y: y
+                });
+            }
+            
+            // Smooth glow transition - fast rise, slow fall
+            if (lineIndex < verticalLineGlow.length) {
+                if (targetGlow > verticalLineGlow[lineIndex]) {
+                    verticalLineGlow[lineIndex] += (targetGlow - verticalLineGlow[lineIndex]) * 0.15;
+                } else {
+                    verticalLineGlow[lineIndex] += (targetGlow - verticalLineGlow[lineIndex]) * config.glowFadeSpeed;
+                }
+            }
+            
+            const currentGlow = lineIndex < verticalLineGlow.length ? verticalLineGlow[lineIndex] : targetGlow;
+            
+            ctx.beginPath();
+            for (let i = 0; i <= segments; i++) {
+                if (i === 0) {
+                    ctx.moveTo(points[i].x, points[i].y);
+                } else {
+                    ctx.lineTo(points[i].x, points[i].y);
+                }
+            }
+            
+            // Blend colors based on glow: gold (212,168,83) -> blue (37,99,235)
+            if (currentGlow > 0.01) {
+                const t = Math.min(1, currentGlow);
+                const r = Math.round(212 + (37 - 212) * t);
+                const g = Math.round(168 + (99 - 168) * t);
+                const b = Math.round(83 + (235 - 83) * t);
+                const alpha = 0.12 + currentGlow * 0.4;
+                ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+                ctx.lineWidth = 1;
+                if (currentGlow > 0.15) {
+                    ctx.shadowColor = config.glowColor + '0.5)';
+                    ctx.shadowBlur = currentGlow * 20;
+                }
+            } else {
+                ctx.strokeStyle = config.lineColor;
+                ctx.lineWidth = 1;
+                ctx.shadowBlur = 0;
+            }
+            
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+        }
+
+        function updatePulses() {
+            pulses = pulses.filter(pulse => {
+                pulse.radius += 4;
+                // Slower fade for more visible ripple
+                pulse.opacity -= 0.002;
+                return pulse.opacity > 0;
+            });
+        }
+
+        function animate(timestamp) {
+            time = timestamp * config.waveSpeed;
+            
+            updateInfluencePoint();
+            
+            ctx.clearRect(0, 0, width, height);
+            
+            // Draw horizontal lines
+            const numHorizontal = Math.ceil(height / config.lineSpacing) + 4;
+            for (let i = 0; i < numHorizontal; i++) {
+                const baseY = -config.lineSpacing * 2 + i * config.lineSpacing;
+                drawHorizontalLine(baseY, i);
+            }
+            
+            // Draw vertical lines
+            const numVertical = Math.ceil(width / config.lineSpacing) + 4;
+            for (let i = 0; i < numVertical; i++) {
+                const baseX = -config.lineSpacing * 2 + i * config.lineSpacing;
+                drawVerticalLine(baseX, i);
+            }
+            
+            updatePulses();
+            
+            requestAnimationFrame(animate);
+        }
+
+        // Event listeners
+        window.addEventListener('resize', init);
+
+        // Desktop mouse events
+        document.addEventListener('mousemove', (e) => {
+            targetInfluencePoint.x = e.clientX;
+            targetInfluencePoint.y = e.clientY;
+            targetInfluencePoint.active = true;
+        });
+
+        document.addEventListener('mouseleave', () => {
+            targetInfluencePoint.active = false;
+        });
+
+        // Mobile touch events
+        document.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            targetInfluencePoint.x = touch.clientX;
+            targetInfluencePoint.y = touch.clientY;
+            targetInfluencePoint.active = true;
+            createPulse(touch.clientX, touch.clientY);
+        }, { passive: true });
+
+        document.addEventListener('touchmove', (e) => {
+            const touch = e.touches[0];
+            targetInfluencePoint.x = touch.clientX;
+            targetInfluencePoint.y = touch.clientY;
+            targetInfluencePoint.active = true;
+        }, { passive: true });
+
+        // Start
+        init();
+        animate(0);
+    </script>
+</body>
+</html>

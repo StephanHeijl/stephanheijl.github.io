@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A New Protein Design Era with Protein Diffusion — Stephan Heijl</title>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #fdfcfa;
+            --bg-secondary: #f5f3ef;
+            --bg-dark: #1a1816;
+            --text-primary: #1a1816;
+            --text-secondary: #6b635a;
+            --text-light: #9a928a;
+            --accent-warm: #c9752c;
+            --accent-gold: #d4a853;
+            --border-subtle: rgba(26, 24, 22, 0.08);
+            --border-medium: rgba(26, 24, 22, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(253, 252, 250, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .logo {
+            font-family: 'Newsreader', serif;
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-warm);
+        }
+
+        /* Article Header */
+        .article-header {
+            padding: 10rem 0 4rem;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent-warm);
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .meta-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            padding: 0.25rem 0.5rem;
+            background: var(--bg-secondary);
+            color: var(--accent-warm);
+        }
+
+        h1 {
+            font-family: 'Newsreader', serif;
+            font-size: clamp(2.25rem, 4.5vw, 3rem);
+            font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-intro {
+            font-family: 'Newsreader', serif;
+            font-size: 1.35rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            border-left: 3px solid var(--accent-warm);
+            padding-left: 1.5rem;
+        }
+
+        /* Update Banner */
+        .update-banner {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            padding: 0 2rem;
+        }
+
+        .update-banner-inner {
+            background: linear-gradient(135deg, rgba(201, 117, 44, 0.1), rgba(212, 168, 83, 0.1));
+            border: 1px solid rgba(201, 117, 44, 0.2);
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .update-icon {
+            font-size: 1.25rem;
+        }
+
+        .update-text {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+
+        .update-text a {
+            color: var(--accent-warm);
+            font-weight: 500;
+        }
+
+        /* Article Content */
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .article-content h2 {
+            font-family: 'Newsreader', serif;
+            font-size: 1.75rem;
+            font-weight: 400;
+            margin: 4rem 0 1.5rem;
+            letter-spacing: -0.02em;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .article-content h2:first-of-type {
+            border-top: none;
+            padding-top: 0;
+            margin-top: 3rem;
+        }
+
+        .article-content h3 {
+            font-family: 'Newsreader', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin: 2.5rem 0 1rem;
+            color: var(--accent-warm);
+        }
+
+        .article-content p {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .article-content em {
+            font-style: italic;
+        }
+
+        .article-content a {
+            color: var(--accent-warm);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .article-content a:hover {
+            border-bottom-color: var(--accent-warm);
+        }
+
+        /* Blockquote / Tweet */
+        .tweet-embed {
+            background: var(--bg-secondary);
+            border-left: 3px solid var(--accent-warm);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+        }
+
+        .tweet-embed p {
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .tweet-embed .attribution {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .tweet-embed .attribution a {
+            color: var(--accent-warm);
+        }
+
+        /* Figure */
+        .article-figure {
+            margin: 3rem 0;
+        }
+
+        .article-figure img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .article-figure figcaption {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: var(--bg-dark);
+            color: var(--bg-primary);
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .highlight-box p {
+            color: rgba(253, 252, 250, 0.85);
+            margin-bottom: 0;
+        }
+
+        .highlight-box strong {
+            color: var(--accent-gold);
+        }
+
+        /* Info Tooltip Replacement */
+        .info-aside {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 3px solid var(--accent-gold);
+        }
+
+        .info-aside-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent-warm);
+            margin-bottom: 0.75rem;
+        }
+
+        .info-aside p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* Article Footer */
+        .article-footer {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-warm);
+            gap: 1rem;
+        }
+
+        .back-link svg {
+            transition: transform 0.3s ease;
+        }
+
+        .back-link:hover svg {
+            transform: translateX(-4px);
+        }
+
+        /* Related Posts */
+        .related-posts {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .related-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-warm);
+            margin-bottom: 1.5rem;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .related-card {
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .related-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .related-card h3 {
+            font-family: 'Newsreader', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .related-card:hover h3 {
+            color: var(--accent-warm);
+        }
+
+        .related-card p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer-text {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-warm);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 73px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--accent-warm);
+            z-index: 99;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .article-header {
+                padding-top: 7rem;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                padding: 2rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">Stephan Heijl</a>
+        <ul class="nav-links">
+            <li><a href="projects.html">Work</a></li>
+            <li><a href="projects.html#posts">Writing</a></li>
+            <li><a href="projects.html#education">Background</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="article-header">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>→</span>
+            <a href="projects.html#posts">Writing</a>
+            <span>→</span>
+            <span>Protein Diffusion</span>
+        </div>
+
+        <div class="article-meta">
+            <span class="meta-tag">Deep Dive</span>
+            <span class="meta-item">Posted: December 11, 2022</span>
+            <span class="meta-item">Updated: March 31, 2023</span>
+        </div>
+
+        <h1>A New Protein Design Era with Protein Diffusion</h1>
+
+        <p class="article-intro">
+            I believe we stand at the precipice of a new era of protein design using machine learning. 
+            RF<em>Diffusion</em> is leading the way.
+        </p>
+    </header>
+
+    <!-- Update Banner -->
+    <div class="update-banner">
+        <div class="update-banner-inner">
+            <span class="update-icon">🎉</span>
+            <span class="update-text">
+                <strong>Update:</strong> RFDiffusion is now available on 
+                <a href="https://github.com/RosettaCommons/RFdiffusion" target="_blank">GitHub</a>, 
+                including trained weights, under a permissive license!
+            </span>
+        </div>
+    </div>
+
+    <!-- Article Content -->
+    <article class="article-content">
+        <p>
+            The past month has been an amazing time for AI news. I post this amid a flurry of ChatGPT 
+            screenshots and at the leading edge of a ton of blog posts on CASP15 results in the coming 
+            weeks. But we should be careful not to miss out on a pre-publication that I believe could be 
+            <strong>one of the most disruptive technologies in the structural biology field in the coming decade.</strong>
+        </p>
+
+        <p>
+            The Baker Lab—the originator of the Rosetta algorithm for ab initio protein structure 
+            prediction and a slew of other protein structure related tools like Rosetta@Home and 
+            FoldIt—released a prepublication at the start of this month. There, they introduce 
+            <a href="https://www.bakerlab.org/2022/11/30/diffusion-model-for-protein-design/">RF<em>Diffusion</em></a>, 
+            a novel application of Diffusion algorithms to the protein design problem.
+        </p>
+
+        <p>
+            Using RF<em>Diffusion</em>, the authors (Joseph Watson, David Juergens, Nate Bennett, 
+            Brian Trippe, and Jason Yim et al.) <strong>achieve multiple orders of magnitude advances 
+            in de novo protein design.</strong> With these advances, I believe we are on the cusp of a 
+            new era of protein design where applying proteins to complex pharmaceutical and industrial 
+            problems becomes the go-to solution.
+        </p>
+
+        <div class="info-aside">
+            <div class="info-aside-label">Context: Baker Lab</div>
+            <p>
+                The Baker Lab at the University of Washington has been a leader in structural biology 
+                for over a decade, developing computational tools like Rosetta and FoldIt for protein 
+                structure prediction and design. Their work spans protein-protein docking, protein-drug 
+                design, and novel protein engineering.
+            </p>
+        </div>
+
+        <h2>Protein Structure Prediction</h2>
+
+        <p>
+            Protein structure prediction was, for a long time, a holy grail of structural biology. 
+            Solving how a specific sequence of amino acids would fold into a 3D structure is immensely 
+            difficult due to the number of degrees of freedom involved. Physically based folding 
+            solutions using molecular dynamics were able to approximate this process to some extent, 
+            but at the cost of enormous amounts of compute.
+        </p>
+
+        <p>
+            Running a full physical simulation of every atom requires vast amounts of processing time, 
+            necessitating solutions like the massively distributed Folding@Home project. This distributed 
+            supercomputer achieved a total compute of over 2 exaflops in 2020.
+        </p>
+
+        <p>
+            Since 2016, however, significant steps were being made in this space with the application 
+            of machine learning to the problem. The CASP competition, which had been running biannually 
+            for 13 iterations, finally saw improvement after a decade of relative stagnation. In 2018, 
+            Google's DeepMind competed with their initial submission of AlphaFold. This deep learning 
+            based system achieved a ~20% improvement over the next competitor.
+        </p>
+
+        <p>
+            In 2020, AlphaFold2 swept the board with a 265% score improvement over the Baker Lab's 
+            submission. Following this, Science's Robert F. Service 
+            <a href="https://www.science.org/content/article/game-has-changed-ai-triumphs-solving-protein-structures">called</a> 
+            protein structure prediction "Solved by AI".
+        </p>
+
+        <div class="highlight-box">
+            <p>
+                Nevertheless, the frontiers are always shifting. With one problem solved, a multitude 
+                of new challenges rear their head, previously not even considered possible to tackle. 
+                <strong>The Baker Lab is back with a vengeance</strong>, applying their own in-house tech 
+                to revolutionize protein design in several novel ways.
+            </p>
+        </div>
+
+        <h2>Diffusion Models</h2>
+
+        <p>
+            Diffusion models are a relatively new type of model that allow for the generation of complex 
+            outputs. Proposed in 2015 as a technique for generating images, these models took a back seat 
+            to the emerging GAN architecture. The latter employs two models that are alternately trained 
+            in an adversarial manner to generate images and discriminate images generated by the network 
+            from those in the training set.
+        </p>
+
+        <p>
+            Diffusion models operate quite differently. Instead of attempting to generate an image on 
+            the first try, Diffusion models iteratively improve on a noisy image, denoising the input 
+            to some extent with each step. The denoising process can be guided by another neural network, 
+            like CLIP, in order to produce results in line with a textual description.
+        </p>
+
+        <p>
+            Diffusion models reached public consciousness in April of 2022, with the release of DALL-E 2 
+            by OpenAI. Beta access was granted to select individuals in July, but alternative 
+            implementations of the technology began sprouting up even before that. Midjourney became 
+            accessible on July 12th and Stable Diffusion, a fully open source implementation, was 
+            released in August.
+        </p>
+
+        <p>
+            <strong>The release of these models resulted in an outpouring of creativity</strong>, with 
+            over 5 million images recorded by Stable Diffusion search engine Lexica.art as of September.
+        </p>
+
+        <h2>RF<em>Diffusion</em></h2>
+
+        <p>
+            On December 1st 2022, Joseph Watson from the Baker Lab used DALL-E as a hook to introduce 
+            their newest pre-publication: "Broadly applicable and accurate protein design by integrating 
+            structure prediction networks and diffusion generative models". Using diffusion models with 
+            protein generation models allowed them to <strong>design proteins quickly and accurately</strong>. 
+            They named their technology RosettaFoldDiffusion (RF<em>Diffusion</em>).
+        </p>
+
+        <div class="tweet-embed">
+            <p>
+                "DALL-E's amazing images are popping up all over the web. That software uses something 
+                called a diffusion model, which is trained to remove noise from static until a clear 
+                picture is formed. Turns out diffusion models can design proteins too!"
+            </p>
+            <div class="attribution">
+                — <a href="https://twitter.com/_JosephWatson/status/1598409454537826305">Joseph Watson</a>, 
+                December 1, 2022
+            </div>
+        </div>
+
+        <p>
+            Using the RossettaFold protein folding model with a Diffusion approach allows them to 
+            specify some constraints—like a target protein to bind to, or a symmetry type—and generate 
+            a protein structure that satisfies those constraints.
+        </p>
+
+        <p>
+            On December 10th 2022, David Juergens posted an update on Twitter. Reportedly their 
+            experimental results had come in, with 384 different designs straight out of the algorithm 
+            being tested for binding affinity. Conservatively, <strong>18% of these 384 proteins showed 
+            binding responses of &lt;10μM</strong>, a two order of magnitude increase compared to previous 
+            Rosetta-based processes.
+        </p>
+
+        <h3>Implementation</h3>
+
+        <p>
+            In the RF<em>Diffusion</em> paper, the authors make use of an SE(3) equivariant diffusion 
+            model, referred to as DDPMs, to generate the backbone. RosettaFold was finetuned as a 
+            denoiser. To train the model, a training set is generated by simulating the noising process 
+            for up to 200 steps on structures from the Protein Data Bank.
+        </p>
+
+        <p>
+            During inference, a random set of residues are generated and fed into RF<em>Diffusion</em> 
+            to denoise. This is done iteratively until a protein-like structure is formed. When the 
+            backbone is designed, ProteinMPNN is used to predict a sequence that will translate into 
+            that backbone.
+        </p>
+
+        <h3>Capabilities</h3>
+
+        <p>
+            RF<em>Diffusion</em> has turned out to be a powerful tool capable of designing protein 
+            structures with a variety of applications:
+        </p>
+
+        <p>
+            <strong>Unconditional monomer generation:</strong> It can generate monomers with little 
+            similarity to existing known protein structures. Generating a 100 residue structure takes 
+            approximately 2.5 minutes on an A4000 GPU.
+        </p>
+
+        <p>
+            <strong>Higher order oligomers:</strong> It can design oligomers that serve as vaccine 
+            platforms, delivery vehicles and catalytic agents. The expected oligomerization pattern 
+            was found in ~16% of generated structures in vitro.
+        </p>
+
+        <p>
+            <strong>Motif scaffolding:</strong> It can design scaffolds for protein structural motifs 
+            used for binding and catalytic functions. Out of 25 benchmark problems, RFDiffusion solves 
+            23, 11 more than competitor "Hallucination".
+        </p>
+
+        <p>
+            <strong>De novo protein binders:</strong> Characterized as a grand challenge in protein 
+            design, RF<em>Diffusion</em> achieved an 18% success rate. Experimental success rate compared 
+            to Rosetta-based methods ranges from <strong>5x to 214x improvement</strong> depending on 
+            the target protein.
+        </p>
+
+        <h2>Implications</h2>
+
+        <p>
+            What is possible with this kind of model combined with its reported effectiveness is nearly 
+            endless. If these results hold up in practice, this could easily be the best application of 
+            diffusion models for mankind. It could share the crown for biggest advance in structural 
+            biology of this decade together with AlphaFold.
+        </p>
+
+        <p>
+            Currently RF<em>Diffusion</em> is a potent method for the creation of protein-binders. 
+            Applications for this specifically are amazing in themselves, as it will allow for the 
+            rapid design and iteration of a myriad of drugs that target proteins specifically.
+        </p>
+
+        <p>
+            Next steps are already being taken to incorporate nucleic acids into the model, allowing 
+            for DNA or RNA binding proteins to be designed rapidly. These types of drugs are used as 
+            anti-cancer agents and could yield amazing results in that field.
+        </p>
+
+        <h3>Future Directions</h3>
+
+        <p>
+            I project that RF<em>Diffusion</em> will first be enhanced by replacing the Rosetta protein 
+            folding module with a more capable model. This could be AlphaFold2 or one of the high 
+            performers in CASP15. Sergey Ovchinikov already accomplished a hacked version of this on 
+            Twitter, less than a week after the initial pre-publication.
+        </p>
+
+        <div class="tweet-embed">
+            <p>
+                "Inspired by some of our work on AF2Rank (showing AF can be used to denoise template inputs) 
+                and RFdiffusion, I tried hacking AlphaFold to be a diffusion model for generating backbones."
+            </p>
+            <div class="attribution">
+                — <a href="https://twitter.com/sokrypton/status/1599982846281908224">Sergey Ovchinnikov</a>, 
+                December 6, 2022
+            </div>
+        </div>
+
+        <p>
+            An obvious follow-up would incorporate small molecules as opposed to just other proteins. 
+            Getting proteins that bind well to specific ligands is still an open problem. If the high 
+            success rates reported for RF<em>Diffusion</em> hold up in this case, it would skip several 
+            steps in the protein design process, lowering costs significantly.
+        </p>
+
+        <h2>Conclusion</h2>
+
+        <p>
+            The Baker Lab has made significant strides in the space of protein design, with a great 
+            application of modern ML techniques combined with convincing experimental lab work. I trust 
+            that the very capable team is already working on developing this technique further, improving 
+            the accuracy and speed of this solution.
+        </p>
+
+        <p>
+            Given the pace at which advances take place in the Machine Learning/Protein space, I have 
+            no doubt that we are on the cusp of a decade of rapid innovation. This will lead to giant 
+            leaps in pharmaceutical and industrial applications of proteins, resulting in improved 
+            health care and vastly more green and efficient manufacturing processes.
+        </p>
+    </article>
+
+    <!-- Article Footer -->
+    <div class="article-footer">
+        <a href="projects.html#posts" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Writing
+        </a>
+    </div>
+
+    <!-- Related Posts -->
+    <div class="related-posts">
+        <div class="related-label">Related Posts</div>
+        <div class="related-grid">
+            <a href="deep_learning_antibiotics.html" class="related-card">
+                <h3>Visualizing Deep Learning Antibiotics</h3>
+                <p>Technical breakdown of using neural networks for antibiotic discovery</p>
+            </a>
+            <a href="notes_on_bert.html" class="related-card">
+                <h3>Notes on BERT</h3>
+                <p>Detailed notes from Google's foundational NLP paper</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">© 2024 Stephan Heijl</p>
+        <div class="footer-links">
+            <a href="https://github.com/StephanHeijl">GitHub</a>
+            <a href="https://linkedin.com/in/stephanheijl">LinkedIn</a>
+            <a href="contact.html">Email</a>
+        </div>
+    </footer>
+
+    <script>
+        // Reading progress bar
+        window.addEventListener('scroll', () => {
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPos = window.scrollY;
+            const progress = (scrollPos / docHeight) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        });
+    </script>
+</body>
+</html>

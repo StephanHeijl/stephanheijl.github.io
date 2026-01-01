@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead AI at VAA Data Works — Stephan Heijl</title>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #fdfcfa;
+            --bg-secondary: #f5f3ef;
+            --bg-dark: #1a1816;
+            --text-primary: #1a1816;
+            --text-secondary: #6b635a;
+            --text-light: #9a928a;
+            --accent-warm: #c9752c;
+            --accent-gold: #d4a853;
+            --accent-green: #4a7c59;
+            --border-subtle: rgba(26, 24, 22, 0.08);
+            --border-medium: rgba(26, 24, 22, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(253, 252, 250, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .logo {
+            font-family: 'Newsreader', serif;
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-warm);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 8rem 6rem;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 6rem;
+            align-items: start;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent-warm);
+        }
+
+        .role-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent-green);
+            margin-bottom: 1.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(74, 124, 89, 0.1);
+            border: 1px solid rgba(74, 124, 89, 0.2);
+        }
+
+        .role-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        h1 {
+            font-family: 'Newsreader', serif;
+            font-size: clamp(2.5rem, 4.5vw, 3.5rem);
+            font-weight: 400;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
+        }
+
+        h1 span {
+            font-style: italic;
+            color: var(--accent-warm);
+        }
+
+        .hero-intro {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+
+        .hero-intro strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Company Card */
+        .company-card {
+            background: var(--bg-secondary);
+            padding: 3rem;
+            position: sticky;
+            top: 120px;
+        }
+
+        .company-logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .company-tagline {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .company-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'Newsreader', serif;
+            font-size: 2rem;
+            color: var(--accent-warm);
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-light);
+        }
+
+        .company-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .company-link:hover {
+            border-color: var(--accent-warm);
+            color: var(--accent-warm);
+        }
+
+        /* Content Sections */
+        .content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 8rem;
+        }
+
+        .content-section {
+            padding: 5rem 0;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 6rem;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-warm);
+            padding-top: 0.5rem;
+        }
+
+        .section-content h2 {
+            font-family: 'Newsreader', serif;
+            font-size: 1.75rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-content p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Focus Areas */
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .focus-card {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .focus-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--accent-warm);
+            transition: height 0.3s ease;
+        }
+
+        .focus-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .focus-card:hover::before {
+            height: 100%;
+        }
+
+        .focus-icon {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .focus-card h3 {
+            font-family: 'Newsreader', serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 0.75rem;
+        }
+
+        .focus-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Impact Box */
+        .impact-box {
+            background: var(--bg-dark);
+            color: var(--bg-primary);
+            padding: 3rem;
+            margin: 3rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .impact-item {
+            text-align: center;
+        }
+
+        .impact-value {
+            font-family: 'Newsreader', serif;
+            font-size: 2.5rem;
+            font-style: italic;
+            color: var(--accent-gold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-label {
+            font-size: 0.85rem;
+            color: rgba(253, 252, 250, 0.7);
+        }
+
+        /* Tech Stack */
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .tech-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+        }
+
+        /* Quote */
+        .quote-block {
+            border-left: 3px solid var(--accent-warm);
+            padding-left: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .quote-text {
+            font-family: 'Newsreader', serif;
+            font-size: 1.35rem;
+            font-style: italic;
+            line-height: 1.5;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .quote-attribution {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Responsibilities List */
+        .responsibilities {
+            margin-top: 2rem;
+        }
+
+        .responsibility-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .responsibility-item:first-child {
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .responsibility-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1rem;
+        }
+
+        .responsibility-content h3 {
+            font-family: 'Newsreader', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 0.25rem;
+        }
+
+        .responsibility-content p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* Back Link */
+        .back-section {
+            padding: 4rem 0;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-warm);
+            gap: 1rem;
+        }
+
+        .back-link svg {
+            transition: transform 0.3s ease;
+        }
+
+        .back-link:hover svg {
+            transform: translateX(-4px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer-text {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-warm);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 8rem 4rem 4rem;
+                gap: 3rem;
+            }
+
+            .company-card {
+                position: static;
+            }
+
+            .content {
+                padding: 0 4rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .focus-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-box {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            nav, footer {
+                padding-left: 4rem;
+                padding-right: 4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 7rem 2rem 3rem;
+            }
+
+            .content {
+                padding: 0 2rem;
+            }
+
+            nav, footer {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .company-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">Stephan Heijl</a>
+        <ul class="nav-links">
+            <li><a href="projects.html">Work</a></li>
+            <li><a href="projects.html#posts">Writing</a></li>
+            <li><a href="projects.html#education">Background</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>→</span>
+                <a href="projects.html">Work</a>
+                <span>→</span>
+                <span>VAA Data Works</span>
+            </div>
+
+            <div class="role-badge">Current Role</div>
+
+            <h1>Lead AI at <span>VAA Data Works</span></h1>
+
+            <p class="hero-intro">
+                Leading AI strategy and development at the Netherlands' foremost data solutions 
+                provider for the <strong>agri-food sector</strong>. Building intelligent systems 
+                that help farmers, food producers, and supply chain partners make better decisions 
+                with their data—creating real value across the entire food chain.
+            </p>
+        </div>
+
+        <div class="company-card">
+            <div class="company-logo">VAA Data Works</div>
+            <div class="company-tagline">Data & AI solutions for Agri-Food</div>
+
+            <div class="company-stats">
+                <div class="stat-item">
+                    <div class="stat-value">35+</div>
+                    <div class="stat-label">Years in Agri-Food</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">NL</div>
+                    <div class="stat-label">Market Leader</div>
+                </div>
+            </div>
+
+            <a href="https://vaa.com" target="_blank" class="company-link">
+                Visit VAA Data Works
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 17L17 7M7 7h10v10"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <div class="content">
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="section-label">The Mission</div>
+                <div class="section-content">
+                    <h2>Making data work for food</h2>
+                    <p>
+                        VAA Data Works has been the leading IT and data science partner in the Dutch 
+                        agri-food sector for over 35 years. They understand the terminology, the 
+                        relationships in the chain, and the challenges that matter. My role is to 
+                        bring modern AI capabilities into this deep domain expertise.
+                    </p>
+                    <p>
+                        The agri-food sector faces unprecedented pressure: sustainability requirements, 
+                        traceability mandates, climate adaptation, and the need to produce more with less. 
+                        Data is at the center of every solution—but only if you can turn it into 
+                        actionable insights.
+                    </p>
+
+                    <div class="quote-block">
+                        <p class="quote-text">
+                            "Sharing data leads to innovation. We help organizations in the industry 
+                            perform at their best."
+                        </p>
+                        <p class="quote-attribution">— VAA Data Works philosophy</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="section-label">Focus Areas</div>
+                <div class="section-content">
+                    <h2>Where AI creates value in agri-food</h2>
+                    <p>
+                        The intersection of AI and agriculture isn't about replacing human judgment—it's 
+                        about augmenting it with insights that would be impossible to derive manually. 
+                        Here's where I'm focusing our AI capabilities:
+                    </p>
+
+                    <div class="focus-grid">
+                        <div class="focus-card">
+                            <div class="focus-icon">🌱</div>
+                            <h3>Sustainability Intelligence</h3>
+                            <p>
+                                Measuring and improving sustainability performance across the food chain. 
+                                From farm-level carbon footprints to supply chain optimization.
+                            </p>
+                        </div>
+                        <div class="focus-card">
+                            <div class="focus-icon">🔗</div>
+                            <h3>Chain Transparency</h3>
+                            <p>
+                                Traceability solutions that connect every link in the food chain. 
+                                Answering "where does my food come from?" with data.
+                            </p>
+                        </div>
+                        <div class="focus-card">
+                            <div class="focus-icon">📊</div>
+                            <h3>Predictive Analytics</h3>
+                            <p>
+                                Forecasting yields, optimizing inputs, and predicting market conditions 
+                                to help farmers and food producers plan ahead.
+                            </p>
+                        </div>
+                        <div class="focus-card">
+                            <div class="focus-icon">⚙️</div>
+                            <h3>Process Optimization</h3>
+                            <p>
+                                Using machine learning to find inefficiencies and opportunities in 
+                                agricultural and food processing operations.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="section-label">Responsibilities</div>
+                <div class="section-content">
+                    <h2>What I do day to day</h2>
+                    <p>
+                        As Lead AI, I'm responsible for both the technical direction and the 
+                        client-facing work that turns AI capabilities into delivered value.
+                    </p>
+
+                    <div class="responsibilities">
+                        <div class="responsibility-item">
+                            <div class="responsibility-icon">🎯</div>
+                            <div class="responsibility-content">
+                                <h3>AI Strategy & Roadmap</h3>
+                                <p>Setting technical direction for AI initiatives across the organization</p>
+                            </div>
+                        </div>
+                        <div class="responsibility-item">
+                            <div class="responsibility-icon">🤝</div>
+                            <div class="responsibility-content">
+                                <h3>Client Solutions</h3>
+                                <p>Working directly with clients to scope, design, and deliver AI solutions</p>
+                            </div>
+                        </div>
+                        <div class="responsibility-item">
+                            <div class="responsibility-icon">👥</div>
+                            <div class="responsibility-content">
+                                <h3>Team Leadership</h3>
+                                <p>Building and mentoring the data science team's capabilities</p>
+                            </div>
+                        </div>
+                        <div class="responsibility-item">
+                            <div class="responsibility-icon">🔧</div>
+                            <div class="responsibility-content">
+                                <h3>Technical Implementation</h3>
+                                <p>Hands-on development of ML models and data pipelines</p>
+                            </div>
+                        </div>
+                        <div class="responsibility-item">
+                            <div class="responsibility-icon">💬</div>
+                            <div class="responsibility-content">
+                                <h3>Stakeholder Communication</h3>
+                                <p>Translating complex AI concepts for non-technical audiences</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="section-label">Technology</div>
+                <div class="section-content">
+                    <h2>The tools we use</h2>
+                    <p>
+                        Building production AI systems for agri-food requires a pragmatic technology 
+                        stack—tools that work reliably at scale, integrate with existing systems, 
+                        and can be maintained by teams without specialized ML expertise.
+                    </p>
+
+                    <div class="tech-list">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">scikit-learn</span>
+                        <span class="tech-tag">Azure ML</span>
+                        <span class="tech-tag">Databricks</span>
+                        <span class="tech-tag">SQL Server</span>
+                        <span class="tech-tag">Power BI</span>
+                        <span class="tech-tag">OutSystems</span>
+                        <span class="tech-tag">REST APIs</span>
+                        <span class="tech-tag">Blockchain</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="section-label">Impact</div>
+                <div class="section-content">
+                    <h2>Why this matters</h2>
+                    <p>
+                        The food system is one of the largest contributors to climate change, but 
+                        also one of the sectors most affected by it. Smart use of data can help 
+                        address both sides of this equation—reducing environmental impact while 
+                        improving resilience and productivity.
+                    </p>
+                    <p>
+                        At VAA, I get to work on problems that matter: helping farmers demonstrate 
+                        their sustainability credentials, enabling food companies to trace their 
+                        products from farm to fork, and building the data infrastructure that will 
+                        power the next generation of Dutch agriculture.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="back-section">
+            <a href="projects.html" class="back-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Work
+            </a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">© 2024 Stephan Heijl</p>
+        <div class="footer-links">
+            <a href="https://github.com/StephanHeijl">GitHub</a>
+            <a href="https://linkedin.com/in/stephanheijl">LinkedIn</a>
+            <a href="contact.html">Email</a>
+        </div>
+    </footer>
+</body>
+</html>
