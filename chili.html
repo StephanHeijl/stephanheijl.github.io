@@ -1,88 +1,144 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>StephanHeijl.com - Chili Recipe</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="gradients.css" />
-        <script src="zepto.min.js"></script>
-        <script src="cards.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Dosis|Open+Sans" rel="stylesheet">
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chili Recipe - Stephan Heijl</title>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-v2.css">
+    <style>
+        .ingredient-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+        .ingredient-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .ingredient-list li::before {
+            content: '•';
+            color: var(--accent-warm);
+            font-size: 1.5rem;
+        }
+        .instruction-list {
+            counter-reset: step;
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+        .instruction-list li {
+            position: relative;
+            padding: 1.5rem 0 1.5rem 4rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .instruction-list li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 1.5rem;
+            font-family: 'Newsreader', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--accent-gold);
+            width: 2.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">Stephan Heijl</a>
+        <ul class="nav-links">
+            <li><a href="projects.html">Work</a></li>
+            <li><a href="projects.html#posts">Writing</a></li>
+            <li><a href="projects.html#education">Background</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
-        <script src="https://kit.fontawesome.com/af71bba04e.js" crossorigin="anonymous"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    </head>
-    <body>
-        <nav>
-            <div class="internal-wrapper">
-                <a class="logo" href="https://stephanheijl.com">StephanHeijl.com</a>
-                <ul>
-                    <li><a href="projects.html#projects">Projects</a></li>
-                    <li><a href="projects.html#posts">Blog posts</a></li>
-                    <li><a href="projects.html#education">Education</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>            
-            </div>                     
-        </nav>
-        <header>
-            <div class="internal-wrapper">
-                <div class="header-card">
-                    <div class="card-wrapper">
-                        <div class="card gradient-chili">
-                            <div class="glare"></div>
-                            <div class="post-name">
-                                Chili Recipe
-                                <i class="fa fa-cutlery"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="header-annotation">
-                    <h1>Delicious Chili Recipe &#x1f1f3;&#x1f1f1; </h1>
-                    <p>This is a chili recipe in Dutch that serves approximately 8 people. If you want a smaller portion, you can halve the quantities for a more manageable amount.</p>
-                    <ul class="header-tags">
-                        <li>Cooking</li>
-                        <li style="background-color: rgb(185, 203, 232)">Posted: 2024-10-23</li> 
-                    </ul>
-                </div>
-            </div>
-        </header>
-        
-        <div class="details">
-            <div class="internal-wrapper">
-                <h2>Ingredienten</h2>
-                <ul>
-                    <li>Tomatenpurree (80g)</li>
-                    <li>Knoflook (zoveel als je aan kan)</li>
-                    <li>Ui (1x groot)</li>
-                    <li>Chilivlokken</li>
-                    <li>Chorizoworst (2x)</li>
-                    <li>Sukadelappen (ong 1kg)</li>
-                    <li>Tomaten (2 stuks)</li>
-                    <li>Paprika rood (2x)</li>
-                    <li>Maiskorrels (1x 340g)</li>
-                    <li>Santa Maria Mexicaanse chilibonen (2x 410g)</li>
-                    <li>Tomaten gepeld blik (1x 400g)</li>
-                    <li>Tortilla wraps</li>
-                    <li>1 blokje runderbouillon</li>
-                </ul>
-
-                <h2>Instructies</h2>
-                <ol>
-                    <li>Snijd de chorizo in kwartjes, doe deze in een grote soeppan op middelhoog vuur. Bak ze aan tot ze knapperig zijn en een grote hoeveelheid vet eruit is gekomen. Haal de worst eruit en laat het vet in de pan.</li>
-                    <li>Snijd ondertussen de ui en de knoflook klein. Voeg deze toe aan het vet wanneer de chorizo klaar is. Laat deze op medium temperatuur bakken, let op dat de knoflook niet aanbrandt.</li>
-                    <li>Snijd je sukadelappen in blokken, 1.5-2x zo groot als dat je ze in de chili wil (ze slinken best). Probeer grote stukken vet eruit te snijden en apart te houden van de rest van het vlees. Voeg het rundvlees toe aan de pan wanneer de ui en knoflook aromatisch zijn. Bruin het vlees aan de buitenkant aan.</li>
-                    <li>Snijd de tomaten en paprika in blokjes, houd ze in aparte kommetjes.</li>
-                    <li>Wanneer het vlees bruin is, voeg de chilibonen, tomatenblokjes uit blik en verse tomatenblokjes toe. Roer dit goed door.</li>
-                    <li>Voeg naar smaak tomatenpurree toe. Je kan het eventueel aanlengen met bier (dit gaat 6+ uur opstaan dus de alcohol zal verdampen).</li>
-                    <li>Voeg als laatste de paprika en de mais toe (zonder vocht). Voeg chilivlokken toe naar smaak. Voeg het blokje bouillon toe en roer goed door.</li>
-                    <li>Laat het geheel minstens 4 uur zachtjes pruttelen, tot het vlees zacht is. Het hoeft nog niet helemaal uit elkaar te vallen, maar moet wel mals zijn.</li>
-                    <li>Je kan dit nu apart zetten in de koelkast en voor de volgende dag bewaren.</li>
-                    <li>Wanneer je gaat eten, voeg de chorizo toe voor het serveren. Breng op smaak met peper en zout.</li>
-                    <li>Serveer in tortillas of gewoon in een kom. Lekker met zure room, guacamole, en tortillachips.</li>
-                </ol>
-            </div>       
+    <!-- Article Header -->
+    <header class="article-header">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>→</span>
+            <a href="projects.html#posts">Writing</a>
+            <span>→</span>
+            <span>Chili Recipe</span>
         </div>
-        <script async defer src="https://sa.stephanheijl.com/app.js"></script>
-<noscript><img src="https://sa.stephanheijl.com/image.gif" alt=""></noscript>
-    </body>
+
+        <div class="article-meta">
+            <span class="meta-tag">Recipe</span>
+            <span class="meta-item">Posted: October 23, 2024</span>
+        </div>
+
+        <h1>Delicious <span>Chili Recipe</span></h1>
+
+        <p class="article-intro">
+            This is a chili recipe in Dutch that serves approximately 8 people.
+            If you want a smaller portion, you can halve the quantities for a more manageable amount.
+        </p>
+    </header>
+
+    <!-- Article Content -->
+    <article class="article-content">
+        <h2>Ingredienten</h2>
+
+        <ul class="ingredient-list">
+            <li>Tomatenpurree (80g)</li>
+            <li>Knoflook (zoveel als je aan kan)</li>
+            <li>Ui (1x groot)</li>
+            <li>Chilivlokken</li>
+            <li>Chorizoworst (2x)</li>
+            <li>Sukadelappen (ong 1kg)</li>
+            <li>Tomaten (2 stuks)</li>
+            <li>Paprika rood (2x)</li>
+            <li>Maiskorrels (1x 340g)</li>
+            <li>Santa Maria Mexicaanse chilibonen (2x 410g)</li>
+            <li>Tomaten gepeld blik (1x 400g)</li>
+            <li>Tortilla wraps</li>
+            <li>1 blokje runderbouillon</li>
+        </ul>
+
+        <h2>Instructies</h2>
+
+        <ol class="instruction-list">
+            <li>Snijd de chorizo in kwartjes, doe deze in een grote soeppan op middelhoog vuur. Bak ze aan tot ze knapperig zijn en een grote hoeveelheid vet eruit is gekomen. Haal de worst eruit en laat het vet in de pan.</li>
+            <li>Snijd ondertussen de ui en de knoflook klein. Voeg deze toe aan het vet wanneer de chorizo klaar is. Laat deze op medium temperatuur bakken, let op dat de knoflook niet aanbrandt.</li>
+            <li>Snijd je sukadelappen in blokken, 1.5-2x zo groot als dat je ze in de chili wil (ze slinken best). Probeer grote stukken vet eruit te snijden en apart te houden van de rest van het vlees. Voeg het rundvlees toe aan de pan wanneer de ui en knoflook aromatisch zijn. Bruin het vlees aan de buitenkant aan.</li>
+            <li>Snijd de tomaten en paprika in blokjes, houd ze in aparte kommetjes.</li>
+            <li>Wanneer het vlees bruin is, voeg de chilibonen, tomatenblokjes uit blik en verse tomatenblokjes toe. Roer dit goed door.</li>
+            <li>Voeg naar smaak tomatenpurree toe. Je kan het eventueel aanlengen met bier (dit gaat 6+ uur opstaan dus de alcohol zal verdampen).</li>
+            <li>Voeg als laatste de paprika en de mais toe (zonder vocht). Voeg chilivlokken toe naar smaak. Voeg het blokje bouillon toe en roer goed door.</li>
+            <li>Laat het geheel minstens 4 uur zachtjes pruttelen, tot het vlees zacht is. Het hoeft nog niet helemaal uit elkaar te vallen, maar moet wel mals zijn.</li>
+            <li>Je kan dit nu apart zetten in de koelkast en voor de volgende dag bewaren.</li>
+            <li>Wanneer je gaat eten, voeg de chorizo toe voor het serveren. Breng op smaak met peper en zout.</li>
+            <li>Serveer in tortillas of gewoon in een kom. Lekker met zure room, guacamole, en tortillachips.</li>
+        </ol>
+    </article>
+
+    <!-- Article Footer -->
+    <div class="article-footer">
+        <a href="projects.html#posts" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Writing
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">© 2024 Stephan Heijl</p>
+        <div class="footer-links">
+            <a href="https://github.com/StephanHeijl">GitHub</a>
+            <a href="https://linkedin.com/in/stephanheijl">LinkedIn</a>
+            <a href="contact.html">Email</a>
+        </div>
+    </footer>
+</body>
 </html>

@@ -1,65 +1,112 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>StephanHeijl.com</title>
-        <link rel="stylesheet" href="style.css" />
-        <script src="zepto.min.js"></script>
-        <script src="cards.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Dosis|Open+Sans" rel="stylesheet">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeadFWD Share&Grow Presentation - Stephan Heijl</title>
+    <meta name="description" content="Live presentation on Natural Language Processing at HeadFWD Share&Grow event in Amsterdam.">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-v2.css">
+    <style>
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 3rem 0;
+            background: var(--bg-dark);
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">Stephan Heijl</a>
+        <ul class="nav-links">
+            <li><a href="projects.html">Work</a></li>
+            <li><a href="projects.html#posts">Writing</a></li>
+            <li><a href="projects.html#education">Background</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
-        <script src="https://use.fontawesome.com/73f3b30236.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    </head>
-    <body>
-        <nav>
-            <div class="internal-wrapper">
-                <a class="logo" href="https://stephanheijl.com">StephanHeijl.com</a>
-                <ul>
-                    <li><a href="projects.html#projects">Projects</a></li>
-                    <li><a href="projects.html#posts">Blog posts</a></li>
-                    <li><a href="projects.html#education">Education</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>             
-            </div>            
-        </nav>
-        <header>
-            <div class="internal-wrapper">
-                <div class="header-card">
-                    <div class="card-wrapper">
-                        <div class="card" style="background: black;">
-                            <div class="glare"></div>
-                            <img src="img/headfwd-logo.png" style="margin-top: 60%; width: 90%;"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="header-annotation">
-                    <h1>HeadFWD Share&Grow</h1>
-
-                    <p> In 2021 I was invited to present at the HeadFWD Share&Grow event in Amsterdam to give a live presentation on Natural Language Processing.</p>
-                    
-                    <ul class="header-tags">
-                        <li>Artificial Intelligence</li>
-                        <li>Videos</li>
-                    </ul>
-                </div>
-            </div>
-        </header>
-        
-        <div class="details">
-            <div class="internal-wrapper">
-                <p>
-                    The content in presented in Dutch. In this video recorded in 2021 I present the latest advances in Large Language Models (LLMs)
-                     and how they can be used in practice. This also includes a short demo and predictions of where this technology is heading: 
-                     multimodal models that can see, hear and read, code assistants that will enable faster programming and integration of AI into our daily lives.
-                </p>
-                
-                <div class="video-wrapper">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/3p4IjI_R2-c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-		        </div>
-            
-            </div>        
+    <!-- Article Header -->
+    <header class="article-header">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>-></span>
+            <a href="projects.html">Work</a>
+            <span>-></span>
+            <span>HeadFWD</span>
         </div>
-       <script async defer src="https://sa.stephanheijl.com/app.js"></script>
-<noscript><img src="https://sa.stephanheijl.com/image.gif" alt=""></noscript>
-    </body>
+
+        <div class="article-meta">
+            <span class="meta-tag">Speaking</span>
+            <span class="meta-item">2021</span>
+            <span class="meta-item">Amsterdam</span>
+        </div>
+
+        <h1>HeadFWD Share&Grow</h1>
+
+        <p class="article-intro">
+            In 2021 I was invited to present at the HeadFWD Share&Grow event in Amsterdam
+            to give a live presentation on Natural Language Processing.
+        </p>
+    </header>
+
+    <!-- Article Content -->
+    <article class="article-content">
+        <p>
+            The content is presented in Dutch. In this video recorded in 2021, I present the latest advances
+            in Large Language Models (LLMs) and how they can be used in practice. This includes a short demo
+            and predictions of where this technology is heading: multimodal models that can see, hear and read,
+            code assistants that will enable faster programming, and integration of AI into our daily lives.
+        </p>
+
+        <div class="video-wrapper">
+            <iframe
+                src="https://www.youtube.com/embed/3p4IjI_R2-c"
+                title="HeadFWD Share&Grow - NLP Presentation"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="info-aside">
+            <div class="info-aside-label">Topics Covered</div>
+            <p>
+                Large Language Models, GPT architecture, practical NLP applications, multimodal AI,
+                code assistants, and the future of AI integration in everyday tools.
+            </p>
+        </div>
+    </article>
+
+    <!-- Article Footer -->
+    <div class="article-footer">
+        <a href="projects.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Work
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">© 2024 Stephan Heijl</p>
+        <div class="footer-links">
+            <a href="https://github.com/StephanHeijl">GitHub</a>
+            <a href="https://linkedin.com/in/stephanheijl">LinkedIn</a>
+            <a href="contact.html">Email</a>
+        </div>
+    </footer>
+</body>
 </html>

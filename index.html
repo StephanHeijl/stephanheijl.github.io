@@ -1,294 +1,481 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>StephanHeijl.com</title>
-        <meta name="description" content="Data scientist @ Bio-Prodict, working with proteins & machine learning.">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <meta name="keywords" content="Stephan Heijl,python,machine learning,ai,artificial intelligence,rust,bioinformatics,engineer,leader">
-        <meta name="author" content="Stephan Heijl">
-        <style>
-            html, body {
-                max-width: 100%;
-                overflow-x: hidden;
-            }
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stephan Heijl - AI Leadership & Data Science</title>
+    <meta name="description" content="Data scientist and AI leader specializing in machine learning and bioinformatics. Currently leading AI initiatives in agri-food.">
+    <meta name="keywords" content="Stephan Heijl,python,machine learning,ai,artificial intelligence,rust,bioinformatics,engineer,leader">
+    <meta name="author" content="Stephan Heijl">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-v2.css">
+</head>
+<body>
+    <!-- Neural Network Background -->
+    <canvas id="networkCanvas"></canvas>
 
-            body {
-                background: white;
-                font-family: 'Open Sans', sans-serif;
-                margin: 0;
-                padding: 0;
-                font-size: 14pt;
-            }
+    <!-- Navigation -->
+    <nav class="transparent">
+        <a href="index.html" class="logo">Stephan Heijl</a>
+        <ul class="nav-links">
+            <li><a href="projects.html">Work</a></li>
+            <li><a href="projects.html#posts">Writing</a></li>
+            <li><a href="projects.html#education">Background</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
-            ul.chevron-list li {
-                list-style-type: none;
-                line-height: 1.3em;
-                padding-left: 1.0em;
-                padding-right: 0.5em;
-                text-indent: -1.0em; 
-            }
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-left">
+            <div class="role-tag">Lead AI - Data Science</div>
+            <h1>
+                Turning complex data
+                <span class="emphasis">into clear decisions.</span>
+            </h1>
+            <p class="hero-intro">
+                I'm a <strong>data scientist and AI leader</strong> who bridges the gap between
+                technical possibility and business reality. Currently leading AI initiatives
+                in agri-food, where the right insights can transform entire value chains.
+            </p>
 
-            ul.chevron-list li:before {
-                content: '\00BB \0020';
-                font-weight: bold;
-                font-size: 140%;
-            }
-
-            h1 {
-                font-family: Dosis;
-                font-weight: bold;
-                padding: 0;
-                margin: 0;
-                color: rgba(0,0,0,0.6);
-                text-shadow: 1px 1px white;
-            }
-
-            h2, h3 {
-                font-family: Dosis;
-                font-weight: bold;
-                padding: 0;
-                padding-left: 20px;
-                margin: 1em 0em;
-                color: rgba(0,0,0,0.6);
-                text-shadow: 1px 1px white;
-            }
-
-            h3 {
-                font-size: 1.2em;
-            }
-
-            nav {
-                background: #fff;
-                border-bottom: 1px solid #d6d6d6;
-                font-family: Dosis;
-                font-weight: 700;
-                text-transform: uppercase;
-                position: relative;
-            }
-
-            nav .logo {
-                display: inline-block;
-                border: 2px solid black;
-                padding: 5px;
-                margin: 20px 20px;
-                cursor: pointer;
-                color: black;
-                transition: background 0.2s;
-            }
-
-            nav .logo:hover {
-                background: rgba(0, 0, 0, 0.1);
-            }
-
-            nav ul {
-                padding: 0;
-                margin: 0;
-                display: inline-block;
-                padding-left: 20px;
-            }
-
-            nav li {
-                display: inline-block;
-                margin-bottom: 20px;
-            }
-            nav li > a {
-                padding : 20px 10px;
-                color: black;
-                transition: background 0.2s;
-            }
-
-            nav a:hover {
-                background: rgba(0,0,0,0.05);
-
-            }
-
-            header {
-                background: rgb(214, 230, 255);
-                position: relative;
-                border-bottom: 1px solid #d6d6d6;
-                text-shadow: 1px 1px white;
-            }
-
-            .internal-wrapper {
-                width: 800px;
-                position: relative;
-                margin: 0 auto;
-            }
-
-            .header-card {
-                padding: 20px;
-                display: inline-block;
-                vertical-align: top;
-            }
-
-            .header-annotation { 
-                padding: 20px;
-                width: 480px;
-                display: inline-block;
-                vertical-align: top;
-            }
-
-            .header-tags {
-                margin: 0;
-                padding: 0;
-                display: inline-block;
-                vertical-align: bottom;
-                width: 480px;
-            }
-
-            .header-tags li {
-                display: inline-block;
-                margin: 0px;
-                font-size: 10px;
-                margin-right: 5px;
-                background: rgba(0, 0, 0, 0.2);
-                padding: 5px;
-                border-radius: 5px;
-                cursor: default;
-                border-bottom: 1px solid rgba(0,0,0, 0.2);
-            }
-
-            .profile-picture {
-                max-width:100%;
-                display: inline-block;
-                position: relative;
-                height: 250px;
-                margin: 1.3em 0em 0em 1em;
-                border-radius: 5px; 
-            }
-
-            .profile-picture img {
-                max-height: 100%;
-                border-radius: 5px; 
-            }
-
-            .details p {
-                padding: 0px 20px;
-            }
-
-            .internal-wrapper > h1 {
-                padding: 20px 0px 20px 20;
-                text-transform: uppercase;
-            }
-
-            h1 > a {
-                color: silver;
-                font-size: 0.5em;
-                position: relative;
-                top: -0.25em;
-            }
-
-            hr {
-                border: 0;
-                margin: 0;
-                border-top: 2px solid black;
-            }
-
-            a { 
-                color: blue;
-                text-decoration: none;
-            }
-
-            @media screen and (max-width:800px){
-                .internal-wrapper {
-                    width: 100%;
-                }
-
-                .header-annotation {
-                    display: block;
-                    box-sizing: border-box;
-                    width: 100%;
-                }
-                .header-card {
-                    margin: 0 auto;
-                    width: 100%;
-                    text-align: center;
-                    padding: 20px 0 0 0;
-                    position: relative;
-                }
-                .card {
-                    width: 130px !important;
-                    height: 190px !important;
-                }
-            }
-            
-            #particles-js {
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                left: 0;
-                top: 0;
-                opacity: 0;
-            }
-            
-            .visible {
-                opacity: 1 !important;
-                transition: opacity 1s;
-            }
-        </style>
-    </head>
-    <body>
-        <nav>
-            <div class="internal-wrapper">
-                <a class="logo" href="https://stephanheijl.com">StephanHeijl.com</a>
-                <ul>
-                    <li><a href="projects.html#projects">Projects</a></li>
-                    <!--<li><a href="projects.html#publications">Publications</a></li>-->
-                    <li><a href="projects.html#posts">Blog posts</a></li>
-                    <li><a href="projects.html#education">Education</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
-        <header>
-            <div id="particles-js"></div>
-            <div class="internal-wrapper">
-                <div class="profile-picture">
-                    <a href="img/profile_photo_full.jpg">
-                        <img src="img/profile_photo_small.jpg" width="166" height="250" alt="A professional photo depicting Stephan Heijl"/>
-                    </a>
+            <div class="value-props">
+                <div class="value-prop">
+                    <div class="value-prop-label">Drive</div>
+                    <div class="value-prop-text">Creating real value</div>
                 </div>
-                 <div class="header-annotation">
-                    <h1>I am Stephan Heijl,</h1>
-                    <p>A digital native at heart, with a penchant for machine learning and data science. I specialize in Artificial Intelligence applied to the world of bioinformatics.</p>
-                    <p>I am a driven person with a wide range of interests, experience in public speaking and an entrepreneurial state of mind.</p>
+                <div class="value-prop">
+                    <div class="value-prop-label">Approach</div>
+                    <div class="value-prop-text">Honest communication</div>
+                </div>
+                <div class="value-prop">
+                    <div class="value-prop-label">Focus</div>
+                    <div class="value-prop-text">Solving client problems</div>
                 </div>
             </div>
-        </header>
 
-        <div class="details">
-            <div class="internal-wrapper">
-                <h2>This is my portfolio.</h2>
-                <p>I use this website to display my accomplishments and work. I am currently employed at <a href="/professional-bioprodict.html" title="Click here to view my accomplishments at Bio-Prodict.">Bio-Prodict B.V.</a>, but I am always looking to extend my professional network and explore new opportunities.</p>
-
-                <h2>What can I do for you?</h2>
-                <p>In short, I am a data scientist. I mangle datapoints into becoming information, and feed those into state of the art algorithms that will make intelligent predictions about situations you haven't seen before. Examples include:</p>
-                <ul class="chevron-list">
-                    <li>Creating expert protein analysis networks.</li>
-                    <li>Predicting the effect of mutations in breast cancer genes with high accuracy.</li>
-                    <li>Processing large amounts of scientific literature to produce advanced field specific language models.</li>
-                </ul>
-                <p>I combine my expertise in AI with experience in front-end development and my ability to translate the needs of non-technical audiences into usable specifications. This is how I add value to the companies where I work.</p>
-                <h2>Further information</h2>
-                <p>The <a href="projects.html">Projects page</a> on this website contains an overview of my previous and current work, education and publications. Feel free to <a href="contact.html">contact me</a> in any way you see fit. I'll be happy to answer any questions you might have and provide any references you may need. </p>
+            <div class="cta-group">
+                <a href="projects.html" class="btn-primary">
+                    View My Work
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="contact.html" class="btn-secondary">
+                    Let's talk
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M7 7h10v10"/>
+                    </svg>
+                </a>
             </div>
         </div>
-        
-        <link rel="stylesheet" href="style.css" />
-        <script src="zepto.min.js"></script>
-        <script src="cards.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Dosis|Open+Sans" rel="stylesheet">
-        <script src="https://use.fontawesome.com/73f3b30236.js"></script>
-        <script src="particles.min.js"></script>
-		<script src="https://instant.page/1.0.0" type="module" integrity="sha384-6w2SekMzCkuMQ9sEbq0cLviD/yR2HfA/+ekmKiBnFlsoSvb/VmQFSi/umVShadQI"></script>
-        <script>
-            $(function() {
-                particlesJS.load('particles-js', 'particles.json', function() {
-                  $("#particles-js").addClass("visible");
-                });
+
+        <div class="hero-right">
+            <div class="profile-visual">
+                <div class="profile-frame"></div>
+                <div class="profile-image-container">
+                    <img src="img/profile_photo_small.jpg" alt="Stephan Heijl" class="profile-image">
+                    <div class="profile-overlay"></div>
+                </div>
+                <div class="floating-card bottom-left">
+                    <div class="floating-card-label">Current Focus</div>
+                    <div class="floating-card-value">Agri-Food AI</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="approach">
+        <div class="approach-header">
+            <div>
+                <div class="section-label">How I Work</div>
+                <h2>Technical depth meets<br>strategic clarity</h2>
+            </div>
+            <p class="approach-text">
+                I've learned that the best AI solutions aren't built in isolation. They emerge from
+                understanding the real problem, communicating openly about what's possible, and
+                iterating closely with the people who'll use them. That's the approach I bring to
+                every project—whether I'm building models or leading teams.
+            </p>
+        </div>
+
+        <div class="approach-grid">
+            <div class="approach-card">
+                <div class="approach-number">01</div>
+                <h3>Understand First</h3>
+                <p>Before touching data, I dig into the business context. What decision are we trying to improve? What does success actually look like? The technical solution follows from there.</p>
+            </div>
+            <div class="approach-card">
+                <div class="approach-number">02</div>
+                <h3>Communicate Clearly</h3>
+                <p>I translate between technical and business language fluently. Stakeholders know what we're building and why. Teams know what's expected. No black boxes, no jargon walls.</p>
+            </div>
+            <div class="approach-card">
+                <div class="approach-number">03</div>
+                <h3>Deliver Value</h3>
+                <p>Models that don't ship don't matter. I focus on practical solutions that work in production, with clear metrics tied to business outcomes—not just algorithmic performance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section class="expertise">
+        <div class="section-label">Expertise</div>
+        <h2>Deep technical skills,<br>applied strategically</h2>
+
+        <div class="expertise-grid">
+            <div class="expertise-item">
+                <div class="expertise-icon">*</div>
+                <div>
+                    <h3>Machine Learning & Deep Learning</h3>
+                    <p>End-to-end ML pipelines, from feature engineering to production deployment. Specialized in neural architectures for structured and sequential data.</p>
+                </div>
+            </div>
+            <div class="expertise-item">
+                <div class="expertise-icon">+</div>
+                <div>
+                    <h3>Predictive Analytics</h3>
+                    <p>Building systems that forecast outcomes and surface insights from complex datasets. Particular experience with time-series and high-dimensional biological data.</p>
+                </div>
+            </div>
+            <div class="expertise-item">
+                <div class="expertise-icon">></div>
+                <div>
+                    <h3>Technical Leadership</h3>
+                    <p>Leading data science teams, setting technical direction, and bridging the gap between R&D and business stakeholders. Public speaking and workshop facilitation.</p>
+                </div>
+            </div>
+            <div class="expertise-item">
+                <div class="expertise-icon">~</div>
+                <div>
+                    <h3>Domain: Agri-Food & Life Sciences</h3>
+                    <p>Deep experience applying AI to agriculture, food systems, and biological research. Understanding the unique constraints and opportunities in these sectors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="section-label">Let's Connect</div>
+        <h2>Have a problem worth solving?</h2>
+        <p>I'm always interested in discussing new challenges, especially where AI can create real impact in agri-food and beyond.</p>
+        <a href="contact.html" class="btn-light">
+            Get in Touch
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">© 2024 Stephan Heijl</p>
+        <div class="footer-links">
+            <a href="https://github.com/StephanHeijl">GitHub</a>
+            <a href="https://linkedin.com/in/stephanheijl">LinkedIn</a>
+            <a href="contact.html">Email</a>
+        </div>
+    </footer>
+
+    <script>
+        // Rippling Field Visualization
+        // Chaotic flowing lines that straighten into ordered grid on mouse/touch proximity
+
+        const canvas = document.getElementById('networkCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let mouse = { x: null, y: null, active: false };
+        let targetInfluencePoint = { x: null, y: null, active: false };
+        let currentInfluencePoint = { x: null, y: null, strength: 0, idleTime: 0 };
+        let time = 0;
+
+        // Store glow state for each line to enable smooth color transitions
+        let horizontalLineGlow = [];
+        let verticalLineGlow = [];
+
+        const config = {
+            lineSpacing: 36,
+            influenceRadius: 140,
+            waveAmplitude: 14,
+            waveSpeed: 0.0008,
+            fadeInSpeed: 0.08,
+            fadeOutSpeed: 0.04,
+            idleFadeSpeed: 0.008,
+            glowFadeSpeed: 0.02,
+            glowColor: 'rgba(37, 99, 235, ',
+            lineColor: 'rgba(212, 168, 83, 0.12)',
+            lineColorBright: 'rgba(212, 168, 83, ',
+        };
+
+        let pulses = [];
+
+        function init() {
+            const dpr = window.devicePixelRatio || 1;
+            width = window.innerWidth;
+            height = window.innerHeight;
+
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
+
+            ctx.scale(dpr, dpr);
+
+            const numHorizontal = Math.ceil(height / config.lineSpacing) + 8;
+            const numVertical = Math.ceil(width / config.lineSpacing) + 8;
+            horizontalLineGlow = new Array(numHorizontal).fill(0);
+            verticalLineGlow = new Array(numVertical).fill(0);
+        }
+
+        function createPulse(x, y) {
+            if (pulses.length < 6) {
+                pulses.push({ x: x, y: y, radius: 0, opacity: 1.0 });
+            }
+        }
+
+        function getWaveOffset(primary, secondary, timeOffset) {
+            const wave1 = Math.sin(primary * 0.015 + time + secondary * 0.01) * config.waveAmplitude;
+            const wave2 = Math.sin(primary * 0.025 + time * 1.3 - secondary * 0.012) * config.waveAmplitude * 0.6;
+            const wave3 = Math.sin(primary * 0.008 + time * 0.7 + secondary * 0.018) * config.waveAmplitude * 0.8;
+            return wave1 + wave2 + wave3;
+        }
+
+        function getInfluence(x, y) {
+            if (currentInfluencePoint.strength <= 0 || currentInfluencePoint.x === null) return 0;
+            const dist = Math.sqrt(Math.pow(x - currentInfluencePoint.x, 2) + Math.pow(y - currentInfluencePoint.y, 2));
+            if (dist > config.influenceRadius) return 0;
+            const t = dist / config.influenceRadius;
+            return (1 - (t * t)) * currentInfluencePoint.strength;
+        }
+
+        function getPulseGlow(x, y) {
+            let glow = 0;
+            pulses.forEach(pulse => {
+                const dist = Math.sqrt(Math.pow(x - pulse.x, 2) + Math.pow(y - pulse.y, 2));
+                const ringWidth = 100 + pulse.radius * 0.2;
+                const ringDist = Math.abs(dist - pulse.radius);
+                if (ringDist < ringWidth) {
+                    const t = ringDist / ringWidth;
+                    glow += (1 - t * t) * pulse.opacity * 1.8;
+                }
             });
-        </script>
-        <script async defer src="https://sa.stephanheijl.com/app.js"></script>
-        <noscript><img src="https://sa.stephanheijl.com/image.gif" alt=""></noscript>
-    </body>
+            return Math.min(1, glow);
+        }
+
+        function updateInfluencePoint() {
+            if (targetInfluencePoint.active) {
+                currentInfluencePoint.strength += (1 - currentInfluencePoint.strength) * config.fadeInSpeed;
+                currentInfluencePoint.idleTime = 0;
+
+                if (currentInfluencePoint.x === null) {
+                    currentInfluencePoint.x = targetInfluencePoint.x;
+                    currentInfluencePoint.y = targetInfluencePoint.y;
+                } else {
+                    currentInfluencePoint.x += (targetInfluencePoint.x - currentInfluencePoint.x) * config.fadeInSpeed;
+                    currentInfluencePoint.y += (targetInfluencePoint.y - currentInfluencePoint.y) * config.fadeInSpeed;
+                }
+            } else {
+                currentInfluencePoint.strength *= (1 - config.fadeOutSpeed);
+                if (currentInfluencePoint.strength < 0.01) {
+                    currentInfluencePoint.strength = 0;
+                }
+            }
+
+            if (currentInfluencePoint.idleTime !== undefined) {
+                currentInfluencePoint.idleTime++;
+                if (currentInfluencePoint.idleTime > 60) {
+                    currentInfluencePoint.strength *= (1 - config.idleFadeSpeed);
+                    if (currentInfluencePoint.strength < 0.01) {
+                        currentInfluencePoint.strength = 0;
+                    }
+                }
+            }
+        }
+
+        function drawHorizontalLine(baseY, lineIndex) {
+            const segments = 100;
+            const segmentWidth = (width + 100) / segments;
+
+            const points = [];
+            let targetGlow = 0;
+
+            for (let i = 0; i <= segments; i++) {
+                const x = -50 + i * segmentWidth;
+                const influence = getInfluence(x, baseY);
+                const pulseGlow = getPulseGlow(x, baseY);
+
+                targetGlow = Math.max(targetGlow, influence + pulseGlow * 0.5);
+
+                const waveOffset = getWaveOffset(x, baseY, time) * (1 - influence);
+
+                points.push({ x: x, y: baseY + waveOffset });
+            }
+
+            if (lineIndex < horizontalLineGlow.length) {
+                if (targetGlow > horizontalLineGlow[lineIndex]) {
+                    horizontalLineGlow[lineIndex] += (targetGlow - horizontalLineGlow[lineIndex]) * 0.15;
+                } else {
+                    horizontalLineGlow[lineIndex] += (targetGlow - horizontalLineGlow[lineIndex]) * config.glowFadeSpeed;
+                }
+            }
+
+            const currentGlow = lineIndex < horizontalLineGlow.length ? horizontalLineGlow[lineIndex] : targetGlow;
+
+            ctx.beginPath();
+            for (let i = 0; i <= segments; i++) {
+                if (i === 0) {
+                    ctx.moveTo(points[i].x, points[i].y);
+                } else {
+                    ctx.lineTo(points[i].x, points[i].y);
+                }
+            }
+
+            if (currentGlow > 0.01) {
+                const t = Math.min(1, currentGlow);
+                const r = Math.round(212 + (37 - 212) * t);
+                const g = Math.round(168 + (99 - 168) * t);
+                const b = Math.round(83 + (235 - 83) * t);
+                const alpha = 0.12 + currentGlow * 0.4;
+                ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+                ctx.lineWidth = 1;
+                if (currentGlow > 0.15) {
+                    ctx.shadowColor = config.glowColor + '0.5)';
+                    ctx.shadowBlur = currentGlow * 20;
+                }
+            } else {
+                ctx.strokeStyle = config.lineColor;
+                ctx.lineWidth = 1;
+                ctx.shadowBlur = 0;
+            }
+
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+        }
+
+        function drawVerticalLine(baseX, lineIndex) {
+            const segments = 80;
+            const segmentHeight = (height + 100) / segments;
+
+            const points = [];
+            let targetGlow = 0;
+
+            for (let i = 0; i <= segments; i++) {
+                const y = -50 + i * segmentHeight;
+                const influence = getInfluence(baseX, y);
+                const pulseGlow = getPulseGlow(baseX, y);
+
+                targetGlow = Math.max(targetGlow, influence + pulseGlow * 0.5);
+
+                const waveOffset = getWaveOffset(y, baseX, time * 1.1) * (1 - influence);
+
+                points.push({ x: baseX + waveOffset, y: y });
+            }
+
+            if (lineIndex < verticalLineGlow.length) {
+                if (targetGlow > verticalLineGlow[lineIndex]) {
+                    verticalLineGlow[lineIndex] += (targetGlow - verticalLineGlow[lineIndex]) * 0.15;
+                } else {
+                    verticalLineGlow[lineIndex] += (targetGlow - verticalLineGlow[lineIndex]) * config.glowFadeSpeed;
+                }
+            }
+
+            const currentGlow = lineIndex < verticalLineGlow.length ? verticalLineGlow[lineIndex] : targetGlow;
+
+            ctx.beginPath();
+            for (let i = 0; i <= segments; i++) {
+                if (i === 0) {
+                    ctx.moveTo(points[i].x, points[i].y);
+                } else {
+                    ctx.lineTo(points[i].x, points[i].y);
+                }
+            }
+
+            if (currentGlow > 0.01) {
+                const t = Math.min(1, currentGlow);
+                const r = Math.round(212 + (37 - 212) * t);
+                const g = Math.round(168 + (99 - 168) * t);
+                const b = Math.round(83 + (235 - 83) * t);
+                const alpha = 0.12 + currentGlow * 0.4;
+                ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+                ctx.lineWidth = 1;
+                if (currentGlow > 0.15) {
+                    ctx.shadowColor = config.glowColor + '0.5)';
+                    ctx.shadowBlur = currentGlow * 20;
+                }
+            } else {
+                ctx.strokeStyle = config.lineColor;
+                ctx.lineWidth = 1;
+                ctx.shadowBlur = 0;
+            }
+
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+        }
+
+        function updatePulses() {
+            pulses = pulses.filter(pulse => {
+                pulse.radius += 4;
+                pulse.opacity -= 0.002;
+                return pulse.opacity > 0;
+            });
+        }
+
+        function animate(timestamp) {
+            time = timestamp * config.waveSpeed;
+
+            updateInfluencePoint();
+
+            ctx.clearRect(0, 0, width, height);
+
+            const numHorizontal = Math.ceil(height / config.lineSpacing) + 4;
+            for (let i = 0; i < numHorizontal; i++) {
+                const baseY = -config.lineSpacing * 2 + i * config.lineSpacing;
+                drawHorizontalLine(baseY, i);
+            }
+
+            const numVertical = Math.ceil(width / config.lineSpacing) + 4;
+            for (let i = 0; i < numVertical; i++) {
+                const baseX = -config.lineSpacing * 2 + i * config.lineSpacing;
+                drawVerticalLine(baseX, i);
+            }
+
+            updatePulses();
+
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', init);
+
+        document.addEventListener('mousemove', (e) => {
+            targetInfluencePoint.x = e.clientX;
+            targetInfluencePoint.y = e.clientY;
+            targetInfluencePoint.active = true;
+        });
+
+        document.addEventListener('mouseleave', () => {
+            targetInfluencePoint.active = false;
+        });
+
+        document.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            targetInfluencePoint.x = touch.clientX;
+            targetInfluencePoint.y = touch.clientY;
+            targetInfluencePoint.active = true;
+            createPulse(touch.clientX, touch.clientY);
+        }, { passive: true });
+
+        document.addEventListener('touchmove', (e) => {
+            const touch = e.touches[0];
+            targetInfluencePoint.x = touch.clientX;
+            targetInfluencePoint.y = touch.clientY;
+            targetInfluencePoint.active = true;
+        }, { passive: true });
+
+        init();
+        animate(0);
+    </script>
+</body>
 </html>

@@ -1,62 +1,102 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>StephanHeijl.com</title>
-        <link rel="stylesheet" href="style.css" />
-        <script src="zepto.min.js"></script>
-        <script src="cards.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Dosis|Open+Sans" rel="stylesheet">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TYGERS Magazine - Stephan Heijl</title>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-v2.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">Stephan Heijl</a>
+        <ul class="nav-links">
+            <li><a href="projects.html">Work</a></li>
+            <li><a href="projects.html#posts">Writing</a></li>
+            <li><a href="projects.html#education">Background</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
-        <script src="https://use.fontawesome.com/73f3b30236.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    </head>
-    <body>
-        <nav>
-            <div class="internal-wrapper">
-                <a class="logo" href="https://stephanheijl.com">StephanHeijl.com</a>
-                <ul>
-                    <li><a href="projects.html#projects">Projects</a></li>
-                    <!--<li><a href="projects.html#publications">Publications</a></li>-->
-                    <li><a href="projects.html#posts">Blog posts</a></li>
-                    <li><a href="projects.html#education">Education</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>             
-            </div>            
-        </nav>
-        <header>
-            <div class="internal-wrapper">
-                <div class="header-card">
-                    <div class="card-wrapper">
-                        <div class="card" style="background: radial-gradient(ellipse at bottom left, rgba(34,170,129,1) 0%,rgb(56, 111, 154) 50%); background-size: 200% 100%;">
-                            <div class="glare"></div>
-                            <img src="img/tygers-logo.png" />
-                        </div>
-                    </div>
-                </div>
-                <div class="header-annotation">
-                    <h1>TYGERS Magazine</h1>
-                    <p>TYGERS Magazine invited me to join their panel on the pilot of their <b>TYGER Talks</b> videos. During this 26 minute video I discuss the state of Artificial Intelligence with 2 other entrepreneurs and a field expert. The discussion is led by presenter Chris Kok.</p>
-                    <ul class="header-tags">
-                        <li>Artificial Intelligence</li>
-                        <li>Videos</li>
-                    </ul>
-                </div>
-            </div>
-        </header>
-        
-        <div class="details">
-            <div class="internal-wrapper">
-                <p>This video has been produced by TYGERS Magazine in The Hague, at the New World Campus. The content in presented in Dutch. </p>
-                
-                <div class="video-wrapper">
-		          <iframe width="560" height="349" src="https://www.youtube.com/embed/Ex_8ozgOHm8?rel=0&hd=1" frameborder="0" allowfullscreen></iframe>
-		        </div>
-                
-                <p>For this video I was joined by Philip Rakhou <a href="https://nl.linkedin.com/in/philiprakhou"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>, Jurjen Söhne <a href="https://www.linkedin.com/in/jurjensohne/"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>, Tony Nguyen and Chris Kok. We touch on the current state of AI, its potential dangers and benefits, and how and where AI and machine learning is being applied by entrepreneurs.</p>
-            
-            </div>        
+    <!-- Article Header -->
+    <header class="article-header">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>→</span>
+            <a href="projects.html#posts">Writing</a>
+            <span>→</span>
+            <span>TYGERS Magazine</span>
         </div>
-       <script async defer src="https://sa.stephanheijl.com/app.js"></script>
-<noscript><img src="https://sa.stephanheijl.com/image.gif" alt=""></noscript>
-    </body>
+
+        <div class="article-meta">
+            <span class="meta-tag">Video</span>
+            <span class="meta-tag">Artificial Intelligence</span>
+        </div>
+
+        <h1>TYGERS <span>Magazine</span></h1>
+
+        <p class="article-intro">
+            TYGERS Magazine invited me to join their panel on the pilot of their TYGER Talks videos.
+            During this 26 minute video I discuss the state of Artificial Intelligence with 2 other
+            entrepreneurs and a field expert. The discussion is led by presenter Chris Kok.
+        </p>
+    </header>
+
+    <!-- Article Content -->
+    <article class="article-content">
+        <p>
+            This video has been produced by TYGERS Magazine in The Hague, at the New World Campus.
+            The content is presented in Dutch.
+        </p>
+
+        <figure class="article-figure" style="margin: 3rem 0;">
+            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                <iframe
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+                    src="https://www.youtube.com/embed/Ex_8ozgOHm8?rel=0&hd=1"
+                    title="TYGER Talks - AI Discussion"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </figure>
+
+        <h2>Panel Members</h2>
+
+        <p>
+            For this video I was joined by Philip Rakhou, Jurjen Sohne, Tony Nguyen and Chris Kok.
+            We touch on the current state of AI, its potential dangers and benefits, and how and
+            where AI and machine learning is being applied by entrepreneurs.
+        </p>
+
+        <div class="info-aside">
+            <div class="info-aside-label">Discussion Topics</div>
+            <p>
+                The panel covers the current state of AI, its potential dangers and benefits,
+                and practical applications of AI and machine learning by entrepreneurs in various industries.
+            </p>
+        </div>
+    </article>
+
+    <!-- Article Footer -->
+    <div class="article-footer">
+        <a href="projects.html#posts" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Writing
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">© 2024 Stephan Heijl</p>
+        <div class="footer-links">
+            <a href="https://github.com/StephanHeijl">GitHub</a>
+            <a href="https://linkedin.com/in/stephanheijl">LinkedIn</a>
+            <a href="contact.html">Email</a>
+        </div>
+    </footer>
+</body>
 </html>

@@ -1,107 +1,142 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>StephanHeijl.com</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="gradients.css" />
-        <script src="zepto.min.js"></script>
-        <script src="cards.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Dosis|Open+Sans" rel="stylesheet">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerAssist B.V. - Stephan Heijl</title>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-v2.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">Stephan Heijl</a>
+        <ul class="nav-links">
+            <li><a href="projects.html">Work</a></li>
+            <li><a href="projects.html#posts">Writing</a></li>
+            <li><a href="projects.html#education">Background</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
-        <script src="https://use.fontawesome.com/73f3b30236.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    </head>
-    <body>
-        <nav>
-            <div class="internal-wrapper">
-                <a class="logo" href="https://stephanheijl.com">StephanHeijl.com</a>
-                <ul>
-                    <li><a href="projects.html#projects">Projects</a></li>
-                    <!--<li><a href="projects.html#publications">Publications</a></li>-->
-                    <li><a href="projects.html#posts">Blog posts</a></li>
-                    <li><a href="projects.html#education">Education</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>              
-            </div>                     
-        </nav>
-        <header>
-            <div class="internal-wrapper">
-                <div class="header-card">
-                    <div class="card-wrapper">
-                        <div class="card gradient-powerassist">
-                            <div class="glare"></div>
-                            <img src="img/powerassist-logo.png" style="margin-top: 22%;" />
+    <!-- Hero -->
+    <section class="hero" style="min-height: auto;">
+        <div class="hero-left" style="padding-bottom: 3rem;">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>→</span>
+                <a href="projects.html">Work</a>
+                <span>→</span>
+                <span>PowerAssist</span>
+            </div>
+            <div class="role-tag">Front-end Developer</div>
+            <h1>PowerAssist <span>B.V.</span></h1>
+            <p class="hero-intro">
+                During my studies I was employed as a front-end developer at PowerAssist in Arnhem.
+                I worked with the proprietary IQ CMS and was responsible for interacting with
+                customers and vendors.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <div class="info-card-title">Position Details</div>
+            <div class="info-item">
+                <div class="info-label">Company</div>
+                <div class="info-value">PowerAssist B.V.</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Location</div>
+                <div class="info-value">Arnhem, Netherlands</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Role</div>
+                <div class="info-value">Front-end Developer</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Focus</div>
+                <div class="info-value">Web Development</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <div class="content">
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="section-label">Responsibilities</div>
+                <div class="section-content">
+                    <h2>Key tasks</h2>
+
+                    <div class="responsibilities">
+                        <div class="responsibility-item">
+                            <div class="responsibility-icon">🎨</div>
+                            <div class="responsibility-content">
+                                <h3>CMS Implementation</h3>
+                                <p>Implementing functionality of the IQ CMS in pre-made HTML/CSS templates designed by our in-house team</p>
+                            </div>
+                        </div>
+                        <div class="responsibility-item">
+                            <div class="responsibility-icon">🐘</div>
+                            <div class="responsibility-content">
+                                <h3>PHP Development</h3>
+                                <p>Using PHP to add functionality to the IQ CMS, including payment systems (Mollie) and integrating a product management system</p>
+                            </div>
+                        </div>
+                        <div class="responsibility-item">
+                            <div class="responsibility-icon">⚡</div>
+                            <div class="responsibility-content">
+                                <h3>Interactive JavaScript</h3>
+                                <p>Using JavaScript to implement interactive functionality to highly dynamic sites</p>
+                            </div>
+                        </div>
+                        <div class="responsibility-item">
+                            <div class="responsibility-icon">🤝</div>
+                            <div class="responsibility-content">
+                                <h3>Client Relations</h3>
+                                <p>Maintaining direct contact with clients, assessing bids, and working with software vendors on novel products</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="header-annotation">
-                    <h1>PowerAssist B.V.</h1>
-                    <p>During my studies I was employed as a front-end developer at PowerAssist in Arnhem.</p>
-                    <ul class="header-tags">
-                        <li>Professional</li>
-                        <li>Webdevelopment</li>
-                    </ul>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="section-label">Skills</div>
+                <div class="section-content">
+                    <h2>Technologies used</h2>
+
+                    <div class="tech-list">
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">IQ CMS</span>
+                        <span class="tech-tag">Mollie Payments</span>
+                    </div>
                 </div>
             </div>
-        </header>
-        
-        <div class="details">
-            <div class="internal-wrapper">
-                <p>At PowerAssist I worked with the proprietary IQ CMS and was responsible for interacting with customers and vendors.</p>
-                
-                <p>The tasks I worked on included: </p>
-                
-                <ul class="chevron-list">
-                    <li>Implementing functionality of the IQ CMS in pre-made HTML/CSS templates designed by our in-house team.</li>
-                    <li>Using PHP to add functionality to the IQ CMS, including payment systems (Mollie) and integrating a product management system. </li>
-                    <li>Using Javascript to implement interactive functionality to highly dynamic sites.</li>
-                </ul>
-                
-                <p>At times I was responsible for maintaining direct contact with our clients, aiding in assessing bids for new clients and working with software vendors to create novel software products both on the client and the server side. </p>
-            <h2>Skills used</h2>
-            <div class="skills-used">
-                <table>
-                    <tr>
-                        <td>PHP</td>
-                        <td>
-                            <div class="skill-bar-outer gradient-powerassist">
-                                <div class="skill-bar-inner-back">
-                                 <div class="skill-bar-inner-fill gradient-powerassist"></div></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>MongoDB</td>
-                        <td>
-                            <div class="skill-bar-outer gradient-powerassist">
-                                <div class="skill-bar-inner-back">
-                                 <div class="skill-bar-inner-fill gradient-powerassist" style="max-width: 70%;"></div></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Javascript</td>
-                        <td>
-                            <div class="skill-bar-outer gradient-powerassist">
-                                <div class="skill-bar-inner-back">
-                                 <div class="skill-bar-inner-fill gradient-powerassist" style="max-width: 70%;"></div></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Customer Interaction</td>
-                        <td>
-                            <div class="skill-bar-outer gradient-powerassist">
-                                <div class="skill-bar-inner-back">
-                                 <div class="skill-bar-inner-fill gradient-powerassist" style="max-width: 60%;"></div></div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-                </div>
-            </div>
+        </section>
+
+        <section class="back-section">
+            <a href="projects.html" class="back-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Work
+            </a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">© 2024 Stephan Heijl</p>
+        <div class="footer-links">
+            <a href="https://github.com/StephanHeijl">GitHub</a>
+            <a href="https://linkedin.com/in/stephanheijl">LinkedIn</a>
+            <a href="contact.html">Email</a>
         </div>
-       <script async defer src="https://sa.stephanheijl.com/app.js"></script>
-<noscript><img src="https://sa.stephanheijl.com/image.gif" alt=""></noscript>
-    </body>
+    </footer>
+</body>
 </html>

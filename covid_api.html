@@ -1,96 +1,133 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>StephanHeijl.com - Free API for RIVM COVID-19 Data </title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="gradients.css" />
-        <script src="zepto.min.js"></script>
-        <script src="cards.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Dosis|Open+Sans" rel="stylesheet">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NL COVID API - Stephan Heijl</title>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-v2.css">
+    <link rel="stylesheet" href="prism.css">
 
-        <script src="https://kit.fontawesome.com/af71bba04e.js" crossorigin="anonymous"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <!-- Primary Meta Tags -->
-        <meta name="title" content="Free API for RIVM COVID-19 Data">
-        <meta name="description" content="NL COVID API: A free, easy to use API that exposes data on Dutch COVID-19 cases from the RIVM.">
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Free API for RIVM COVID-19 Data">
+    <meta name="description" content="NL COVID API: A free, easy to use API that exposes data on Dutch COVID-19 cases from the RIVM.">
 
-        <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="https://covid.ste[hanheijl.com/">
-        <meta property="og:title" content="Free API for RIVM COVID-19 Data">
-        <meta property="og:description" content="NL COVID API: A free, easy to use API that exposes data on Dutch COVID-19 cases from the RIVM.">
-        <meta property="og:image" content="https://stephanheijl.com/img/covid_api_card.png">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://covid.stephanheijl.com/">
+    <meta property="og:title" content="Free API for RIVM COVID-19 Data">
+    <meta property="og:description" content="NL COVID API: A free, easy to use API that exposes data on Dutch COVID-19 cases from the RIVM.">
+    <meta property="og:image" content="https://stephanheijl.com/img/covid_api_card.png">
 
-        <!-- Twitter -->
-        <meta property="twitter:card" content="summary_large_image">
-        <meta property="twitter:url" content="https://covid.ste[hanheijl.com/">
-        <meta property="twitter:title" content="Free API for RIVM COVID-19 Data">
-        <meta property="twitter:description" content="NL COVID API: A free, easy to use API that exposes data on Dutch COVID-19 cases from the RIVM.">
-        <meta property="twitter:image" content="https://stephanheijl.com/img/covid_api_card.png">
-    </head>
-    <body>
-        <nav>
-            <div class="internal-wrapper">
-                <a class="logo" href="https://stephanheijl.com">StephanHeijl.com</a>
-                <ul>
-                    <li><a href="projects.html#projects">Projects</a></li>
-                    <!--<li><a href="projects.html#publications">Publications</a></li>-->
-                    <li><a href="projects.html#posts">Blog posts</a></li>
-                    <li><a href="projects.html#education">Education</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>            
-            </div>                     
-        </nav>
-        <header>
-            <div class="internal-wrapper">
-                <div class="header-card">
-                    <div class="card-wrapper">
-                        <div class="card gradient-paper">
-                            <div class="glare"></div>
-                            <div class="post-name">
-                                NL COVID API <br>
-                                <i class="fa fa-viruses"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="header-annotation">
-                    <h1>NL COVID API</h1>
-                    <p>Today I am opening an easy to use API that exposes
-                    data on Dutch COVID-19 cases from the RIVM. The API can be used with industry standard tools for data analysis.</p>
-                    <ul class="header-tags">
-                        <li>Products</li>
-                    </ul>
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://covid.stephanheijl.com/">
+    <meta property="twitter:title" content="Free API for RIVM COVID-19 Data">
+    <meta property="twitter:description" content="NL COVID API: A free, easy to use API that exposes data on Dutch COVID-19 cases from the RIVM.">
+    <meta property="twitter:image" content="https://stephanheijl.com/img/covid_api_card.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">Stephan Heijl</a>
+        <ul class="nav-links">
+            <li><a href="projects.html">Work</a></li>
+            <li><a href="projects.html#posts">Writing</a></li>
+            <li><a href="projects.html#education">Background</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="article-header">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>→</span>
+            <a href="projects.html#posts">Writing</a>
+            <span>→</span>
+            <span>NL COVID API</span>
+        </div>
+
+        <div class="article-meta">
+            <span class="meta-tag">Products</span>
+            <span class="meta-tag">API</span>
+        </div>
+
+        <h1>NL COVID <span>API</span></h1>
+
+        <p class="article-intro">
+            Today I am opening an easy to use API that exposes data on Dutch COVID-19 cases from the RIVM.
+            The API can be used with industry standard tools for data analysis.
+        </p>
+    </header>
+
+    <!-- Article Content -->
+    <article class="article-content">
+        <p>
+            Using this simple API allows developers to rapidly access COVID-19 data that is normally
+            exposed through the <a href="https://rivm.nl">RIVM website</a>. The structure can be readily
+            used with Python Pandas' <code>read_json</code> function
+            (<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_json.html">documentation</a>).
+            Note that this is an unofficial API that is not supported by the RIVM.
+        </p>
+
+        <div class="highlight-box">
+            <p>
+                <strong>API URL:</strong> <a href="https://covid.stephanheijl.com/api/v1">https://covid.stephanheijl.com/api</a>
+            </p>
+        </div>
+
+        <h2>Endpoints</h2>
+
+        <p>The following endpoints are available:</p>
+
+        <div class="responsibilities">
+            <div class="responsibility-item">
+                <div class="responsibility-icon">📊</div>
+                <div class="responsibility-content">
+                    <h3>api/v1/deaths_per_day</h3>
+                    <p>Returns the number of deaths for each day in the past period, with columns for total deaths that day, deaths recorded yesterday and deaths recorded up to yesterday.</p>
                 </div>
             </div>
-        </header>
-        
-        <div class="details">
-            <div class="internal-wrapper">
-                <p>
-                    Using this simple API allows developers to rapidly access COVID-19 data that is normally exposed through the <a href="https://rivm.nl">RIVM website <i class="fa fa-external-link-alt"></i></a>. The structure can be readily used with Python Pandas' <code>read_json</code> function <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_json.html">(documentation) <i class="fa fa-external-link-alt"></i></a>. Note that this is an unofficial API that is not supported by the RIVM.
-                </p>
-                
-                <p style="background:rgb(214, 230, 255); padding: 1em; font-weight: bold;">The API can be found here: <a href="https://covid.stephanheijl.com/api/v1">https://covid.stephanheijl.com/api</a></p>
-                <p>The following endpoints are available:</p>
-                <ul>
-                    <li><b>api/v1/deaths_per_day:</b> This endpoint returns the number of deaths for each day in the past period, with columns for the total number of deaths that day, deaths recorded yesterday and deaths recorded up to yesterday.</li>
-                    <li><b>api/v1/hospital_patients_per_day:</b> This endpoint returns the number of hospital patients admitted for COVID each day in the past period, with columns for the total number of admissions that day, admissions recorded yesterday and admissions recorded up to yesterday.</li>
-                    <li><b>api/v1/ggd_patients_per_day:</b> This endpoint returns the number of COVID patients identified by the GGD each day in the past period, with columns for the total number of admissions that day, patients recorded yesterday and patients recorded up to yesterday.</li>
-                    <li><b>api/v1/age_sex_deaths:</b> This endpoint returns the number of COVID related deaths, separated by sex and age.</li>
-                </ul>
-                
-                <p>This API is hosted on Google Cloud Run, with caching on CloudFlare, which means that it may take some time for data to become up-to-date.</p>
-                
-                <h2>Example usage</h2>
-                
-                <pre><code class="language-python">import pandas
+            <div class="responsibility-item">
+                <div class="responsibility-icon">🏥</div>
+                <div class="responsibility-content">
+                    <h3>api/v1/hospital_patients_per_day</h3>
+                    <p>Returns the number of hospital patients admitted for COVID each day in the past period, with columns for total admissions that day, admissions recorded yesterday and admissions recorded up to yesterday.</p>
+                </div>
+            </div>
+            <div class="responsibility-item">
+                <div class="responsibility-icon">🧪</div>
+                <div class="responsibility-content">
+                    <h3>api/v1/ggd_patients_per_day</h3>
+                    <p>Returns the number of COVID patients identified by the GGD each day in the past period, with columns for total patients that day, patients recorded yesterday and patients recorded up to yesterday.</p>
+                </div>
+            </div>
+            <div class="responsibility-item">
+                <div class="responsibility-icon">👥</div>
+                <div class="responsibility-content">
+                    <h3>api/v1/age_sex_deaths</h3>
+                    <p>Returns the number of COVID related deaths, separated by sex and age.</p>
+                </div>
+            </div>
+        </div>
+
+        <p style="margin-top: 2rem;">
+            This API is hosted on Google Cloud Run, with caching on CloudFlare, which means that it
+            may take some time for data to become up-to-date.
+        </p>
+
+        <h2>Example usage</h2>
+
+        <pre><code class="language-python">import pandas
 
 df = pandas.read_json(
     "https://covid.stephanheijl.com/api/v1/deaths_per_day"
 )</code></pre>
-                <p>Results in a dataframe</p>  
-                <pre><code class="language-text">             date  new  until_yesterday  total
+
+        <p>Results in a dataframe:</p>
+
+        <pre><code class="language-text">             date  new  until_yesterday  total
 0   [2020, 2, 27]    0                0      0
 1   [2020, 2, 28]    0                0      0
 2   [2020, 2, 29]    0                0      0
@@ -103,21 +140,42 @@ df = pandas.read_json(
 73  [2020, 5, 10]    8                0      8
 74  [2020, 5, 11]    0                0      0
 
-[75 rows x 4 columns]
-</code></pre>
-                <h2>Attribution/citation</h2>
-                <p>If you use this API in your work you are <a href="https://www.rivm.nl/copyright">required</a> to attribute the RIVM as the primary source of the data: Rijksinstituut voor Volksgezondheid en Milieu (RIVM), "Ontwikkeling COVID-19 in grafieken", 2020. <br/><br/>
-                
-                I also kindly request that you attribute me by name and website (Stephan Heijl, https://stephanheijl.com).
-                </p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-            </div>                
-        </div>       
-        <script async defer src="https://sa.stephanheijl.com/app.js"></script>
-        <noscript><img src="https://sa.stephanheijl.com/image.gif" alt=""></noscript>
-        <link rel="stylesheet" href="/prism.css" />
-        <script src="/prism.js"></script>
-    </body>
+[75 rows x 4 columns]</code></pre>
+
+        <h2>Attribution/Citation</h2>
+
+        <p>
+            If you use this API in your work you are
+            <a href="https://www.rivm.nl/copyright">required</a> to attribute the RIVM as the primary
+            source of the data: Rijksinstituut voor Volksgezondheid en Milieu (RIVM),
+            "Ontwikkeling COVID-19 in grafieken", 2020.
+        </p>
+
+        <p>
+            I also kindly request that you attribute me by name and website (Stephan Heijl, https://stephanheijl.com).
+        </p>
+    </article>
+
+    <!-- Article Footer -->
+    <div class="article-footer">
+        <a href="projects.html#posts" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Writing
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">© 2024 Stephan Heijl</p>
+        <div class="footer-links">
+            <a href="https://github.com/StephanHeijl">GitHub</a>
+            <a href="https://linkedin.com/in/stephanheijl">LinkedIn</a>
+            <a href="contact.html">Email</a>
+        </div>
+    </footer>
+
+    <script src="prism.js"></script>
+</body>
 </html>

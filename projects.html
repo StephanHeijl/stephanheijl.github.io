@@ -1,202 +1,307 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>StephanHeijl.com</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="gradients.css" />
-        <script src="zepto.min.js"></script>
-        <script src="cards.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Dosis|Open+Sans" rel="stylesheet">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work & Writing - Stephan Heijl</title>
+    <meta name="description" content="Professional experience, technical writing, and education in AI and data science.">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-v2.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">Stephan Heijl</a>
+        <ul class="nav-links">
+            <li><a href="projects.html" class="active">Work</a></li>
+            <li><a href="projects.html#posts">Writing</a></li>
+            <li><a href="projects.html#education">Background</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
-        <script src="https://kit.fontawesome.com/af71bba04e.js" crossorigin="anonymous"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>Work, writing, <span>&</span> learning</h1>
+        <p>A record of professional experience, technical explorations, and continuous education. Each project represents problems solved and value delivered—for clients, teams, and organizations.</p>
+    </header>
 
-    </head>
-    <body>
-        <nav>
-            <div class="internal-wrapper">
-                <a class="logo" href="https://stephanheijl.com">StephanHeijl.com</a>
-                <ul>
-                    <li><a href="projects.html#projects">Projects</a></li>
-                    <!--<li><a href="projects.html#publications">Publications</a></li>-->
-                    <li><a href="projects.html#posts">Blog posts</a></li>
-                    <li><a href="projects.html#education">Education</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>            
-        </nav>
-        <div class="details">
-            <div class="internal-wrapper">
-                <h1><a name="projects"></a>Professional projects <a href="#projects"><i class="fa fa-link"></i></a></h1>
-                <hr/>
-                <div class="card-collection">
-                    <a class="card-wrapper" href="/professional-bioprodict.html">
-                        <div class="card gradient-bioprodict-pro">
-                            <div class="glare"></div>
-                            <img src="img/bio-prodict-logo.png" style="margin-top: 35%;" alt="This is the logo of Bio-Prodict, where I am employed as a Senior Data Scientist."/>
-                        </div>
-                    </a>
+    <!-- Section Navigation -->
+    <div class="section-nav">
+        <a href="#projects" class="active">Professional Work</a>
+        <a href="#posts">Technical Writing</a>
+        <a href="#education">Background</a>
+    </div>
 
-                    <a href="/headfwd.html" class="card-wrapper">
-                        <div class="card" style="background: black;">
-                            <div class="glare"></div>
-                            <img src="img/headfwd-logo.png" style="margin-top: 60%; width: 90%;" alt="This"/>
-                        </div>
-                    </a>
-                
-                    <a href="/tygers.html" class="card-wrapper">
-                        <div class="card gradient-tygers">
-                            <div class="glare"></div>
-                            <img src="img/tygers-logo.png" alt="This is the logo of a magazine called Tygers, where I participated in a discussion on AI startups. "/>
-                        </div>
-                    </a>
+    <!-- Professional Projects -->
+    <section id="projects">
+        <div class="section-label">Experience</div>
+        <h2>Where I've added value</h2>
 
-                    </a>
-                    
-                    <a href="/powerassist.html" class="card-wrapper">
-                        <div class="card gradient-powerassist">
-                            <div class="glare"></div>
-                            <img 
-                            src="img/powerassist-logo.png" style="margin-top: 22%;"
-                            alt="This is the logo of a company in Arnhem called PowerAssist, where I worked as a web developer. The company is now called Awesum. "
-                        />
-                        </div>
-                    </a>
-                    
+        <div class="projects-list">
+            <a href="professional-bioprodict.html" class="project-row">
+                <div class="project-meta">
+                    <div class="project-type">Current Role</div>
+                    <div class="project-period">2016 - Present</div>
                 </div>
-                <!--
-                <h1><a name="publications"></a>Publications <a href="#publications"><i class="fa fa-link"></i></a></h1>
-                <hr/>
-                    <p>Under review</p>
-                -->
-                <h1><a name="posts"></a>Blog posts <a href="#posts"><i class="fa fa-link"></i></a></h1>
-                <hr/>
-                    
-                <div class="card-collection">                    
-                    <!--<a href="/notes_on_backtranslation.html" class="card-wrapper">
-                        <div class="card gradient-paper">
-                            <div class="glare"></div>
-                            <div class="post-name">
-                                Notes on: Neural Backtranslation.<br>
-                                <i class="fa fa-undo"></i>
-                            </div>
-                        </div>
-                    </a>-->
-                    
-                    <a href="/notes_on_bert.html" class="card-wrapper">
-                        <div class="card gradient-paper">
-                            <div class="glare"></div>
-                            <div class="post-name">
-                                Notes on: BERT Transformer
-                                <i class="fa fa-font"></i>
-                            </div>
-                        </div>
-                    </a>
-                    
-                    <a href="/notes_on_large_scale_adversarial_learning.html" class="card-wrapper">
-                        <div class="card gradient-paper">
-                            <div class="glare"></div>
-                            <div class="post-name">
-                                Notes on: BiBigGAN
-                                <i class="fa fa-camera"></i>
-                            </div>
-                        </div>
-                    </a>
-                    
-                    <a href="/protein_sequence_ml.html" class="card-wrapper">
-                        <div class="card gradient-paper">
-                            <div class="glare"></div>
-                            <div class="post-name">
-                                Using Sequence Data in ML
-                                <i class="fa fa-link"></i>
-                            </div>
-                        </div>
-                    </a>
-                    
-                    <a href="/deep_learning_antibiotics.html" class="card-wrapper">
-                        <div class="card gradient-paper">
-                            <div class="glare"></div>
-                            <div class="post-name">
-                                Deep Learning Antibiotics
-                                <i class="fa fa-pills"></i>
-                            </div>
-                        </div>
-                    </a>
-                    
-                    <a href="/rustls_sni.html" class="card-wrapper">
-                        <div class="card gradient-paper">
-                            <div class="glare"></div>
-                            <div class="post-name">
-                                TLS and SNI in Actix
-                                <i class="fa fa-lock"></i>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="/rfdiffusion.html" class="card-wrapper">
-                        <div class="card gradient-paper">
-                            <div class="glare"></div>
-                            <div class="post-name">
-                                Protein Diffusion
-                                <i class="fa fa-dna"></i>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="/chili.html" class="card-wrapper">
-                        <div class="card gradient-chili">
-                            <div class="glare"></div>
-                            <div class="post-name">
-                                Chili Recipe &#x1f1f3;&#x1f1f1;
-                                <i class="fa fa-cutlery"></i>
-                            </div>
-                        </div>
-                    </a>
+                <div class="project-content">
+                    <h3>Bio-Prodict B.V.</h3>
+                    <p>Leading AI initiatives for protein analysis and bioinformatics. Built and deployed machine learning systems for mutation effect prediction, achieving production-grade accuracy on complex biological data. Direct client engagement and technical leadership.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">AI Leadership</span>
+                        <span class="project-tag">ML Systems</span>
+                        <span class="project-tag">Client Solutions</span>
+                    </div>
                 </div>
-                
-                <h1><a name="education"></a>Education <a href="#education"><i class="fa fa-link"></i></a></h1>
-                <hr/>
-                <div class="card-collection">
-                    <a href="/mads.html" class="card-wrapper">
-                        <div class="card gradient-mads">
-
-                            <div class="glare"></div>
-                            <div class="post-name">Master Applied Data Science</div>
-                            <img src="img/hanlogo.png" style="margin-top: 10%;" />
-                        </div>
-
-                    <a href="/han.html" class="card-wrapper">
-                        <div class="card gradient-han">
-                            <div class="glare"></div>
-                            <div class="post-name">Bioinformatics</div>
-
-                            <img src="img/han.png" style="margin-top: 20%;" />
-                        </div>
-                    </a>
-                    <a class="card-wrapper" href="edx.html">
-                        <div class="card gradient-delftx">
-                            <div class="glare"></div>
-                            <img src="img/delftx-logo.png" style="margin-top: 50%;" />
-                        </div>
-                    </a>
-                    <a class="card-wrapper" href="internship-bioprodict.html">
-                        <div class="card gradient-bioprodict">
-                            <div class="glare" style="opacity:0.9;"></div>
-                            <img src="img/bio-prodict-logo.png" style="margin-top: 35%;" />
-                        </div>
-                    </a>
-                     <a class="card-wrapper" href="keygene.html">
-                        <div class="card gradient-keygene">
-                            <div class="glare" style="opacity:0.9;"></div>
-                            <img src="img/keygene-logo.png" style="margin-top: 48%;" />
-                        </div>
-                    </a>
-                    
+                <div class="project-arrow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
                 </div>
-            </div>        
+            </a>
+
+            <a href="headfwd.html" class="project-row">
+                <div class="project-meta">
+                    <div class="project-type">Consulting</div>
+                    <div class="project-period">Ongoing</div>
+                </div>
+                <div class="project-content">
+                    <h3>Headfwd</h3>
+                    <p>Strategic AI consulting for organizations navigating technical transformation. Translating business requirements into practical data science solutions with clear ROI.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Strategy</span>
+                        <span class="project-tag">Consulting</span>
+                    </div>
+                </div>
+                <div class="project-arrow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </div>
+            </a>
+
+            <a href="tygers.html" class="project-row">
+                <div class="project-meta">
+                    <div class="project-type">Publication</div>
+                    <div class="project-period">Featured</div>
+                </div>
+                <div class="project-content">
+                    <h3>Tygers Magazine</h3>
+                    <p>Featured in discussion on AI startups and the practical realities of building AI products. Sharing perspectives on what works—and what doesn't—in applied machine learning.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Thought Leadership</span>
+                        <span class="project-tag">Public Speaking</span>
+                    </div>
+                </div>
+                <div class="project-arrow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </div>
+            </a>
+
+            <a href="powerassist.html" class="project-row">
+                <div class="project-meta">
+                    <div class="project-type">Previous</div>
+                    <div class="project-period">Earlier</div>
+                </div>
+                <div class="project-content">
+                    <h3>PowerAssist / Awesum</h3>
+                    <p>Full-stack development and technical problem-solving. Early experience bridging technical implementation with client requirements.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Development</span>
+                        <span class="project-tag">Client Work</span>
+                    </div>
+                </div>
+                <div class="project-arrow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </div>
+            </a>
         </div>
-    	<script src="https://instant.page/1.0.0" type="module" integrity="sha384-6w2SekMzCkuMQ9sEbq0cLviD/yR2HfA/+ekmKiBnFlsoSvb/VmQFSi/umVShadQI"></script>
-        <script async defer src="https://sa.stephanheijl.com/app.js"></script>
-<noscript><img src="https://sa.stephanheijl.com/image.gif" alt=""></noscript>
-    </body>
+    </section>
+
+    <!-- Blog Posts -->
+    <section id="posts">
+        <div class="section-label">Writing</div>
+        <h2>Technical explorations & notes</h2>
+
+        <div class="posts-grid">
+            <a href="rfdiffusion.html" class="post-card featured">
+                <div>
+                    <div class="post-category">Deep Dive</div>
+                    <h3>A New Protein Design Era with Protein Diffusion</h3>
+                    <p>Exploring RFDiffusion and how diffusion models are revolutionizing de novo protein design. Technical analysis with projections for the field.</p>
+                    <div class="post-meta">
+                        <span>Proteins</span>
+                        <span>Diffusion Models</span>
+                        <span>ML Architecture</span>
+                    </div>
+                </div>
+                <div class="featured-visual">~</div>
+            </a>
+
+            <a href="deep_learning_antibiotics.html" class="post-card">
+                <div class="post-category">Case Study</div>
+                <h3>Visualizing Deep Learning Antibiotics</h3>
+                <p>Technical breakdown of using neural networks for antibiotic discovery—from molecular representations to production insights.</p>
+                <div class="post-meta">
+                    <span>Drug Discovery</span>
+                    <span>GNNs</span>
+                </div>
+            </a>
+
+            <a href="notes_on_bert.html" class="post-card">
+                <div class="post-category">Paper Notes</div>
+                <h3>Notes on BERT: Pre-training Deep Bidirectional Transformers</h3>
+                <p>Detailed notes from Google's foundational NLP paper. Key insights and practical takeaways.</p>
+                <div class="post-meta">
+                    <span>NLP</span>
+                    <span>Transformers</span>
+                </div>
+            </a>
+
+            <a href="notes_on_large_scale_adversarial_learning.html" class="post-card">
+                <div class="post-category">Paper Notes</div>
+                <h3>Notes on BigBiGAN</h3>
+                <p>Analysis of large-scale adversarial representation learning and its implications for unsupervised learning.</p>
+                <div class="post-meta">
+                    <span>GANs</span>
+                    <span>Representation Learning</span>
+                </div>
+            </a>
+
+            <a href="protein_sequence_ml.html" class="post-card">
+                <div class="post-category">Tutorial</div>
+                <h3>Using Sequence Data in Machine Learning</h3>
+                <p>Practical techniques for encoding and processing protein sequences in ML pipelines.</p>
+                <div class="post-meta">
+                    <span>Bioinformatics</span>
+                    <span>Feature Engineering</span>
+                </div>
+            </a>
+
+            <a href="rustls_sni.html" class="post-card">
+                <div class="post-category">Technical</div>
+                <h3>TLS and SNI with RustLS in Actix</h3>
+                <p>Implementation guide for secure connections in Rust web applications. Production-ready patterns.</p>
+                <div class="post-meta">
+                    <span>Rust</span>
+                    <span>Security</span>
+                </div>
+            </a>
+
+            <a href="covid_api.html" class="post-card">
+                <div class="post-category">Project</div>
+                <h3>COVID-19 API</h3>
+                <p>Building a rapid-response data API during the pandemic. Real-time data aggregation and visualization.</p>
+                <div class="post-meta">
+                    <span>APIs</span>
+                    <span>Data Engineering</span>
+                </div>
+            </a>
+
+            <a href="chili.html" class="post-card">
+                <div class="post-category">Recipe</div>
+                <h3>Dutch Chili Recipe</h3>
+                <p>A personal favorite—because data scientists need to eat too.</p>
+                <div class="post-meta">
+                    <span>Cooking</span>
+                    <span>Personal</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+        <div class="section-label">Background</div>
+        <h2>Continuous learning</h2>
+
+        <div class="education-timeline">
+            <a href="mads.html" class="education-item">
+                <div class="education-type">Master's Degree</div>
+                <h3>Master Applied Data Science</h3>
+                <div class="education-institution">HAN University of Applied Sciences</div>
+                <p>Advanced methodologies in data science, machine learning systems, and practical AI applications in industry contexts. Graduated cum laude.</p>
+            </a>
+
+            <a href="han.html" class="education-item">
+                <div class="education-type">Bachelor's Degree</div>
+                <h3>Bioinformatics</h3>
+                <div class="education-institution">HAN University of Applied Sciences</div>
+                <p>Foundation in computational biology, genomics, and bioinformatics algorithms. Where data science met life sciences.</p>
+            </a>
+
+            <a href="edx.html" class="education-item">
+                <div class="education-type">Professional Certificate</div>
+                <h3>Project Management of Engineering Projects</h3>
+                <div class="education-institution">DelftX / TU Delft</div>
+                <p>Project finance management and mastering project complexity. Skills for leading technical teams and large-scale initiatives.</p>
+            </a>
+
+            <a href="internship-bioprodict.html" class="education-item">
+                <div class="education-type">Internship</div>
+                <h3>Applied ML Research</h3>
+                <div class="education-institution">Bio-Prodict B.V.</div>
+                <p>First experience applying machine learning to real protein analysis challenges. Foundation for current work.</p>
+            </a>
+
+            <a href="keygene.html" class="education-item">
+                <div class="education-type">Research</div>
+                <h3>Genomics Data Analysis</h3>
+                <div class="education-institution">KeyGene</div>
+                <p>Agricultural biotechnology research. Experience with large-scale genomics data in production contexts.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">© 2024 Stephan Heijl</p>
+        <div class="footer-links">
+            <a href="https://github.com/StephanHeijl">GitHub</a>
+            <a href="https://linkedin.com/in/stephanheijl">LinkedIn</a>
+            <a href="contact.html">Email</a>
+        </div>
+    </footer>
+
+    <script>
+        // Section nav active state on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.section-nav a');
+
+        function updateActiveNav() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 200;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+        updateActiveNav();
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
 </html>
