@@ -1,67 +1,135 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>StephanHeijl.com</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="gradients.css" />
-        <script src="zepto.min.js"></script>
-        <script src="cards.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Dosis|Open+Sans" rel="stylesheet">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keygene Internship - Stephan Heijl</title>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-v2.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">Stephan Heijl</a>
+        <ul class="nav-links">
+            <li><a href="projects.html">Work</a></li>
+            <li><a href="projects.html#posts">Writing</a></li>
+            <li><a href="projects.html#education">Background</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
-        <script src="https://use.fontawesome.com/73f3b30236.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    </head>
-    <body>
-        <nav>
-            <div class="internal-wrapper">
-                <a class="logo" href="https://stephanheijl.com">StephanHeijl.com</a>
-                <ul>
-                    <li><a href="projects.html#projects">Projects</a></li>
-                    <!--<li><a href="projects.html#publications">Publications</a></li>-->
-                    <li><a href="projects.html#posts">Blog posts</a></li>
-                    <li><a href="projects.html#education">Education</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>                     
-        </nav>
-        <header>
-            <div class="internal-wrapper">
-                <div class="header-card">
-                    <div class="card-wrapper">
-                        <div class="card gradient-keygene">
-                            <div class="glare" style="opacity:0.9;"></div>
-                            <img src="img/keygene-logo.png" style="margin-top: 48%;" />
+    <!-- Hero -->
+    <section class="hero" style="min-height: auto;">
+        <div class="hero-left" style="padding-bottom: 3rem;">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>→</span>
+                <a href="projects.html">Work</a>
+                <span>→</span>
+                <span>Keygene</span>
+            </div>
+            <div class="role-tag">Internship</div>
+            <h1>Keygene <span>Internship</span></h1>
+            <p class="hero-intro">
+                I was offered to join Keygene in 2013 for an internship after presenting one of my products
+                as a student assistant at the HAN. In 2014 I started work in the Lead Generation department,
+                working on a best in class crop management system.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <div class="info-card-title">Position Details</div>
+            <div class="info-item">
+                <div class="info-label">Company</div>
+                <div class="info-value">Keygene</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Location</div>
+                <div class="info-value">Wageningen, Netherlands</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Department</div>
+                <div class="info-value">Lead Generation</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Period</div>
+                <div class="info-value">2014</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Type</div>
+                <div class="info-value">Internship</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <div class="content">
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="section-label">Overview</div>
+                <div class="section-content">
+                    <h2>Crop management visualization</h2>
+                    <p>
+                        At KeyGene I worked in a team where I developed visualization solutions for
+                        a commercial information management tool. Additionally, I developed and
+                        investigated a biological analysis tool based on machine learning algorithms.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="section-label">Technologies</div>
+                <div class="section-content">
+                    <h2>Technical stack</h2>
+
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">🐘</div>
+                            <div class="skill-content">
+                                <h3>PHP & Laravel</h3>
+                                <p>Application development with PHP, specifically with the Laravel framework</p>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">📊</div>
+                            <div class="skill-content">
+                                <h3>jQuery & D3.js</h3>
+                                <p>Visualization using jQuery and D3.js for interactive data displays</p>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">🤖</div>
+                            <div class="skill-content">
+                                <h3>scikit-learn</h3>
+                                <p>Entry level machine learning with scikit-learn for biological analysis</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="header-annotation">
-                    <h1>Keygene Internship</h1>
-                    <p>I was offered to join Keygene in 2013 for an internship after
-                    presenting one of my products as a student assistent at the HAN.
-                    In 2014 I started work in the Lead Generation department, working
-                    on a best in class crop management system.</p>
-                    <ul class="header-tags">
-                        <li>Education</li>
-                        <li>Experience</li>
-                    </ul>
-                </div>
             </div>
-        </header>
-        
-        <div class="details">
-            <div class="internal-wrapper">
-                <p>At KeyGene I worked in a team where I developed visualization solutions for
-                    a commercial information management tool. Additionally, I developed and
-                    investigated a biological analysis tool based on machine learning algorithms.</p>
-                <h3>Technologies used</h3>
-                <ul class="chevron-list">
-                    <li>Application development with PHP, specifically with the Laravel framework.</li>
-                    <li>Visualization using jQuery &amp; D3.js</li>
-                    <li>Entry level machine learning with scikit-learn.</li>
-                </ul>
-            </div>   
+        </section>
+
+        <section class="back-section">
+            <a href="projects.html" class="back-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Work
+            </a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">© 2024 Stephan Heijl</p>
+        <div class="footer-links">
+            <a href="https://github.com/StephanHeijl">GitHub</a>
+            <a href="https://linkedin.com/in/stephanheijl">LinkedIn</a>
+            <a href="contact.html">Email</a>
         </div>
-       <script async defer src="https://sa.stephanheijl.com/app.js"></script>
-<noscript><img src="https://sa.stephanheijl.com/image.gif" alt=""></noscript>
-    </body>
+    </footer>
+</body>
 </html>
