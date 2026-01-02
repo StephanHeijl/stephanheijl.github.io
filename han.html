@@ -1,70 +1,179 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>StephanHeijl.com</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="gradients.css" />
-        <script src="zepto.min.js"></script>
-        <script src="cards.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Dosis|Open+Sans" rel="stylesheet">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAN University of Applied Sciences - Stephan Heijl</title>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-v2.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">Stephan Heijl</a>
+        <ul class="nav-links">
+            <li><a href="projects.html">Work</a></li>
+            <li><a href="projects.html#posts">Writing</a></li>
+            <li><a href="projects.html#education">Background</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
-        <script src="https://use.fontawesome.com/73f3b30236.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    </head>
-    <body>
-        <nav>
-            <div class="internal-wrapper">
-                <a class="logo" href="https://stephanheijl.com">StephanHeijl.com</a>
-                <ul>
-                    <li><a href="projects.html#projects">Projects</a></li>
-                    <!--<li><a href="projects.html#publications">Publications</a></li>-->
-                    <li><a href="projects.html#posts">Blog posts</a></li>
-                    <li><a href="projects.html#education">Education</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>                     
-        </nav>
-        <header>
-            <div class="internal-wrapper">
-                <div class="header-card">
-                    <div class="card-wrapper">
-                        <div class="card gradient-han">
-                            <div class="glare"></div>
-                            <img src="img/han.png" style="margin-top: 40%;" />
+    <!-- Hero -->
+    <section class="hero" style="min-height: auto;">
+        <div class="hero-left" style="padding-bottom: 3rem;">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>→</span>
+                <a href="projects.html#education">Education</a>
+                <span>→</span>
+                <span>HAN University</span>
+            </div>
+            <div class="section-label">Bachelor's Degree</div>
+            <h1>Hogeschool van Arnhem en <span>Nijmegen</span></h1>
+            <div class="distinction-badge">
+                <span class="badge-icon">🧬</span>
+                <span class="badge-text">BSc Bioinformatics — Final Grade 9.2</span>
+            </div>
+            <p class="hero-intro">
+                I completed my higher education at the Hogeschool van Arnhem en Nijmegen, specifically at the
+                University of Applied Sciences in Nijmegen. I started attending the universally praised
+                Bioinformatics course in 2011 and received my Bachelor's degree in 2016.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <div class="info-card-title">Program Details</div>
+            <div class="info-item">
+                <div class="info-label">Institution</div>
+                <div class="info-value">HAN University of Applied Sciences</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Location</div>
+                <div class="info-value">Nijmegen, Netherlands</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Program</div>
+                <div class="info-value">Bioinformatics</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Duration</div>
+                <div class="info-value">2011 - 2016</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Final Project</div>
+                <div class="info-value" style="color: var(--accent-warm);">Grade 9.2/10</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <div class="content">
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="section-label">Overview</div>
+                <div class="section-content">
+                    <h2>Beyond the coursework</h2>
+                    <p>
+                        Over the course of my attendance at the HAN I accomplished a number of feats in addition
+                        to the normal coursework, ending my Bachelor's with a 9.2 for the final internship project.
+                    </p>
+                    <p>
+                        I still keep close contact with the HAN, as a member of its alumni association and as a
+                        guest lecturer on Artificial Intelligence. References for any of the above will be
+                        provided upon request.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="section-label">Achievements</div>
+                <div class="section-content">
+                    <h2>Key accomplishments</h2>
+
+                    <div class="responsibilities">
+                        <div class="responsibility-item">
+                            <div class="responsibility-icon">🎤</div>
+                            <div class="responsibility-content">
+                                <h3>Public Speaking</h3>
+                                <p>Spoke at several gatherings dedicated to the Bioinformatics course, including a symposium and its second Lustrum</p>
+                            </div>
+                        </div>
+                        <div class="responsibility-item">
+                            <div class="responsibility-icon">👨‍🏫</div>
+                            <div class="responsibility-content">
+                                <h3>Student Assistant</h3>
+                                <p>Acted as a student assistant over the course of 4 continuous years, in both didactic and non-didactic roles</p>
+                            </div>
+                        </div>
+                        <div class="responsibility-item">
+                            <div class="responsibility-icon">💻</div>
+                            <div class="responsibility-content">
+                                <h3>C & CUDA Course</h3>
+                                <p>Guided a C & CUDA course block on two separate occasions, praised by students and teachers alike</p>
+                            </div>
+                        </div>
+                        <div class="responsibility-item">
+                            <div class="responsibility-icon">🔧</div>
+                            <div class="responsibility-content">
+                                <h3>Git Course Creator</h3>
+                                <p>Independently set up, guided and graded a course block on practical version control with Git and GitHub</p>
+                            </div>
+                        </div>
+                        <div class="responsibility-item">
+                            <div class="responsibility-icon">🤖</div>
+                            <div class="responsibility-content">
+                                <h3>AI Workshop Leader</h3>
+                                <p>Prepared and guided an interactive teacher-oriented event for the HAN Energizer day on AI and ML advances</p>
+                            </div>
+                        </div>
+                        <div class="responsibility-item">
+                            <div class="responsibility-icon">📢</div>
+                            <div class="responsibility-content">
+                                <h3>Class Representative</h3>
+                                <p>Acted as a representative in the Class Representatives initiative, focusing on improving accessibility to digital resources</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="header-annotation">
-                    <h1>Hogeschool van Arnhem en Nijmegen (HAN)</h1>
-                    <p>I completed my higher education at the Hogeschool van Arnhem en Nijmegen, specifically at the University of Applied Sciences in Nijmegen. I started attending the universally praised Bioinformatics course in 2011 and received my Bachelor's degree in 2016. </p>
-                    <ul class="header-tags">
-                        <li>Education</li>
-                        <li>Experience</li>
-                        <li>Videos</li>
-                    </ul>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="section-label">Continued Involvement</div>
+                <div class="section-content">
+                    <h2>Staying connected</h2>
+                    <p>
+                        I maintain close ties with the HAN through my membership in its alumni association
+                        and my role as a guest lecturer on Artificial Intelligence. This ongoing relationship
+                        allows me to give back to the institution that shaped my career while staying current
+                        with the latest developments in bioinformatics education.
+                    </p>
                 </div>
             </div>
-        </header>
-        
-        <div class="details">
-            <div class="internal-wrapper">
-                <p>Over the course of my attendance at the HAN I accomplished a number of feats in addition to the normal coursework, ending my Bachelor's with a 9.2 for the final internship project.</p>
-                
-                <ul class="chevron-list">
-                    <li>I spoke at several gatherings dedicated to the Bioinformatics course, including a symposium and its second Lustrum.</li>
-                    <li>I acted as a student assistent over the course of 4 continuous years, in both didactic and non-didactic roles.</li>
-                    <li>I guided a C &amp; CUDA course block on two separate occasions, once before having taken the course myself, the other as an introduction for a new teacher. Both occasions were praised by students and teachers alike.</li>
-                    <li>I indepently set up, guided and graded a course block on practical version control with Git and GitHub, a subject that is still being taught today as part of the third year. </li>
-                    <li>I prepared and guided an interactive teacher-oriented event for the HAN Energizer day, giving a crash course in advances in Machine learning and Artificial Intelligence.</li>
-                    <li>I acted as a representative of my class in the Class Representatives initiative at the HAN, primarily focussing on improving accessibility to digital resources.</li>
-                </ul>
-                
-                <p>I still keep close contact with the HAN, as a member of its alumni assocation and as a guest lecturer on Artificial Intelligence. References for any of the above will be provided upon request.
-                </p>
-                
-            </div>        
+        </section>
+
+        <section class="back-section">
+            <a href="projects.html#education" class="back-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Education
+            </a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">© 2024 Stephan Heijl</p>
+        <div class="footer-links">
+            <a href="https://github.com/StephanHeijl">GitHub</a>
+            <a href="https://linkedin.com/in/stephanheijl">LinkedIn</a>
+            <a href="contact.html">Email</a>
         </div>
-       <script async defer src="https://sa.stephanheijl.com/app.js"></script>
-<noscript><img src="https://sa.stephanheijl.com/image.gif" alt=""></noscript>
-    </body>
+    </footer>
+</body>
 </html>
