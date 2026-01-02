@@ -1984,7 +1984,7 @@ blockquote cite {
 }
 
 /* Allow clicks through canvas to content below */
-.hero, .approach, .expertise, .cta-section, footer, nav {
+.hero, .approach, .expertise, .cta-section, footer {
     position: relative;
     z-index: 1;
 }
