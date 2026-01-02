@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>StephanHeijl.com</title>
+        <meta name="description" content="Data scientist @ Bio-Prodict, working with proteins & machine learning.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="keywords" content="Stephan Heijl,python,machine learning,ai,artificial intelligence,rust,bioinformatics,engineer,leader">
+        <meta name="author" content="Stephan Heijl">
+        <style>
+            html, body {
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+
+            body {
+                background: white;
+                font-family: 'Open Sans', sans-serif;
+                margin: 0;
+                padding: 0;
+                font-size: 14pt;
+            }
+
+            ul.chevron-list li {
+                list-style-type: none;
+                line-height: 1.3em;
+                padding-left: 1.0em;
+                padding-right: 0.5em;
+                text-indent: -1.0em; 
+            }
+
+            ul.chevron-list li:before {
+                content: '\00BB \0020';
+                font-weight: bold;
+                font-size: 140%;
+            }
+
+            h1 {
+                font-family: Dosis;
+                font-weight: bold;
+                padding: 0;
+                margin: 0;
+                color: rgba(0,0,0,0.6);
+                text-shadow: 1px 1px white;
+            }
+
+            h2, h3 {
+                font-family: Dosis;
+                font-weight: bold;
+                padding: 0;
+                padding-left: 20px;
+                margin: 1em 0em;
+                color: rgba(0,0,0,0.6);
+                text-shadow: 1px 1px white;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            nav {
+                background: #fff;
+                border-bottom: 1px solid #d6d6d6;
+                font-family: Dosis;
+                font-weight: 700;
+                text-transform: uppercase;
+                position: relative;
+            }
+
+            nav .logo {
+                display: inline-block;
+                border: 2px solid black;
+                padding: 5px;
+                margin: 20px 20px;
+                cursor: pointer;
+                color: black;
+                transition: background 0.2s;
+            }
+
+            nav .logo:hover {
+                background: rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul {
+                padding: 0;
+                margin: 0;
+                display: inline-block;
+                padding-left: 20px;
+            }
+
+            nav li {
+                display: inline-block;
+                margin-bottom: 20px;
+            }
+            nav li > a {
+                padding : 20px 10px;
+                color: black;
+                transition: background 0.2s;
+            }
+
+            nav a:hover {
+                background: rgba(0,0,0,0.05);
+
+            }
+
+            header {
+                background: rgb(214, 230, 255);
+                position: relative;
+                border-bottom: 1px solid #d6d6d6;
+                text-shadow: 1px 1px white;
+            }
+
+            .internal-wrapper {
+                width: 800px;
+                position: relative;
+                margin: 0 auto;
+            }
+
+            .header-card {
+                padding: 20px;
+                display: inline-block;
+                vertical-align: top;
+            }
+
+            .header-annotation { 
+                padding: 20px;
+                width: 480px;
+                display: inline-block;
+                vertical-align: top;
+            }
+
+            .header-tags {
+                margin: 0;
+                padding: 0;
+                display: inline-block;
+                vertical-align: bottom;
+                width: 480px;
+            }
+
+            .header-tags li {
+                display: inline-block;
+                margin: 0px;
+                font-size: 10px;
+                margin-right: 5px;
+                background: rgba(0, 0, 0, 0.2);
+                padding: 5px;
+                border-radius: 5px;
+                cursor: default;
+                border-bottom: 1px solid rgba(0,0,0, 0.2);
+            }
+
+            .profile-picture {
+                max-width:100%;
+                display: inline-block;
+                position: relative;
+                height: 250px;
+                margin: 1.3em 0em 0em 1em;
+                border-radius: 5px; 
+            }
+
+            .profile-picture img {
+                max-height: 100%;
+                border-radius: 5px; 
+            }
+
+            .details p {
+                padding: 0px 20px;
+            }
+
+            .internal-wrapper > h1 {
+                padding: 20px 0px 20px 20;
+                text-transform: uppercase;
+            }
+
+            h1 > a {
+                color: silver;
+                font-size: 0.5em;
+                position: relative;
+                top: -0.25em;
+            }
+
+            hr {
+                border: 0;
+                margin: 0;
+                border-top: 2px solid black;
+            }
+
+            a { 
+                color: blue;
+                text-decoration: none;
+            }
+
+            @media screen and (max-width:800px){
+                .internal-wrapper {
+                    width: 100%;
+                }
+
+                .header-annotation {
+                    display: block;
+                    box-sizing: border-box;
+                    width: 100%;
+                }
+                .header-card {
+                    margin: 0 auto;
+                    width: 100%;
+                    text-align: center;
+                    padding: 20px 0 0 0;
+                    position: relative;
+                }
+                .card {
+                    width: 130px !important;
+                    height: 190px !important;
+                }
+            }
+            
+            #particles-js {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                opacity: 0;
+            }
+            
+            .visible {
+                opacity: 1 !important;
+                transition: opacity 1s;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <div class="internal-wrapper">
+                <a class="logo" href="https://stephanheijl.com">StephanHeijl.com</a>
+                <ul>
+                    <li><a href="projects.html#projects">Projects</a></li>
+                    <!--<li><a href="projects.html#publications">Publications</a></li>-->
+                    <li><a href="projects.html#posts">Blog posts</a></li>
+                    <li><a href="projects.html#education">Education</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <header>
+            <div id="particles-js"></div>
+            <div class="internal-wrapper">
+                <div class="profile-picture">
+                    <a href="img/profile_photo_full.jpg">
+                        <img src="img/profile_photo_small.jpg" width="166" height="250" alt="A professional photo depicting Stephan Heijl"/>
+                    </a>
+                </div>
+                 <div class="header-annotation">
+                    <h1>I am Stephan Heijl,</h1>
+                    <p>A digital native at heart, with a penchant for machine learning and data science. I specialize in Artificial Intelligence applied to the world of bioinformatics.</p>
+                    <p>I am a driven person with a wide range of interests, experience in public speaking and an entrepreneurial state of mind.</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="details">
+            <div class="internal-wrapper">
+                <h2>This is my portfolio.</h2>
+                <p>I use this website to display my accomplishments and work. I am currently employed at <a href="/professional-bioprodict.html" title="Click here to view my accomplishments at Bio-Prodict.">Bio-Prodict B.V.</a>, but I am always looking to extend my professional network and explore new opportunities.</p>
+
+                <h2>What can I do for you?</h2>
+                <p>In short, I am a data scientist. I mangle datapoints into becoming information, and feed those into state of the art algorithms that will make intelligent predictions about situations you haven't seen before. Examples include:</p>
+                <ul class="chevron-list">
+                    <li>Creating expert protein analysis networks.</li>
+                    <li>Predicting the effect of mutations in breast cancer genes with high accuracy.</li>
+                    <li>Processing large amounts of scientific literature to produce advanced field specific language models.</li>
+                </ul>
+                <p>I combine my expertise in AI with experience in front-end development and my ability to translate the needs of non-technical audiences into usable specifications. This is how I add value to the companies where I work.</p>
+                <h2>Further information</h2>
+                <p>The <a href="projects.html">Projects page</a> on this website contains an overview of my previous and current work, education and publications. Feel free to <a href="contact.html">contact me</a> in any way you see fit. I'll be happy to answer any questions you might have and provide any references you may need. </p>
+            </div>
+        </div>
+        
+        <link rel="stylesheet" href="style.css" />
+        <script src="zepto.min.js"></script>
+        <script src="cards.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Dosis|Open+Sans" rel="stylesheet">
+        <script src="https://use.fontawesome.com/73f3b30236.js"></script>
+        <script src="particles.min.js"></script>
+		<script src="https://instant.page/1.0.0" type="module" integrity="sha384-6w2SekMzCkuMQ9sEbq0cLviD/yR2HfA/+ekmKiBnFlsoSvb/VmQFSi/umVShadQI"></script>
+        <script>
+            $(function() {
+                particlesJS.load('particles-js', 'particles.json', function() {
+                  $("#particles-js").addClass("visible");
+                });
+            });
+        </script>
+        <script async defer src="https://sa.stephanheijl.com/app.js"></script>
+        <noscript><img src="https://sa.stephanheijl.com/image.gif" alt=""></noscript>
+    </body>
+</html>
