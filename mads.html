@@ -1,97 +1,233 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>StephanHeijl.com – Master Applied Data Science</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="gradients.css" />
-        <script src="zepto.min.js"></script>
-        <script src="cards.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Dosis|Open+Sans" rel="stylesheet">
-        <script src="https://use.fontawesome.com/73f3b30236.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    </head>
-    <body>
-        <nav>
-            <div class="internal-wrapper">
-                <a class="logo" href="https://stephanheijl.com">StephanHeijl.com</a>
-                <ul>
-                    <li><a href="projects.html#projects">Projects</a></li>
-                    <!--<li><a href="projects.html#publications">Publications</a></li>-->
-                    <li><a href="projects.html#posts">Blog posts</a></li>
-                    <li><a href="projects.html#education">Education</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Applied Data Science - Stephan Heijl</title>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-v2.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">Stephan Heijl</a>
+        <ul class="nav-links">
+            <li><a href="projects.html">Work</a></li>
+            <li><a href="projects.html#posts">Writing</a></li>
+            <li><a href="projects.html#education">Background</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" style="min-height: auto;">
+        <div class="hero-left" style="padding-bottom: 3rem;">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>→</span>
+                <a href="projects.html#education">Education</a>
+                <span>→</span>
+                <span>MADS</span>
             </div>
-        </nav>
-        <header>
-            <div class="internal-wrapper">
-                <div class="header-card">
-                    <div class="card-wrapper">
-                        <div class="card gradient-mads">
-                            <div class="glare"></div>
-                            <!-- Replace with a dedicated MADS logo if available -->
-                            <img src="img/hanlogo.png" alt="HAN University logo" style="margin-top: 40%;" />
+            <div class="section-label">Master's Degree</div>
+            <h1>Master of <span>Applied Data Science</span></h1>
+            <div class="distinction-badge">
+                <span class="badge-icon">★</span>
+                <span class="badge-text">Graduated Cum Laude — 9.25/10 Average</span>
+            </div>
+            <p class="hero-intro">
+                From 2023–2025 I pursued the <strong>Master Applied Data Science</strong> at the Hogeschool van Arnhem en Nijmegen (HAN).
+                The two-year, 60 EC programme sharpened my expertise in modern data-driven research and production-grade deployment.
+                I graduated <strong>cum laude</strong> on 26 June 2025.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <div class="info-card-title">Program Details</div>
+            <div class="info-item">
+                <div class="info-label">Institution</div>
+                <div class="info-value">HAN University of Applied Sciences</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Location</div>
+                <div class="info-value">Nijmegen, Netherlands</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Focus</div>
+                <div class="info-value">Applied ML & Statistical Methods</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Duration</div>
+                <div class="info-value">2023 - 2025 (60 EC)</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Result</div>
+                <div class="info-value" style="color: var(--accent-warm);">Cum Laude (9.25/10)</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <div class="content">
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="section-label">Overview</div>
+                <div class="section-content">
+                    <h2>A practice-focused graduate program</h2>
+                    <p>
+                        The curriculum combines rigorous methodology with hands-on, real-world projects.
+                        Highlight modules include Predictive Modelling, Data Exploration, Model Deployment
+                        and a 16 week Graduation Project, culminating in a public defence.
+                    </p>
+                    <p>
+                        This practical orientation aligned perfectly with my approach to data science.
+                        The program reinforced that the best model is worthless if it doesn't solve a
+                        real business problem or can't be maintained by the team that inherits it.
+                    </p>
+
+                    <div class="highlight-box">
+                        <p>
+                            <strong>Average grade 9.25</strong> — awarded the distinction <strong>cum laude</strong>,
+                            placing in the top tier of graduates.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="section-label">Programme</div>
+                <div class="section-content">
+                    <h2>Course summary</h2>
+                    <p>
+                        The program structure balanced foundational theory with applied projects.
+                        Each module culminated in a practical deliverable—not just an exam.
+                    </p>
+
+                    <div class="course-list">
+                        <div class="course-item">
+                            <div class="course-number">01</div>
+                            <div class="course-name">Predictive Modelling</div>
+                            <div class="course-tag">15 EC — Grade 9.0</div>
+                        </div>
+                        <div class="course-item">
+                            <div class="course-number">02</div>
+                            <div class="course-name">Data Exploration</div>
+                            <div class="course-tag">15 EC — Grade 9.0</div>
+                        </div>
+                        <div class="course-item">
+                            <div class="course-number">03</div>
+                            <div class="course-name">Model Deployment</div>
+                            <div class="course-tag">15 EC — Grade 10.0</div>
+                        </div>
+                        <div class="course-item">
+                            <div class="course-number">04</div>
+                            <div class="course-name">Graduation Project</div>
+                            <div class="course-tag">15 EC — Grade 9.0</div>
                         </div>
                     </div>
                 </div>
-                <div class="header-annotation">
-                    <h1>Master Applied Data Science (MADS)</h1>
-                    <p>From 2023–2025 I pursued the <strong>Master Applied Data Science</strong> at the Hogeschool van Arnhem en Nijmegen (HAN). The two-year, 60&nbsp;EC programme sharpened my expertise in modern data-driven research and production-grade deployment. I graduated <em>cum laude</em> on 26&nbsp;June&nbsp;2025.</p>
-                    <ul class="header-tags">
-                        <li>Master's</li>
-                        <li>Applied Data Science</li>
-                        <li>Cum laude</li>
-                    </ul>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="section-label">Highlights</div>
+                <div class="section-content">
+                    <h2>Key achievements</h2>
+
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">🧬</div>
+                            <div class="skill-content">
+                                <h3>Protein Transformers</h3>
+                                <p>Designed and deployed custom protein Transformers for my Graduation Project (final grade 9.0)</p>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">⚙️</div>
+                            <div class="skill-content">
+                                <h3>Perfect MLOps Score</h3>
+                                <p>Achieved a perfect 10 for the Model Deployment module, demonstrating production-ready MLOps skills</p>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">🏆</div>
+                            <div class="skill-content">
+                                <h3>Top of Cohort</h3>
+                                <p>Consistently ranked in the top of the cohort with weighted averages above 9/10 each academic year</p>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">👥</div>
+                            <div class="skill-content">
+                                <h3>Hackathon Leadership</h3>
+                                <p>Participated as team captain in the 2024 MADS Hackathon, recognized for exceptional leadership</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </header>
+        </section>
 
-        <div class="details">
-            <div class="internal-wrapper">
-                <p>The curriculum combines rigorous methodology with hands-on, real-world projects. Highlight modules include Predictive Modelling, Data Exploration, Model Deployment and a 16 week Graduation Project, culminating in a public defence.</p>
-
-                <h2>Programme summary</h2>
-                <table class="grade-table" style="margin: 2em; ">
-                    <thead style="text-align: left">
-                        <tr>
-                            <th style="width: 33%">Course</th>
-                            <th style="width: 33%">EC</th>
-                            <th style="width: 20%">Grade</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Predictive Modelling</td><td>15</td><td>9.0</td></tr>
-                        <tr><td>Data Exploration</td><td>15</td><td>9.0</td></tr>
-                        <tr><td>Model Deployment</td><td>15</td><td>10.0</td></tr>
-                        <tr><td>Graduation Project</td><td>15</td><td>9.0</td></tr>
-                        <tr class="total"><td><strong>Total / Average</strong></td><td>60</td><td><strong>9.25</strong></td></tr>
-                    </tbody>
-                </table>
-
-                <p class="note">Average grade 9.25, awarded the distinction <strong>cum laude</strong>.</p>
-
-                <div class="details">
-                    <div class="internal-wrapper">                        
-                        <div class="video-wrapper">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/zWFoNIwJdzo?si=54x9NwujuPN2SQj0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>                    
-                    </div>        
-                    <p style="font-style: italic;">I starred in this video produced the HAN, documenting the MADS Hackathon in 2024. </p>
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="section-label">Video</div>
+                <div class="section-content">
+                    <h2>MADS Hackathon 2024</h2>
+                    <p>
+                        I starred in this video produced by the HAN, documenting the MADS Hackathon in 2024.
+                    </p>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-top: 2rem;">
+                        <iframe
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+                            src="https://www.youtube.com/embed/zWFoNIwJdzo?si=54x9NwujuPN2SQj0"
+                            title="MADS Hackathon 2024"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
                 </div>
-
-                <h2>Key achievements</h2>
-                <ul class="chevron-list">
-                    <li>Designed and deployed custom protein Transformers for my Graduation Project (final grade&nbsp;9.0).</li>
-                    <li>Achieved a perfect&nbsp;10 for the Model Deployment module, demonstrating production-ready MLOps skills.</li>
-                    <li>Consistently ranked in the top of the cohort with weighted averages above&nbsp;9/10 each academic year.</li>
-                    <li>Participated in the MADS Hackathon in 2024 as team captain, where I was recognized for exceptional leadership and the ability to create a well functioning team from a diverse group of international students. </li>
-                    <li>Finished the Master's with a project at Bio-Prodict, which was graded as "of exceptionally high level and may be expected to have a significant impact on the organization".</li>
-                </ul>
-
-                <p></p>
             </div>
+        </section>
+
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="section-label">Graduation</div>
+                <div class="section-content">
+                    <h2>Bio-Prodict graduation project</h2>
+                    <p>
+                        Finished the Master's with a project at Bio-Prodict, which was graded as
+                        <strong>"of exceptionally high level and may be expected to have a significant impact on the organization"</strong>.
+                    </p>
+                    <p>
+                        The project focused on designing and training custom protein Transformer models,
+                        applying cutting-edge deep learning techniques to real-world bioinformatics challenges.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="back-section">
+            <a href="projects.html#education" class="back-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Education
+            </a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">© 2024 Stephan Heijl</p>
+        <div class="footer-links">
+            <a href="https://github.com/StephanHeijl">GitHub</a>
+            <a href="https://linkedin.com/in/stephanheijl">LinkedIn</a>
+            <a href="contact.html">Email</a>
         </div>
-        <script async defer src="https://sa.stephanheijl.com/app.js"></script>
-        <noscript><img src="https://sa.stephanheijl.com/image.gif" alt=""></noscript>
-    </body>
+    </footer>
+</body>
 </html>
