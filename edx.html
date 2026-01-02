@@ -1,100 +1,252 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>StephanHeijl.com | DelftX</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="gradients.css" />
-        <script src="zepto.min.js"></script>
-        <script src="cards.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Dosis|Open+Sans" rel="stylesheet">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DelftX Courses - Stephan Heijl</title>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-v2.css">
+    <style>
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .certificate-grid a {
+            display: block;
+        }
+        .certificate-grid img {
+            width: 100%;
+            border: 1px solid var(--border-subtle);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .certificate-grid img:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .certificate-main {
+            width: 100%;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border-subtle);
+        }
+        @media (max-width: 768px) {
+            .certificate-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">Stephan Heijl</a>
+        <ul class="nav-links">
+            <li><a href="projects.html">Work</a></li>
+            <li><a href="projects.html#posts">Writing</a></li>
+            <li><a href="projects.html#education">Background</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
-        <script src="https://use.fontawesome.com/73f3b30236.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    </head>
-    <body>
-        <nav>
-            <div class="internal-wrapper">
-                <a class="logo" href="https://stephanheijl.com">StephanHeijl.com</a>
-                <ul>
-                    <li><a href="projects.html#projects">Projects</a></li>
-                    <!--<li><a href="projects.html#publications">Publications</a></li>-->
-                    <li><a href="projects.html#posts">Blog posts</a></li>
-                    <li><a href="projects.html#education">Education</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>                
-            </div>                     
-        </nav>
-        <header>
-            <div class="internal-wrapper">
-                <div class="header-card">
-                    <div class="card-wrapper">
-                        <div class="card gradient-delftx">
-                            <div class="glare"></div>
-                            <img src="img/delftx-logo.png" style="margin-top: 50%;" />
-                        </div>
-                    </div>
-                </div>
-                <div class="header-annotation">
-                    <h1>DelftX</h1>
-                    <p>As part of my personal development I choose to partake in courses offered by DelftX at EdX, an online learning platform. I have kept a record of my certificates here.</p>
-                    <ul class="header-tags">
-                        <li>Education</li>
-                        <li>Experience</li>
-                    </ul>
+    <!-- Hero -->
+    <section class="hero" style="min-height: auto;">
+        <div class="hero-left" style="padding-bottom: 3rem;">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>→</span>
+                <a href="projects.html#education">Education</a>
+                <span>→</span>
+                <span>DelftX / EdX</span>
+            </div>
+            <div class="section-label">Professional Development</div>
+            <h1>DelftX <span>Online Courses</span></h1>
+            <p class="hero-intro">
+                As part of my personal development I chose to partake in courses offered by DelftX at EdX,
+                an online learning platform. I have completed multiple professional certificate tracks
+                with 90%+ scores across all courses.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <div class="info-card-title">Overview</div>
+            <div class="info-item">
+                <div class="info-label">Platform</div>
+                <div class="info-value">EdX / DelftX</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Institution</div>
+                <div class="info-value">TU Delft</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Certificate Tracks</div>
+                <div class="info-value">3 Professional Certificates</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Average Score</div>
+                <div class="info-value" style="color: var(--accent-warm);">90%+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <div class="content">
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="section-label">Overview</div>
+                <div class="section-content">
+                    <h2>Continuous learning</h2>
+                    <p>
+                        Working to develop myself professionally also extends to my free time.
+                        I have participated in a number of courses to extend my capabilities
+                        in project management, leadership, and technical skills.
+                    </p>
                 </div>
             </div>
-        </header>
-        
-        <div class="details">
-            <div class="internal-wrapper">
-                <p>Working to develop myself professionaly also extends to my free time. I have participated in a number of courses to extend my capabilities.</p>
-                
-                <h2>Project Management</h2>
-                <p>In order to develop my project management skills I enrolled in the DelftX Project management of Engineering projects program. This has culminated in two additional professional certificates in Engineering Project Management: <a href="https://credentials.edx.org/credentials/c16fe2bce6ff4ec6a92092571f87d0c9/">Project Finance Management<a/> and <a href="https://courses.edx.org/certificates/30ba2fea284547eb90a04f883744a1bb">Mastering project complexity</a>. <br/></p>
-                <img class="certificate" src="certificates/mep_professional_certificate.png">
-               
-                <h3>MEP101x: Project Management of Engineering Projects: Preparing for Success </h3>
-                <p >In this course I worked together with a team of eight engineers to create a <a href="/documents/PEP.pdf">Project Execution Proposal</a> for a solar energy park. This course helped us identify complexities, determine stakeholders and the best ways to deal with them. I finished this course with a grade of 86%.</p>
-              
-                <h3>MEP201x: Project Management: Mastering Complexity </h3>
-                <p>This course delved further into the issues of complexity in projects. It allowed me to explore different type of complexity and proper management styles for dealing with and mitigating them. I finished this course with a grade of 91%.</p>
-                
-                <h3>MEP301x: Project Finance: Funding Projects Successfully</h3>
-                <p>This additional course gave me insights into the workings of project finance, which gave me a new appreciation for the scale of large public works and the intricacies of establishing a solid financial fundament for a project. I finished this course with a grade of 90%.</p>
-                
-                <a href="https://courses.edx.org/certificates/6d5bbe593a3643faaff6cdef59f78fe2"><img class="certificate certificate-small" src="certificates/mep101x.png"></a>
-                <a href="https://courses.edx.org/certificates/1be91f233020458aa92cec385ea115b1"><img class="certificate certificate-small" src="certificates/mep201x.png"></a>
-                <a href="https://courses.edx.org/certificates/3494a4019b0d49bd82c682a0ea608d8b"><img class="certificate certificate-small" src="certificates/mep301x.png"></a>
-                
-                <h2>Leadership for engineers</h2>
-                <p>In order to be better prepared for a career with decisionmaking responsibility, I elected to enroll in the Leadership for Engineers track at DelftX, an initiative by the Technische Universiteit Delft. While the courses do not offer actual leadership experience, they do offer a theoretical framework that will help me become more effective as a leader. All certificates in the program were achieved with 90%+ scores. </p>
-              
-                <img class="certificate" src="certificates/lefe_professional_certificate.png">
-                
-                <h3>LEfE1x: Effective Decision Making: Dealing with business Complexity</h3>
-                <p >This course helped me discover analytical methods that aid in encounters with complex business decisions. </p>
-              
-                <h3>LEfE2x: Influencing Stakeholders: Dealing with Power and Dynamics in Teams and Networks</h3>
-                <p>This course helped me form a framework for cooperation in networks and provided techniques for enhancing my communication skills targeted at achieving business goals.</p>
-                
-                <h3>LEfE3x: Influencing Stakeholders: Communicating Effectively: How to Inspire and Convince</h3>
-                <p>The final course on this professional certificate track helped me find ways to enhance the way in communicate in speech and in writing, in order to improve collaboration and understanding.</p>
-                
-                <a href="certificates/lefe1x.pdf"><img class="certificate certificate-small" src="certificates/lefe1x.png"></a>
-                <a href="certificates/lefe2x.pdf"><img class="certificate certificate-small" src="certificates/lefe2x.png"></a>
-                <a href="certificates/lefe3x.pdf"><img class="certificate certificate-small" src="certificates/lefe3x.png"></a>
-                
-                
-                <h3>Scalable Machine Learning</h3>
-                <p>I followed this course to learn more about working with machine learning in for larger datasets. This course helped me in understanding Spark and deploying machine learning algorithms across large compute infrastructures.</p>
-                
-                <a href="certificates/spark.pdf"><img class="certificate certificate-small" src="certificates/spark.png"></a>
-                
-                <p>&nbsp;</p>
-                
-            </div>        
+        </section>
+
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="section-label">Project Management</div>
+                <div class="section-content">
+                    <h2>Engineering Project Management</h2>
+                    <p>
+                        In order to develop my project management skills I enrolled in the DelftX Project
+                        Management of Engineering Projects program. This has culminated in two additional
+                        professional certificates:
+                        <a href="https://credentials.edx.org/credentials/c16fe2bce6ff4ec6a92092571f87d0c9/">Project Finance Management</a>
+                        and
+                        <a href="https://courses.edx.org/certificates/30ba2fea284547eb90a04f883744a1bb">Mastering Project Complexity</a>.
+                    </p>
+
+                    <img class="certificate-main" src="certificates/mep_professional_certificate.png" alt="Project Management Professional Certificate">
+
+                    <div class="course-list">
+                        <div class="course-item">
+                            <div class="course-number">01</div>
+                            <div class="course-name">MEP101x: Preparing for Success</div>
+                            <div class="course-tag">Grade: 86%</div>
+                        </div>
+                        <div class="course-item">
+                            <div class="course-number">02</div>
+                            <div class="course-name">MEP201x: Mastering Complexity</div>
+                            <div class="course-tag">Grade: 91%</div>
+                        </div>
+                        <div class="course-item">
+                            <div class="course-number">03</div>
+                            <div class="course-name">MEP301x: Project Finance</div>
+                            <div class="course-tag">Grade: 90%</div>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 1.5rem;">
+                        In MEP101x, I worked together with a team of eight engineers to create a
+                        <a href="/documents/PEP.pdf">Project Execution Proposal</a> for a solar energy park.
+                        This course helped identify complexities, determine stakeholders and the best ways to deal with them.
+                    </p>
+
+                    <div class="certificate-grid">
+                        <a href="https://courses.edx.org/certificates/6d5bbe593a3643faaff6cdef59f78fe2">
+                            <img src="certificates/mep101x.png" alt="MEP101x Certificate">
+                        </a>
+                        <a href="https://courses.edx.org/certificates/1be91f233020458aa92cec385ea115b1">
+                            <img src="certificates/mep201x.png" alt="MEP201x Certificate">
+                        </a>
+                        <a href="https://courses.edx.org/certificates/3494a4019b0d49bd82c682a0ea608d8b">
+                            <img src="certificates/mep301x.png" alt="MEP301x Certificate">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="section-label">Leadership</div>
+                <div class="section-content">
+                    <h2>Leadership for Engineers</h2>
+                    <p>
+                        In order to be better prepared for a career with decision-making responsibility,
+                        I elected to enroll in the Leadership for Engineers track at DelftX, an initiative
+                        by the Technische Universiteit Delft. While the courses do not offer actual
+                        leadership experience, they do offer a theoretical framework that will help me
+                        become more effective as a leader. All certificates in the program were achieved
+                        with 90%+ scores.
+                    </p>
+
+                    <img class="certificate-main" src="certificates/lefe_professional_certificate.png" alt="Leadership Professional Certificate">
+
+                    <div class="course-list">
+                        <div class="course-item">
+                            <div class="course-number">01</div>
+                            <div class="course-name">LEfE1x: Effective Decision Making</div>
+                            <div class="course-tag">Business Complexity</div>
+                        </div>
+                        <div class="course-item">
+                            <div class="course-number">02</div>
+                            <div class="course-name">LEfE2x: Influencing Stakeholders</div>
+                            <div class="course-tag">Power & Dynamics</div>
+                        </div>
+                        <div class="course-item">
+                            <div class="course-number">03</div>
+                            <div class="course-name">LEfE3x: Communicating Effectively</div>
+                            <div class="course-tag">Inspire & Convince</div>
+                        </div>
+                    </div>
+
+                    <div class="certificate-grid">
+                        <a href="certificates/lefe1x.pdf">
+                            <img src="certificates/lefe1x.png" alt="LEfE1x Certificate">
+                        </a>
+                        <a href="certificates/lefe2x.pdf">
+                            <img src="certificates/lefe2x.png" alt="LEfE2x Certificate">
+                        </a>
+                        <a href="certificates/lefe3x.pdf">
+                            <img src="certificates/lefe3x.png" alt="LEfE3x Certificate">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="content-grid">
+                <div class="section-label">Technical</div>
+                <div class="section-content">
+                    <h2>Scalable Machine Learning</h2>
+                    <p>
+                        I followed this course to learn more about working with machine learning for
+                        larger datasets. This course helped me in understanding Spark and deploying
+                        machine learning algorithms across large compute infrastructures.
+                    </p>
+
+                    <div class="certificate-grid" style="grid-template-columns: 1fr;">
+                        <a href="certificates/spark.pdf">
+                            <img src="certificates/spark.png" alt="Scalable ML Certificate" style="max-width: 400px;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="back-section">
+            <a href="projects.html#education" class="back-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Education
+            </a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">© 2024 Stephan Heijl</p>
+        <div class="footer-links">
+            <a href="https://github.com/StephanHeijl">GitHub</a>
+            <a href="https://linkedin.com/in/stephanheijl">LinkedIn</a>
+            <a href="contact.html">Email</a>
         </div>
-        <script async defer src="https://sa.stephanheijl.com/app.js"></script>
-<noscript><img src="https://sa.stephanheijl.com/image.gif" alt=""></noscript>
-    </body>
+    </footer>
+</body>
 </html>
