@@ -484,7 +484,7 @@ footer {
     top: 0.5rem;
     width: 3px;
     height: calc(100% - 0.5rem);
-    background: linear-gradient(to bottom, var(--accent-warm), transparent);
+    background: var(--accent-warm);
 }
 
 .value-prop-label {
