@@ -439,7 +439,7 @@ footer {
 }
 
 .hero-left {
-    padding: 8rem 4rem 6rem 8rem;
+    padding: 6rem 4rem 4rem 8rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -571,6 +571,24 @@ footer {
     font-family: 'Newsreader', serif;
     font-size: 1.5rem;
     color: var(--accent-warm);
+}
+
+/* ==========================================================================
+   Subpage Hero (Professional/Education pages)
+   ========================================================================== */
+.hero.subpage-hero {
+    min-height: auto;
+    padding: 8rem 8rem 4rem;
+    align-items: start;
+}
+
+.hero.subpage-hero .hero-content {
+    max-width: 650px;
+}
+
+.hero.subpage-hero .company-card,
+.hero.subpage-hero .info-card {
+    align-self: start;
 }
 
 /* ==========================================================================
@@ -1966,7 +1984,7 @@ blockquote cite {
 }
 
 /* Allow clicks through canvas to content below */
-.hero, .approach, .expertise, .cta-section, footer, nav {
+.hero, .approach, .expertise, .cta-section, footer {
     position: relative;
     z-index: 1;
 }
