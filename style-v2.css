@@ -1981,6 +1981,7 @@ blockquote cite {
     height: 100%;
     z-index: 0;
     touch-action: none;
+    opacity: 0.5;
 }
 
 /* Allow clicks through canvas to content below */
