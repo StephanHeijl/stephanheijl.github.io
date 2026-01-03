@@ -1412,7 +1412,7 @@ blockquote cite {
 /* Progress Bar */
 .progress-bar {
     position: fixed;
-    top: 73px;
+    top: 81px;
     left: 0;
     width: 0%;
     height: 2px;
