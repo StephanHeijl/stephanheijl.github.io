@@ -1,0 +1,16 @@
+# robots.txt for stephanheijl.github.io
+User-agent: *
+Allow: /
+
+# Disallow old design directories from being indexed (avoid duplicate content)
+Disallow: /old_design/
+Disallow: /v2_design/
+
+# Allow all important pages
+Allow: /mads.html
+Allow: /projects.html
+Allow: /index.html
+Allow: /contact.html
+
+# Sitemap location
+Sitemap: https://stephanheijl.github.io/sitemap.xml
