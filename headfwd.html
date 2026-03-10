@@ -26,6 +26,9 @@
     </style>
 </head>
 <body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
     <!-- Navigation -->
     <nav>
         <a href="index.html" class="logo">Stephan Heijl</a>
@@ -108,5 +111,13 @@
             <a href="contact.html">Email</a>
         </div>
     </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (window.scrollY / docHeight) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        });
+    </script>
 </body>
 </html>

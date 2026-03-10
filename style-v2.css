@@ -1366,12 +1366,12 @@ blockquote cite {
 /* Progress Bar */
 .progress-bar {
     position: fixed;
-    top: 73px;
+    top: 0;
     left: 0;
     width: 0%;
-    height: 2px;
+    height: 3px;
     background: var(--accent-warm);
-    z-index: 99;
+    z-index: 101;
     transition: width 0.1s ease-out;
 }
 
