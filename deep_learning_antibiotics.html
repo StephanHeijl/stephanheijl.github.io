@@ -35,6 +35,13 @@
         .article-content tr:hover {
             background: var(--bg-secondary);
         }
+        @media (max-width: 768px) {
+            .article-content table {
+                display: block;
+                max-width: 100%;
+                overflow-x: auto;
+            }
+        }
         .animation-embed {
             border: 0;
             height: 200px;
