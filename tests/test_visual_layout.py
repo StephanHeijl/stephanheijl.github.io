@@ -6,6 +6,7 @@ import unittest
 CSS = Path(__file__).parents[1] / "style-v2.css"
 ROOT = CSS.parent
 DEEP_LEARNING = ROOT / "deep_learning_antibiotics.html"
+RFDIFFUSION = ROOT / "rfdiffusion.html"
 MESSAGE_PASSING = ROOT / "chemprop_animations" / "message_passing_animation.html"
 MESSAGE_PROPAGATION = ROOT / "chemprop_animations" / "message_propagation_animation.html"
 
@@ -49,6 +50,18 @@ class VisualLayoutRegressionTests(unittest.TestCase):
         self.assertRegex(
             DEEP_LEARNING.read_text(),
             r"(?ms)@media \(max-width: 768px\).*?\.article-content table\s*\{(?:(?!\}).)*?overflow-x:\s*auto;",
+        )
+
+    def test_article_links_wrap_unbroken_urls(self):
+        self.assertRegex(
+            self.css,
+            r"(?ms)^\.article-content a\s*\{(?:(?!\}).)*?overflow-wrap:\s*anywhere;",
+        )
+
+    def test_full_bleed_rfdiffusion_images_do_not_create_page_scroll(self):
+        self.assertRegex(
+            RFDIFFUSION.read_text(),
+            r"(?ms)^\s*html\s*\{(?:(?!\}).)*?overflow-x:\s*clip;",
         )
 
     def test_chemprop_animations_scale_their_fixed_coordinate_stage(self):
