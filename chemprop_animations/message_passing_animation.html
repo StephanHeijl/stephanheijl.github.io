@@ -9,12 +9,23 @@
                 padding: 0;
                 margin: 0;
                 background-size: 600px;
+                min-height: 184px;
+                overflow: hidden;
+            }
+            #animation-stage {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 600px;
+                height: 184px;
+                transform: scale(var(--animation-scale, 1));
+                transform-origin: top left;
             }
             #halicin {
                 width: 600px;
                 position: absolute;
             }
-            
+
             #halicin_network {
                 width: 600px;
                 position: absolute;
@@ -55,15 +66,24 @@
         </style>
     </head>
     <body>
-        <object id="halicin" data="/img/chemprop/halicin.svg" type="image/svg+xml"></object>
-        <object id="halicin_network" data="/img/chemprop/halicin_network.svg" type="image/svg+xml"></object>
-        
-        <div id="nodes"></div>
-        <div id="messages">
+        <div id="animation-stage">
+            <object id="halicin" data="/img/chemprop/halicin.svg" type="image/svg+xml"></object>
+            <object id="halicin_network" data="/img/chemprop/halicin_network.svg" type="image/svg+xml"></object>
+
+            <div id="nodes"></div>
+            <div id="messages">
+            </div>
         </div>
     </body>
     
     <script>
+        function setAnimationScale() {
+            document.documentElement.style.setProperty('--animation-scale', Math.min(1, window.innerWidth / 600));
+        }
+
+        setAnimationScale();
+        window.addEventListener('resize', setAnimationScale);
+
         $(function() {
             halicin = document.getElementById("halicin");        
             halicin_network = document.getElementById("halicin_network");  

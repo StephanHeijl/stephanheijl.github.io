@@ -434,6 +434,7 @@ footer {
     min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    padding: 0;
     position: relative;
     z-index: 1;
 }
@@ -1078,8 +1079,8 @@ section {
     background: var(--bg-primary);
     border: 2px solid var(--accent-warm);
     border-radius: 50%;
-    transition: all 0.3s ease;
     transform: translateX(-50%);
+    transition: all 0.3s ease;
 }
 
 .education-item:hover::before {
@@ -1260,6 +1261,11 @@ section {
 
 .article-content a:hover {
     border-bottom-color: var(--accent-warm);
+}
+
+.article-content pre {
+    max-width: 100%;
+    overflow-x: auto;
 }
 
 /* Blockquote / Tweet */
@@ -1984,7 +1990,7 @@ blockquote cite {
     opacity: 0.5;
 }
 
-/* Allow clicks through canvas to content below */
+/* Keep homepage content above the canvas without overriding the fixed navigation. */
 .hero, .approach, .expertise, .cta-section, footer {
     position: relative;
     z-index: 1;
@@ -2257,6 +2263,7 @@ blockquote cite {
 
     .section-nav {
         padding: 1rem 2rem;
+        gap: 0.5rem;
     }
 
     /* Content */
@@ -2281,6 +2288,10 @@ blockquote cite {
 
     .education-item {
         padding-left: 2rem;
+    }
+
+    .education-item::before {
+        left: -2rem;
     }
 
     /* Related Grid */

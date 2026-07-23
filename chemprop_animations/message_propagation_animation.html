@@ -11,19 +11,34 @@
                 padding: 0;
                 margin: 0;
                 background-size: 600px;
-                margin-top: 50px;
-                margin-left: 20px;
+                min-height: 234px;
+                overflow: hidden;
+            }
+            #animation-stage {
+                position: absolute;
+                top: 50px;
+                left: 20px;
+                width: 640px;
+                height: 184px;
+                transform: scale(var(--animation-scale, 1));
+                transform-origin: top left;
+            }
+            @media (max-width: 600px) {
+                #animation-stage {
+                    top: 1rem;
+                    left: 0;
+                }
             }
             #halicin {
                 width: 600px;
                 position: absolute;
             }
-            
+
             #halicin_network {
                 width: 600px;
                 position: absolute;
             }
-            
+
             #nodes {
                 width: 600px;
                 height: 00px;
@@ -67,16 +82,25 @@
         </style>
     </head>
     <body>
-        <object id="halicin_network" data="/img/chemprop/halicin_network.svg" type="image/svg+xml"></object>
-        
-        <div id="nodes"></div>
-        <div id="orbs">
+        <div id="animation-stage">
+            <object id="halicin_network" data="/img/chemprop/halicin_network.svg" type="image/svg+xml"></object>
+
+            <div id="nodes"></div>
+            <div id="orbs">
+            </div>
+
+            <div id="timestep">Timestep: <span>0</span></div>
         </div>
-        
-        <div id="timestep">Timestep: <span>0</span></div>
     </body>
     
     <script>
+        function setAnimationScale() {
+            document.documentElement.style.setProperty('--animation-scale', Math.min(1, window.innerWidth / 640));
+        }
+
+        setAnimationScale();
+        window.addEventListener('resize', setAnimationScale);
+
         $(function() {
             halicin_network = document.getElementById("halicin_network");  
 
